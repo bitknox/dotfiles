@@ -1,7 +1,9 @@
-# Turns on Windows' native taskbar auto-hide (required by the Windhawk
-# "taskbar-auto-hide-keyboard-only" mod, which then keeps it hidden unless summoned by keyboard).
-#   -Off  restores the always-visible taskbar.
-param([switch]$Off)
+# Taskbar = the Ahri dock (Windhawk Taskbar Styler "DockLike"). Default: always visible, so it
+# reserves its strip and maximized windows stop above it.
+#   -AutoHide  turns Windows' auto-hide on instead (needed if you want the
+#              "taskbar-auto-hide-when-maximized" mod's intellihide behaviour).
+param([switch]$AutoHide)
+$Off = -not $AutoHide
 $k = 'HKCU:\Software\Microsoft\Windows\CurrentVersion\Explorer\StuckRects3'
 $v = (Get-ItemProperty $k).Settings
 $v[8] = if ($Off) { 0x02 } else { 0x03 }

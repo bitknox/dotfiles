@@ -1,5 +1,5 @@
 ﻿{
-  "mode": "intersected",
+  "mode": "never",
   "foregroundWindowOnly": false,
   "excludedPrograms": [""],
   "primaryMonitorOnly": false,
