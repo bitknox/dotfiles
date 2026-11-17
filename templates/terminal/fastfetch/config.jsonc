@@ -1,15 +1,10 @@
 {
   "$schema": "https://github.com/fastfetch-cli/fastfetch/raw/dev/doc/json_schema.json",
   "logo": {
-    "type": "file",
-    "source": "~/.config/fastfetch/ahri.txt",
-    "color": {
-      "1": "{{ sakura | ansi }}",
-      "2": "{{ lavender | ansi }}",
-      "3": "{{ spirit | ansi }}",
-      "4": "{{ blossom | ansi }}",
-      "5": "{{ cream | ansi }}"
-    },
+    "type": "raw",
+    "source": "~/.config/fastfetch/ahri.sixel",
+    "width": 34,
+    "height": 16,
     "padding": { "top": 1, "left": 2, "right": 4 }
   },
   "display": {
