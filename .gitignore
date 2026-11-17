@@ -1,0 +1,6 @@
+﻿# derived output - regenerate with: py -3 render.py
+generated/
+# machine-local backups (registry exports, original configs)
+backup/
+__pycache__/
+*.log

@@ -1,0 +1,62 @@
+{
+  "name": "Ahri Spirit Blossom",
+  "slug": "ahri-blossom",
+  "fonts": {
+    "mono": "Maple Mono NF",
+    "ui": "Maple Mono NF",
+    "display": "Shippori Mincho"
+  },
+  "colors": {
+    "crust":    "#120e1c",
+    "mantle":   "#17121f",
+    "base":     "#1d1628",
+    "surface0": "#282036",
+    "surface1": "#342a46",
+    "surface2": "#443859",
+    "overlay":  "#6b5c82",
+    "subtext":  "#b9a8cc",
+    "text":     "#f3e8f2",
+    "cream":    "#fff4ea",
+
+    "sakura":   "#f4a7c8",
+    "blossom":  "#e86fa4",
+    "rose":     "#ff7a93",
+    "peach":    "#f7b28f",
+    "gold":     "#f0cd8a",
+    "mint":     "#a6e3b8",
+    "spirit":   "#7ce0d3",
+    "sky":      "#8fb8f5",
+    "lavender": "#c4a7f2",
+    "violet":   "#9d7fe0",
+
+    "ansi0":  "#2a2138",
+    "ansi1":  "#ff7a93",
+    "ansi2":  "#a6e3b8",
+    "ansi3":  "#f0cd8a",
+    "ansi4":  "#8fb8f5",
+    "ansi5":  "#f4a7c8",
+    "ansi6":  "#7ce0d3",
+    "ansi7":  "#d9cbe0",
+    "ansi8":  "#5a4c70",
+    "ansi9":  "#ff98ab",
+    "ansi10": "#bdeccb",
+    "ansi11": "#f6dca8",
+    "ansi12": "#aecbf8",
+    "ansi13": "#f8c3da",
+    "ansi14": "#a0ebe1",
+    "ansi15": "#f3e8f2"
+  },
+  "roles": {
+    "accent":    "sakura",
+    "accent2":   "lavender",
+    "highlight": "spirit",
+    "warn":      "gold",
+    "error":     "rose",
+    "ok":        "mint",
+    "bg":        "base",
+    "bg_alt":    "mantle",
+    "fg":        "text",
+    "border":    "sakura",
+    "border_inactive": "surface2"
+  }
+}
