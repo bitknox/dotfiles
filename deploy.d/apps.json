@@ -1,0 +1,32 @@
+﻿[
+  {
+    "group": "discord",
+    "src": "apps/discord/ahri-blossom.theme.css",
+    "dst": "%APPDATA%\\Vencord\\themes\\ahri-blossom.theme.css",
+    "if_exists": "%APPDATA%\\Vencord"
+  },
+  {
+    "group": "spotify",
+    "src": "apps/spicetify/AhriBlossom",
+    "dst": "%APPDATA%\\spicetify\\Themes\\AhriBlossom",
+    "if_exists": "%APPDATA%\\spicetify"
+  },
+  {
+    "group": "zen",
+    "src": "apps/zen/chrome",
+    "dst": "%APPDATA%\\zen\\Profiles\\kk4sqtcv.Default (release)\\chrome",
+    "if_exists": "%APPDATA%\\zen\\Profiles\\kk4sqtcv.Default (release)"
+  },
+  {
+    "group": "zen",
+    "src": "apps/zen/user.js",
+    "dst": "%APPDATA%\\zen\\Profiles\\kk4sqtcv.Default (release)\\user.js",
+    "if_exists": "%APPDATA%\\zen\\Profiles\\kk4sqtcv.Default (release)"
+  },
+  {
+    "group": "obs",
+    "src": "apps/obs/AhriBlossom.ovt",
+    "dst": "%APPDATA%\\obs-studio\\themes\\AhriBlossom.ovt",
+    "if_exists": "%APPDATA%\\obs-studio"
+  }
+]

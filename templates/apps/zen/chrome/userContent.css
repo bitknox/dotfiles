@@ -1,0 +1,232 @@
+/* Ahri Blossom - Zen browser userContent.css (generated from palette.json) */
+
+@import url("https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@500;700&display=swap");
+
+/* Gentle scrollbars + selection everywhere (author styles still win) */
+:root {
+  scrollbar-color: {{ surface2 }} transparent;
+}
+::selection {
+  background-color: {{ sakura | rgba:0.32 }};
+}
+
+/* ---------- about: pages (settings, addons, config, etc.) ---------- */
+@-moz-document url-prefix("about:") {
+  :root {
+    --in-content-page-background: {{ base }} !important;
+    --in-content-page-color: {{ text }} !important;
+    --in-content-text-color: {{ text }} !important;
+    --in-content-deemphasized-text: {{ subtext }} !important;
+    --in-content-box-background: {{ surface0 }} !important;
+    --in-content-box-background-hover: {{ surface1 }} !important;
+    --in-content-box-background-active: {{ surface2 }} !important;
+    --in-content-box-border-color: {{ surface1 }} !important;
+    --in-content-box-info-background: {{ surface0 }} !important;
+    --in-content-border-color: {{ surface1 }} !important;
+    --in-content-border-hover: {{ surface2 }} !important;
+    --in-content-item-hover: {{ surface1 }} !important;
+    --in-content-item-hover-text: {{ cream }} !important;
+    --in-content-item-selected: {{ sakura | rgba:0.2 }} !important;
+    --in-content-item-selected-text: {{ cream }} !important;
+    --in-content-link-color: {{ spirit }} !important;
+    --in-content-link-color-hover: {{ spirit }} !important;
+    --in-content-link-color-active: {{ lavender }} !important;
+    --in-content-link-color-visited: {{ lavender }} !important;
+    --in-content-button-background: {{ surface1 }} !important;
+    --in-content-button-background-hover: {{ surface2 }} !important;
+    --in-content-button-background-active: {{ surface2 }} !important;
+    --in-content-button-text-color: {{ text }} !important;
+    --in-content-primary-button-background: {{ sakura }} !important;
+    --in-content-primary-button-background-hover: {{ blossom }} !important;
+    --in-content-primary-button-background-active: {{ blossom }} !important;
+    --in-content-primary-button-text-color: {{ crust }} !important;
+    --in-content-focus-outline-color: {{ spirit }} !important;
+    --in-content-table-background: {{ mantle }} !important;
+    --in-content-table-header-background: {{ surface1 }} !important;
+    --in-content-table-header-color: {{ text }} !important;
+    --in-content-danger-button-background: {{ rose }} !important;
+    --in-content-error-text-color: {{ rose }} !important;
+    --in-content-warning-container-background: {{ gold | rgba:0.15 }} !important;
+
+    --color-accent-primary: {{ sakura }} !important;
+    --color-accent-primary-hover: {{ blossom }} !important;
+    --color-accent-primary-active: {{ blossom }} !important;
+    --color-canvas: {{ base }} !important;
+    --text-color: {{ text }} !important;
+    --text-color-deemphasized: {{ subtext }} !important;
+    --link-color: {{ spirit }} !important;
+    --link-color-hover: {{ spirit }} !important;
+    --border-color: {{ surface1 }} !important;
+    --border-color-interactive: {{ surface2 }} !important;
+    --border-radius-small: 6px !important;
+    --border-radius-medium: 8px !important;
+    --border-radius-large: 12px !important;
+    --background-color-box: {{ surface0 }} !important;
+    --background-color-canvas: {{ base }} !important;
+    --button-background-color: {{ surface1 }} !important;
+    --button-background-color-hover: {{ surface2 }} !important;
+    --button-background-color-active: {{ surface2 }} !important;
+    --button-text-color: {{ text }} !important;
+    --button-background-color-primary: {{ sakura }} !important;
+    --button-background-color-primary-hover: {{ blossom }} !important;
+    --button-background-color-primary-active: {{ blossom }} !important;
+    --button-text-color-primary: {{ crust }} !important;
+    --focus-outline-color: {{ spirit }} !important;
+    --icon-color: {{ subtext }} !important;
+    --icon-color-success: {{ mint }} !important;
+    --icon-color-warning: {{ gold }} !important;
+    --icon-color-critical: {{ rose }} !important;
+
+    font-family: "{{ font.ui }}", system-ui, sans-serif;
+    color-scheme: dark;
+    accent-color: {{ sakura }};
+  }
+
+  body {
+    background-color: {{ base }} !important;
+    color: {{ text }} !important;
+  }
+
+  h1, .main-heading, .header-name {
+    font-family: "{{ font.display }}", "{{ font.ui }}", serif !important;
+    color: {{ cream }} !important;
+  }
+
+  input, select, textarea, button {
+    border-radius: 8px !important;
+  }
+  input:focus-visible, select:focus-visible, textarea:focus-visible {
+    outline-color: {{ spirit }} !important;
+    box-shadow: 0 0 12px {{ sakura | rgba:0.25 }} !important;
+  }
+
+  .card, addon-card .card, .info-box, moz-card {
+    background-color: {{ surface0 }} !important;
+    border: 1px solid {{ surface1 }} !important;
+    border-radius: 12px !important;
+  }
+
+  ::selection {
+    background-color: {{ sakura | rgba:0.32 }};
+    color: {{ cream }};
+  }
+}
+
+/* ---------- New tab / home ---------- */
+@-moz-document url("about:newtab"), url("about:home"), url("about:privatebrowsing") {
+  :root,
+  body,
+  .outer-wrapper,
+  .activity-stream {
+    --newtab-background-color: {{ base }} !important;
+    --newtab-background-color-secondary: {{ surface0 }} !important;
+    --newtab-text-primary-color: {{ text }} !important;
+    --newtab-text-secondary-color: {{ subtext }} !important;
+    --newtab-primary-action-background: {{ sakura }} !important;
+    --newtab-primary-element-hover-color: {{ blossom }} !important;
+    --newtab-primary-element-active-color: {{ blossom }} !important;
+    --newtab-primary-element-text-color: {{ crust }} !important;
+    --newtab-element-hover-color: {{ surface1 }} !important;
+    --newtab-element-active-color: {{ surface2 }} !important;
+    --newtab-element-secondary-color: {{ surface1 }} !important;
+    --newtab-element-secondary-hover-color: {{ surface2 }} !important;
+    --newtab-border-color: {{ surface1 }} !important;
+    --newtab-wordmark-color: {{ sakura }} !important;
+    --newtab-search-icon-color: {{ subtext }} !important;
+    --newtab-search-icon: none;
+    --newtab-overlay-color: {{ crust | rgba:0.85 }} !important;
+    --newtab-textbox-focus-color: {{ sakura }} !important;
+    --newtab-textbox-focus-boxshadow: 0 0 0 1px {{ sakura | rgba:0.6 }}, 0 0 12px {{ sakura | rgba:0.25 }} !important;
+    --newtab-contextual-text-primary-color: {{ text }} !important;
+    --newtab-contextual-text-secondary-color: {{ subtext }} !important;
+    --newtab-button-background: {{ surface1 }} !important;
+    --newtab-button-hover-background: {{ surface2 }} !important;
+    --newtab-button-text: {{ text }} !important;
+    --newtab-button-focus-border: {{ spirit }} !important;
+    --newtab-button-primary-color: {{ sakura }} !important;
+    --newtab-link-primary-color: {{ spirit }} !important;
+    --newtab-status-success: {{ mint }} !important;
+    --newtab-status-error: {{ rose }} !important;
+    --in-content-page-background: {{ base }} !important;
+    --in-content-page-color: {{ text }} !important;
+    font-family: "{{ font.ui }}", system-ui, sans-serif;
+  }
+
+  body {
+    background:
+      radial-gradient(ellipse at 15% 0%, {{ sakura | rgba:0.12 }}, transparent 55%),
+      radial-gradient(ellipse at 90% 100%, {{ lavender | rgba:0.12 }}, transparent 60%),
+      radial-gradient(circle at 70% 30%, {{ spirit | rgba:0.05 }}, transparent 40%),
+      {{ base }} !important;
+    background-attachment: fixed !important;
+  }
+
+  /* Search box */
+  .search-wrapper .search-inner-wrapper,
+  .search-handoff-button,
+  .search-wrapper input {
+    background-color: {{ surface0 }} !important;
+    border: 1px solid {{ surface1 }} !important;
+    border-radius: 12px !important;
+    color: {{ text }} !important;
+  }
+  .search-wrapper input:focus,
+  .search-handoff-button.focused,
+  .fake-focus .search-handoff-button {
+    border-color: {{ sakura | rgba:0.6 }} !important;
+    box-shadow: 0 0 12px {{ sakura | rgba:0.25 }} !important;
+  }
+
+  /* Shortcut tiles */
+  .top-site-outer .tile,
+  .top-site-outer .top-site-icon {
+    background-color: {{ surface0 }} !important;
+    border-radius: 12px !important;
+    box-shadow: 0 0 0 1px {{ surface1 }} !important;
+  }
+  .top-site-outer:hover .tile,
+  .top-site-outer:focus-within .tile {
+    background-color: {{ surface1 }} !important;
+    box-shadow: 0 0 0 1px {{ sakura | rgba:0.45 }}, 0 0 12px {{ sakura | rgba:0.25 }} !important;
+  }
+  .top-site-outer .title,
+  .top-site-outer .title span {
+    color: {{ subtext }} !important;
+  }
+
+  /* Cards (stories / highlights) */
+  .ds-card,
+  .card-outer,
+  .ds-card-grid .ds-card {
+    background-color: {{ surface0 }} !important;
+    border-radius: 12px !important;
+  }
+  .ds-card:hover,
+  .card-outer:hover {
+    box-shadow: 0 0 12px {{ sakura | rgba:0.2 }} !important;
+  }
+
+  /* Context menus inside newtab */
+  .context-menu {
+    background-color: {{ mantle }} !important;
+    border: 1px solid {{ surface1 }} !important;
+    border-radius: 10px !important;
+  }
+  .context-menu > ul > li > button:hover,
+  .context-menu > ul > li > button:focus {
+    background-color: {{ sakura | rgba:0.16 }} !important;
+    color: {{ cream }} !important;
+  }
+
+  .logo-and-wordmark .wordmark,
+  .logo-and-wordmark .logo {
+    fill: {{ sakura }} !important;
+  }
+}
+
+/* Plain blank page */
+@-moz-document url("about:blank") {
+  html:not([lang]) body:empty {
+    background-color: {{ base }} !important;
+  }
+}

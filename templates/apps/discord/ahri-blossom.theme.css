@@ -1,0 +1,423 @@
+/**
+ * @name Ahri Blossom
+ * @author dotfiles
+ * @description Spirit Blossom Ahri: night-violet surfaces, sakura accents, soft pink glow. Use with Discord's Dark (or Midnight) theme.
+ * @version 1.0.0
+ * @source generated from palette.json by render.py
+ */
+
+@import url("https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@500;700&display=swap");
+
+/* ------------------------------------------------------------------ */
+/*  Palette (mirrors palette.json; everything below reads from these)  */
+/* ------------------------------------------------------------------ */
+:root {
+  --ahri-crust: {{ crust }};
+  --ahri-mantle: {{ mantle }};
+  --ahri-base: {{ base }};
+  --ahri-surface0: {{ surface0 }};
+  --ahri-surface1: {{ surface1 }};
+  --ahri-surface2: {{ surface2 }};
+  --ahri-overlay: {{ overlay }};
+  --ahri-subtext: {{ subtext }};
+  --ahri-text: {{ text }};
+  --ahri-cream: {{ cream }};
+  --ahri-sakura: {{ sakura }};
+  --ahri-blossom: {{ blossom }};
+  --ahri-rose: {{ rose }};
+  --ahri-gold: {{ gold }};
+  --ahri-mint: {{ mint }};
+  --ahri-spirit: {{ spirit }};
+  --ahri-lavender: {{ lavender }};
+  --ahri-violet: {{ violet }};
+
+  --ahri-glow: 0 0 12px {{ sakura | rgba:0.25 }};
+  --ahri-glow-strong: 0 0 16px {{ sakura | rgba:0.38 }};
+  --ahri-radius: 10px;
+
+  --font-primary: "{{ font.ui }}", "gg sans", "Noto Sans", sans-serif;
+  --font-display: "{{ font.ui }}", "gg sans", "Noto Sans", sans-serif;
+  --font-headline: "{{ font.display }}", "{{ font.ui }}", serif;
+  --font-code: "{{ font.mono }}", Consolas, monospace;
+}
+
+/* ------------------------------------------------------------------ */
+/*  Discord variables: legacy + visual-refresh (2025-26) names         */
+/* ------------------------------------------------------------------ */
+:root,
+.theme-dark,
+.theme-darker,
+.theme-midnight,
+.visual-refresh.theme-dark,
+.visual-refresh.theme-darker,
+.visual-refresh.theme-midnight,
+.visual-refresh .theme-dark,
+.visual-refresh .theme-darker,
+.visual-refresh .theme-midnight {
+  /* --- legacy background tiers --- */
+  --background-primary: var(--ahri-base);
+  --background-secondary: var(--ahri-mantle);
+  --background-secondary-alt: var(--ahri-crust);
+  --background-tertiary: var(--ahri-crust);
+  --background-accent: var(--ahri-surface2);
+  --background-floating: var(--ahri-mantle);
+  --background-nested-floating: var(--ahri-surface0);
+  --background-mobile-primary: var(--ahri-base);
+  --background-mobile-secondary: var(--ahri-mantle);
+  --background-message-hover: {{ surface0 | rgba:0.45 }};
+  --background-message-highlight: {{ sakura | rgba:0.08 }};
+  --background-message-highlight-hover: {{ sakura | rgba:0.12 }};
+  --background-message-automod: {{ gold | rgba:0.08 }};
+  --background-message-automod-hover: {{ gold | rgba:0.12 }};
+  --background-mentioned: {{ gold | rgba:0.10 }};
+  --background-mentioned-hover: {{ gold | rgba:0.14 }};
+  --background-modifier-hover: {{ surface1 | rgba:0.55 }};
+  --background-modifier-active: {{ surface1 | rgba:0.8 }};
+  --background-modifier-selected: {{ surface2 | rgba:0.75 }};
+  --background-modifier-accent: {{ surface1 | rgba:0.7 }};
+  --background-mod-subtle: {{ surface1 | rgba:0.45 }};
+  --background-mod-normal: {{ surface1 | rgba:0.7 }};
+  --background-mod-strong: {{ surface2 | rgba:0.8 }};
+  --background-mod-muted: {{ surface0 | rgba:0.6 }};
+
+  /* --- visual refresh base / surface tiers --- */
+  --background-base-lowest: var(--ahri-crust);
+  --background-base-lower: var(--ahri-mantle);
+  --background-base-low: var(--ahri-base);
+  --background-surface-high: var(--ahri-surface0);
+  --background-surface-higher: var(--ahri-surface0);
+  --background-surface-highest: var(--ahri-surface1);
+  --background-code: var(--ahri-crust);
+  --background-scrim: {{ crust | rgba:0.7 }};
+  --background-brand: var(--ahri-sakura);
+
+  /* --- 2025+ bg-* tokens --- */
+  --bg-base-primary: var(--ahri-base);
+  --bg-base-secondary: var(--ahri-mantle);
+  --bg-base-tertiary: var(--ahri-crust);
+  --bg-surface-raised: var(--ahri-surface0);
+  --bg-surface-overlay: var(--ahri-mantle);
+  --bg-surface-overlay-tmp: var(--ahri-mantle);
+  --bg-brand: var(--ahri-sakura);
+  --bg-mod-faint: {{ surface1 | rgba:0.3 }};
+  --bg-mod-subtle: {{ surface1 | rgba:0.5 }};
+  --bg-mod-strong: {{ surface2 | rgba:0.75 }};
+  --bg-backdrop: {{ crust | rgba:0.75 }};
+  --bg-backdrop-no-opacity: var(--ahri-crust);
+  --bg-overlay-1: var(--ahri-mantle);
+  --bg-overlay-2: var(--ahri-mantle);
+  --bg-overlay-3: var(--ahri-surface0);
+  --bg-overlay-4: var(--ahri-surface0);
+  --bg-overlay-5: var(--ahri-surface1);
+  --bg-overlay-6: var(--ahri-surface1);
+  --bg-overlay-chat: var(--ahri-base);
+  --bg-overlay-app-frame: var(--ahri-crust);
+  --bg-overlay-floating: var(--ahri-mantle);
+  --bg-overlay-hover: {{ surface1 | rgba:0.55 }};
+  --bg-overlay-active: {{ surface1 | rgba:0.8 }};
+  --bg-overlay-selected: {{ surface2 | rgba:0.75 }};
+  --bg-overlay-active-hover: {{ surface2 | rgba:0.85 }};
+  --bg-overlay-selected-hover: {{ surface2 | rgba:0.9 }};
+
+  /* --- misc surfaces --- */
+  --app-frame-background: var(--ahri-crust);
+  --app-border-frame: var(--ahri-surface0);
+  --chat-background: var(--ahri-base);
+  --chat-background-default: var(--ahri-base);
+  --chat-border: var(--ahri-surface0);
+  --home-background: var(--ahri-base);
+  --panel-bg: var(--ahri-mantle);
+  --modal-background: var(--ahri-mantle);
+  --modal-footer-background: var(--ahri-crust);
+  --card-primary-bg: var(--ahri-surface0);
+  --card-secondary-bg: var(--ahri-mantle);
+  --card-background-default: var(--ahri-surface0);
+  --card-background-hover: var(--ahri-surface1);
+  --profile-gradient-overlay: {{ base | rgba:0.6 }};
+  --guild-header-text-shadow: none;
+  --input-background: var(--ahri-surface0);
+  --input-background-default: var(--ahri-surface0);
+  --input-border: var(--ahri-surface1);
+  --input-border-default: var(--ahri-surface1);
+  --input-border-hover: var(--ahri-surface2);
+  --input-placeholder-text: var(--ahri-overlay);
+  --input-placeholder-text-default: var(--ahri-overlay);
+  --channeltextarea-background: var(--ahri-surface0);
+  --deprecated-text-input-bg: var(--ahri-surface0);
+  --deprecated-text-input-border: var(--ahri-surface1);
+  --deprecated-card-bg: var(--ahri-surface0);
+  --deprecated-card-editable-bg: var(--ahri-surface0);
+  --deprecated-store-bg: var(--ahri-base);
+  --deprecated-quickswitcher-input-background: var(--ahri-surface0);
+  --deprecated-quickswitcher-input-placeholder: var(--ahri-overlay);
+  --activity-card-background: var(--ahri-surface0);
+  --user-profile-overlay-background: var(--ahri-mantle);
+  --redesign-input-control-selected: var(--ahri-sakura);
+
+  /* --- text --- */
+  --text-normal: var(--ahri-text);
+  --text-default: var(--ahri-text);
+  --text-primary: var(--ahri-text);
+  --text-strong: var(--ahri-cream);
+  --text-secondary: var(--ahri-subtext);
+  --text-tertiary: var(--ahri-overlay);
+  --text-subtle: var(--ahri-subtext);
+  --text-muted: var(--ahri-subtext);
+  --text-faint: var(--ahri-overlay);
+  --text-link: var(--ahri-spirit);
+  --text-link-low-saturation: var(--ahri-spirit);
+  --text-brand: var(--ahri-sakura);
+  --text-positive: var(--ahri-mint);
+  --text-warning: var(--ahri-gold);
+  --text-danger: var(--ahri-rose);
+  --text-feedback-positive: var(--ahri-mint);
+  --text-feedback-warning: var(--ahri-gold);
+  --text-feedback-critical: var(--ahri-rose);
+  --text-feedback-info: var(--ahri-spirit);
+  --header-primary: var(--ahri-cream);
+  --header-secondary: var(--ahri-subtext);
+  --channels-default: var(--ahri-subtext);
+  --channel-icon: var(--ahri-overlay);
+  --channel-text-area-placeholder: var(--ahri-overlay);
+  --textbox-markdown-syntax: var(--ahri-overlay);
+  --mention-foreground: var(--ahri-gold);
+  --mention-background: {{ gold | rgba:0.16 }};
+  --info-warning-foreground: var(--ahri-gold);
+  --info-danger-foreground: var(--ahri-rose);
+  --info-positive-foreground: var(--ahri-mint);
+  --info-help-foreground: var(--ahri-spirit);
+
+  /* --- icons / interactive --- */
+  --interactive-normal: var(--ahri-subtext);
+  --interactive-hover: var(--ahri-text);
+  --interactive-active: var(--ahri-sakura);
+  --interactive-muted: var(--ahri-overlay);
+  --interactive-text-default: var(--ahri-subtext);
+  --interactive-text-hover: var(--ahri-text);
+  --interactive-text-active: var(--ahri-cream);
+  --interactive-icon-default: var(--ahri-subtext);
+  --interactive-icon-hover: var(--ahri-text);
+  --interactive-icon-active: var(--ahri-sakura);
+  --icon-default: var(--ahri-subtext);
+  --icon-muted: var(--ahri-overlay);
+  --icon-strong: var(--ahri-text);
+  --icon-subtle: var(--ahri-overlay);
+  --icon-primary: var(--ahri-text);
+  --icon-secondary: var(--ahri-subtext);
+  --icon-tertiary: var(--ahri-overlay);
+  --icon-transparent: transparent;
+
+  /* --- brand: sakura instead of blurple --- */
+  --brand-experiment: var(--ahri-sakura);
+  --brand-experiment-100: {{ cream }};
+  --brand-experiment-160: {{ sakura | rgba:0.16 }};
+  --brand-experiment-200: {{ sakura | rgba:0.25 }};
+  --brand-experiment-300: {{ sakura }};
+  --brand-experiment-360: {{ sakura }};
+  --brand-experiment-400: {{ sakura }};
+  --brand-experiment-430: {{ sakura }};
+  --brand-experiment-460: {{ sakura }};
+  --brand-experiment-500: {{ sakura }};
+  --brand-experiment-530: {{ blossom }};
+  --brand-experiment-560: {{ blossom }};
+  --brand-experiment-600: {{ blossom }};
+  --brand-experiment-630: {{ blossom }};
+  --brand-experiment-660: {{ blossom }};
+  --brand-experiment-700: {{ blossom }};
+  --brand-experiment-05a: {{ sakura | rgba:0.05 }};
+  --brand-experiment-10a: {{ sakura | rgba:0.10 }};
+  --brand-experiment-15a: {{ sakura | rgba:0.15 }};
+  --brand-experiment-20a: {{ sakura | rgba:0.20 }};
+  --brand-experiment-25a: {{ sakura | rgba:0.25 }};
+  --brand-experiment-30a: {{ sakura | rgba:0.30 }};
+  --brand-experiment-40a: {{ sakura | rgba:0.40 }};
+  --brand-experiment-50a: {{ sakura | rgba:0.50 }};
+  --brand-experiment-60a: {{ sakura | rgba:0.60 }};
+  --brand-experiment-70a: {{ sakura | rgba:0.70 }};
+  --brand-experiment-80a: {{ sakura | rgba:0.80 }};
+  --brand-experiment-90a: {{ sakura | rgba:0.90 }};
+  --brand-260: {{ sakura }};
+  --brand-360: {{ sakura }};
+  --brand-400: {{ sakura }};
+  --brand-500: {{ sakura }};
+  --brand-530: {{ blossom }};
+  --brand-560: {{ blossom }};
+  --brand-600: {{ blossom }};
+  --brand-660: {{ blossom }};
+  --control-brand-foreground: var(--ahri-sakura);
+  --control-brand-foreground-new: var(--ahri-sakura);
+  --button-filled-brand-background: var(--ahri-sakura);
+  --button-filled-brand-background-hover: var(--ahri-blossom);
+  --button-filled-brand-background-active: var(--ahri-blossom);
+  --button-filled-brand-text: var(--ahri-crust);
+  --button-filled-brand-inverted-text: var(--ahri-crust);
+  --button-secondary-background: var(--ahri-surface1);
+  --button-secondary-background-hover: var(--ahri-surface2);
+  --button-secondary-background-active: var(--ahri-surface2);
+  --button-outline-brand-border: var(--ahri-sakura);
+  --button-outline-brand-text: var(--ahri-sakura);
+  --button-danger-background: var(--ahri-rose);
+  --button-danger-background-hover: {{ rose | rgba:0.85 }};
+  --button-positive-background: {{ mint | rgba:0.85 }};
+  --button-positive-background-hover: var(--ahri-mint);
+  --focus-primary: var(--ahri-spirit);
+
+  /* --- status --- */
+  --status-positive: var(--ahri-mint);
+  --status-positive-background: var(--ahri-mint);
+  --status-positive-text: var(--ahri-crust);
+  --status-warning: var(--ahri-gold);
+  --status-warning-background: var(--ahri-gold);
+  --status-warning-text: var(--ahri-crust);
+  --status-danger: var(--ahri-rose);
+  --status-danger-background: var(--ahri-rose);
+  --status-danger-text: var(--ahri-crust);
+  --status-online: var(--ahri-mint);
+  --status-idle: var(--ahri-gold);
+  --status-dnd: var(--ahri-rose);
+  --status-offline: var(--ahri-overlay);
+  --status-streaming: var(--ahri-lavender);
+  --green-360: var(--ahri-mint);
+  --yellow-300: var(--ahri-gold);
+  --red-400: var(--ahri-rose);
+
+  /* --- borders --- */
+  --border-faint: {{ surface0 | rgba:0.6 }};
+  --border-subtle: var(--ahri-surface0);
+  --border-normal: var(--ahri-surface1);
+  --border-strong: var(--ahri-surface2);
+  --border-mod-subtle: var(--ahri-surface0);
+  --border-mod-normal: var(--ahri-surface1);
+  --border-mod-strong: var(--ahri-surface2);
+  --app-border: var(--ahri-surface0);
+  --divider: var(--ahri-surface0);
+
+  /* --- scrollbars --- */
+  --scrollbar-auto-thumb: var(--ahri-surface2);
+  --scrollbar-auto-track: transparent;
+  --scrollbar-auto-scrollbar-color-thumb: var(--ahri-surface2);
+  --scrollbar-auto-scrollbar-color-track: transparent;
+  --scrollbar-thin-thumb: var(--ahri-surface2);
+  --scrollbar-thin-track: transparent;
+
+  /* --- spoilers / code / misc --- */
+  --spoiler-hidden-background: var(--ahri-surface1);
+  --spoiler-hidden-background-hover: var(--ahri-surface2);
+  --spoiler-revealed-background: var(--ahri-surface0);
+  --embed-background: var(--ahri-mantle);
+  --embed-title: var(--ahri-cream);
+  --logo-primary: var(--ahri-sakura);
+  --home-icon: var(--ahri-sakura);
+
+  /* --- radii (visual refresh) --- */
+  --radius-xs: 6px;
+  --radius-sm: 8px;
+  --radius-md: 10px;
+  --radius-lg: 12px;
+}
+
+/* ------------------------------------------------------------------ */
+/*  Targeted touches (attribute-substring selectors survive hashing)   */
+/* ------------------------------------------------------------------ */
+
+::selection {
+  background: {{ sakura | rgba:0.3 }};
+  color: var(--ahri-cream);
+}
+
+/* Server list: pink pill + glow on the selected server */
+[class*="pill_"] [class*="item_"] {
+  background-color: var(--ahri-sakura) !important;
+}
+[class*="blobContainer_"][class*="selected_"] {
+  filter: drop-shadow(0 0 6px {{ sakura | rgba:0.45 }});
+}
+[class*="blobContainer_"]:hover {
+  filter: drop-shadow(0 0 5px {{ lavender | rgba:0.25 }});
+}
+
+/* Selected channel / DM: soft pink wash, inset accent, glow */
+[class*="modeSelected_"] [class*="link_"],
+[class*="containerDefault_"][class*="selected_"] [class*="link_"],
+[class*="channel_"][class*="selected_"] [class*="interactive_"],
+[class*="interactiveSelected_"] {
+  background: {{ sakura | rgba:0.12 }} !important;
+  box-shadow: inset 2px 0 0 var(--ahri-sakura), var(--ahri-glow);
+  border-radius: 8px;
+}
+[class*="modeSelected_"] [class*="name_"],
+[class*="modeSelected_"] [class*="icon_"] {
+  color: var(--ahri-cream) !important;
+}
+[class*="modeUnread_"] [class*="name_"] {
+  color: var(--ahri-text) !important;
+}
+
+/* Message input: rounded, soft border, glow when focused */
+[class*="channelTextArea_"] [class*="scrollableContainer_"],
+[class*="channelTextArea_"] > [class*="inner_"] {
+  border-radius: 12px !important;
+}
+form [class*="channelTextArea_"] {
+  border-radius: 12px;
+  border: 1px solid var(--ahri-surface1);
+  background: var(--ahri-surface0);
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+form [class*="channelTextArea_"]:focus-within {
+  border-color: {{ sakura | rgba:0.55 }};
+  box-shadow: var(--ahri-glow);
+}
+
+/* Mentions: gold accent bar */
+[class*="mentioned_"]::before {
+  background: var(--ahri-gold) !important;
+}
+.mention,
+[class*="mention"][class*="interactive"] {
+  border-radius: 4px;
+}
+
+/* Links */
+a[class*="anchor_"] {
+  color: var(--ahri-spirit);
+}
+
+/* Floating surfaces: rounded + soft border */
+[class*="menu_"][role="menu"],
+[class*="popout_"],
+[class*="tooltip_"] {
+  border-radius: var(--ahri-radius) !important;
+  border: 1px solid var(--ahri-surface1);
+}
+[class*="menu_"] [class*="focused_"] {
+  background: {{ sakura | rgba:0.18 }} !important;
+  color: var(--ahri-cream) !important;
+}
+[role="dialog"][class*="root_"] {
+  border-radius: 12px;
+}
+
+/* Inputs / search: spirit-teal focus ring */
+input:focus,
+[class*="inputDefault_"]:focus,
+[class*="searchBar_"]:focus-within {
+  outline: none;
+  box-shadow: 0 0 0 1px {{ spirit | rgba:0.6 }};
+}
+
+/* Big titles get the display serif */
+[class*="title_"][class*="defaultColor_"] h1,
+[class*="emptyChannelIcon_"] + h3,
+[class*="welcomeMessage_"] h3 {
+  font-family: var(--font-headline);
+}
+
+/* Scrollbars (webkit) */
+::-webkit-scrollbar-thumb {
+  background-color: var(--ahri-surface2);
+  border-radius: 8px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background-color: var(--ahri-overlay);
+}

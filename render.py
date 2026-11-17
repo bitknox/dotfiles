@@ -27,7 +27,8 @@ for role, target in PAL["roles"].items():
 TOKEN = re.compile(r"\{\{\s*([\w.]+)\s*(?:\|\s*([\w]+)(?::([\w.]+))?\s*)?\}\}")
 TEXT_EXT = {".json", ".jsonc", ".css", ".scss", ".js", ".ts", ".html", ".toml", ".yaml", ".yml",
             ".ini", ".conf", ".lua", ".ps1", ".nss", ".xaml", ".xml", ".txt", ".md", ".omp", ".reg",
-            ".vim", ".qss", ".theme", ".tdesktop-theme", ".jsonl", ".kdl", ""}
+            ".vim", ".qss", ".theme", ".tdesktop-theme", ".tdesktop-palette", ".ovt", ".obt",
+            ".icls", ".jsonl", ".kdl", ""}
 
 
 def rgb(h):

@@ -1,0 +1,263 @@
+@OBSThemeMeta {
+    name: 'Ahri Blossom';
+    id: 'com.dotfiles.Yami.AhriBlossom';
+    extends: 'com.obsproject.Yami';
+    author: 'dotfiles (generated from palette.json)';
+    dark: 'true';
+}
+
+/* Spirit Blossom Ahri for OBS Studio 30+ (Yami variant).
+ * Solid colours only in variables: OBS resolves --palette_* through QColor. */
+
+@OBSThemeVars {
+    /* Remap Yami's grey ramp onto the night-violet surfaces */
+    --grey1: {{ overlay }};
+    --grey2: {{ surface2 }};
+    --grey3: {{ surface1 }};
+    --grey4: {{ surface0 }};
+    --grey5: {{ base }};
+    --grey6: {{ mantle }};
+    --grey7: {{ crust }};
+    --grey8: {{ crust }};
+
+    --white1: {{ text }};
+    --white2: {{ text }};
+    --white3: {{ subtext }};
+    --white4: {{ subtext }};
+    --white5: {{ overlay }};
+
+    /* Accent: selection fills stay dark & readable, pink lives in borders/text */
+    --primary: {{ surface2 }};
+    --primary_light: {{ surface1 }};
+    --primary_lighter: {{ sakura }};
+    --primary_dark: {{ surface2 }};
+    --primary_darker: {{ surface0 }};
+
+    --ahri_sakura: {{ sakura }};
+    --ahri_blossom: {{ blossom }};
+    --ahri_lavender: {{ lavender }};
+    --ahri_spirit: {{ spirit }};
+    --ahri_gold: {{ gold }};
+    --ahri_mint: {{ mint }};
+    --ahri_rose: {{ rose }};
+    --ahri_cream: {{ cream }};
+    --ahri_crust: {{ crust }};
+
+    --warning: {{ gold }};
+    --danger: {{ rose }};
+
+    --text: {{ text }};
+    --text_light: {{ cream }};
+    --text_muted: {{ subtext }};
+    --text_disabled: {{ overlay }};
+    --text_inactive: {{ subtext }};
+
+    --bg_window: {{ mantle }};
+    --bg_base: {{ base }};
+    --bg_preview: {{ crust }};
+
+    --highlight_color: {{ sakura }};
+
+    --border_color: {{ surface0 }};
+    --border_radius: 8px;
+    --border_radius_small: 6px;
+    --border_radius_large: 12px;
+
+    --input_bg: {{ surface0 }};
+    --input_bg_hover: {{ surface1 }};
+    --input_bg_focus: {{ crust }};
+    --input_border: {{ surface1 }};
+    --input_border_hover: {{ surface2 }};
+    --input_border_focus: {{ sakura }};
+
+    --list_item_bg_selected: {{ surface2 }};
+    --list_item_bg_hover: {{ surface1 }};
+
+    --button_bg: {{ surface0 }};
+    --button_bg_hover: {{ surface1 }};
+    --button_bg_down: {{ surface2 }};
+    --button_bg_disabled: {{ mantle }};
+    --button_border: {{ surface1 }};
+    --button_border_hover: {{ lavender }};
+    --button_border_focus: {{ sakura }};
+
+    --button_bg_red: {{ rose }};
+    --button_bg_red_hover: {{ blossom }};
+    --button_bg_red_down: {{ blossom }};
+
+    --tab_bg: {{ mantle }};
+    --tab_bg_hover: {{ surface1 }};
+    --tab_bg_down: {{ surface2 }};
+    --tab_bg_disabled: {{ mantle }};
+    --tab_border: {{ surface0 }};
+    --tab_border_hover: {{ surface2 }};
+    --tab_border_focus: {{ sakura }};
+    --tab_border_selected: {{ sakura }};
+
+    --scrollbar_handle: {{ surface2 }};
+    --scrollbar_bg: {{ mantle }};
+    --scrollbar_hover: {{ overlay }};
+    --scrollbar_down: {{ sakura }};
+    --scrollbar_border: {{ mantle }};
+
+    --toolbutton_bg: {{ surface0 }};
+    --toolbutton_bg_hover: {{ surface1 }};
+    --toolbutton_bg_down: {{ surface2 }};
+    --toolbutton_bg_disabled: {{ mantle }};
+
+    --separator_hover: {{ sakura }};
+
+    --palette_window: {{ mantle }};
+    --palette_windowText: {{ text }};
+    --palette_base: {{ base }};
+    --palette_light: {{ surface2 }};
+    --palette_mid: {{ crust }};
+    --palette_dark: {{ mantle }};
+    --palette_highlight: {{ surface2 }};
+    --palette_highlightedText: {{ cream }};
+    --palette_text: {{ text }};
+    --palette_link: {{ spirit }};
+    --palette_linkVisited: {{ lavender }};
+    --palette_button: {{ surface0 }};
+    --palette_buttonText: {{ text }};
+    --palette_text_active: {{ text }};
+    --palette_text_disabled: {{ overlay }};
+    --palette_text_inactive: {{ subtext }};
+}
+
+QWidget {
+    font-family: '{{ font.ui }}', 'Open Sans', 'MS Shell Dlg', sans-serif;
+    selection-background-color: var(--primary);
+    selection-color: var(--ahri_cream);
+}
+
+/* Dock titles: lavender, small caps-ish */
+QDockWidget::title {
+    background-color: var(--bg_window);
+    color: var(--ahri_lavender);
+}
+
+QGroupBox::title {
+    color: var(--ahri_sakura);
+}
+
+/* Selected list rows: dark violet fill with a sakura edge */
+QListWidget::item:selected,
+SceneTree::item:selected,
+SourceTree::item:selected,
+QTreeView::item:selected,
+QTableView::item:selected {
+    background-color: var(--list_item_bg_selected);
+    border-left: 2px solid var(--ahri_sakura);
+    color: var(--ahri_cream);
+}
+
+QMenu::item:selected,
+QMenu::item:hover {
+    background-color: var(--list_item_bg_hover);
+    color: var(--ahri_cream);
+}
+
+/* Inputs: rounded, sakura border on focus */
+QComboBox:focus,
+QDateTimeEdit:focus,
+QLineEdit:focus,
+QPlainTextEdit:focus,
+QTextEdit:focus,
+QSpinBox:focus,
+QDoubleSpinBox:focus {
+    border-color: var(--ahri_sakura);
+}
+
+/* Checked buttons (Start Streaming / Recording / Virtual Cam active): sakura fill */
+QPushButton:checked,
+QPushButton.state-active {
+    background-color: var(--ahri_sakura);
+    border-color: var(--ahri_blossom);
+    color: var(--ahri_crust);
+}
+QPushButton:checked:hover,
+QPushButton:checked:focus {
+    background-color: var(--ahri_blossom);
+    border-color: var(--ahri_sakura);
+    color: var(--ahri_crust);
+}
+
+QPushButton:hover {
+    border-color: var(--ahri_lavender);
+}
+QPushButton:focus {
+    border-color: var(--ahri_sakura);
+}
+
+/* Tabs */
+QTabBar::tab:selected {
+    color: var(--ahri_cream);
+}
+QTabBar::tab:top:selected {
+    border-bottom: 2px solid var(--ahri_sakura);
+}
+
+/* Sliders */
+QSlider::sub-page {
+    background-color: var(--ahri_sakura);
+}
+QSlider::handle {
+    background-color: var(--ahri_cream);
+    border: 1px solid var(--ahri_sakura);
+}
+QSlider::handle:hover,
+QSlider::handle:pressed {
+    background-color: var(--ahri_sakura);
+}
+
+/* Checkboxes / radios */
+QCheckBox::indicator:checked,
+QRadioButton::indicator:checked {
+    background-color: var(--ahri_sakura);
+    border-color: var(--ahri_sakura);
+}
+
+/* Progress bars */
+QProgressBar {
+    background-color: var(--grey4);
+    border-radius: var(--border_radius);
+}
+QProgressBar::chunk {
+    background-color: var(--ahri_sakura);
+    border-radius: var(--border_radius);
+}
+
+/* Tooltips */
+QToolTip {
+    background-color: var(--grey4);
+    color: var(--text);
+    border: 1px solid var(--grey3);
+}
+
+/* Status labels */
+QLabel[themeID="warning"],
+QLabel.text-warning {
+    color: var(--ahri_gold);
+}
+QLabel[themeID="error"],
+QLabel.text-danger {
+    color: var(--ahri_rose);
+}
+QLabel[themeID="good"],
+QLabel.text-success {
+    color: var(--ahri_mint);
+}
+
+/* Audio meters: mint / gold / rose on dim violet */
+VolumeMeter {
+    qproperty-backgroundNominalColor: {{ surface2 }};
+    qproperty-backgroundWarningColor: {{ surface1 }};
+    qproperty-backgroundErrorColor: {{ surface0 }};
+    qproperty-foregroundNominalColor: {{ mint }};
+    qproperty-foregroundWarningColor: {{ gold }};
+    qproperty-foregroundErrorColor: {{ rose }};
+    qproperty-magnitudeColor: {{ crust }};
+    qproperty-majorTickColor: {{ subtext }};
+    qproperty-minorTickColor: {{ overlay }};
+}

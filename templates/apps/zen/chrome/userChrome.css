@@ -1,0 +1,316 @@
+/* Ahri Blossom - Zen browser userChrome.css (generated from palette.json)
+ * Requires toolkit.legacyUserProfileCustomizations.stylesheets = true.
+ * Variable-first so it survives Zen/Firefox UI updates.
+ * Chrome UI uses {{ font.ui }} (installed locally); no web fonts in chrome. */
+
+:root,
+:root[lwtheme],
+:root[zen-workspace-id] {
+  /* ---- Zen ---- */
+  --zen-primary-color: {{ sakura }} !important;
+  --zen-colors-primary: {{ surface1 }} !important;
+  --zen-colors-secondary: {{ surface0 }} !important;
+  --zen-colors-tertiary: {{ mantle }} !important;
+  --zen-colors-hover-bg: {{ surface1 }} !important;
+  --zen-colors-primary-foreground: {{ crust }} !important;
+  --zen-colors-border: {{ surface1 }} !important;
+  --zen-colors-border-contrast: {{ surface2 }} !important;
+  --zen-colors-input-bg: {{ surface0 }} !important;
+  --zen-dialog-background: {{ mantle }} !important;
+  --zen-urlbar-background: {{ surface0 }} !important;
+  --zen-urlbar-background-transparent: {{ surface0 | rgba:0.8 }} !important;
+  --zen-themed-toolbar-bg: {{ mantle }} !important;
+  --zen-themed-toolbar-bg-transparent: {{ mantle | rgba:0.85 }} !important;
+  --zen-toolbar-element-bg: {{ surface1 | rgba:0.6 }} !important;
+  --zen-main-browser-background:
+    radial-gradient(ellipse at 0% 0%, {{ sakura | rgba:0.10 }}, transparent 55%),
+    radial-gradient(ellipse at 100% 100%, {{ lavender | rgba:0.10 }}, transparent 60%),
+    {{ crust }} !important;
+  --zen-main-browser-background-toolbar: var(--zen-main-browser-background) !important;
+  --zen-tabs-border-color: {{ surface1 }} !important;
+  --zen-border-radius: 10px !important;
+  --zen-native-inner-radius: 10px !important;
+  --zen-webview-border-radius: 10px !important;
+  --zen-browser-gradient-base: {{ crust }} !important;
+
+  /* ---- Firefox theme vars ---- */
+  --lwt-accent-color: {{ crust }} !important;
+  --lwt-accent-color-inactive: {{ crust }} !important;
+  --lwt-text-color: {{ text }} !important;
+  --lwt-sidebar-background-color: {{ mantle }} !important;
+  --lwt-sidebar-text-color: {{ text }} !important;
+  --lwt-sidebar-highlight-background-color: {{ surface2 }} !important;
+  --lwt-sidebar-highlight-text-color: {{ cream }} !important;
+  --lwt-toolbarbutton-icon-fill: {{ subtext }} !important;
+  --lwt-toolbarbutton-icon-fill-attention: {{ sakura }} !important;
+  --lwt-toolbarbutton-hover-background: {{ surface1 }} !important;
+  --lwt-toolbarbutton-active-background: {{ surface2 }} !important;
+  --lwt-selected-tab-background-color: {{ surface1 }} !important;
+  --lwt-tab-line-color: {{ sakura }} !important;
+
+  --toolbar-bgcolor: {{ mantle }} !important;
+  --toolbar-color: {{ text }} !important;
+  --toolbar-field-background-color: {{ surface0 }} !important;
+  --toolbar-field-color: {{ text }} !important;
+  --toolbar-field-border-color: {{ surface1 }} !important;
+  --toolbar-field-focus-background-color: {{ surface0 }} !important;
+  --toolbar-field-focus-color: {{ cream }} !important;
+  --toolbar-field-focus-border-color: {{ sakura | rgba:0.6 }} !important;
+  --toolbarbutton-icon-fill: {{ subtext }} !important;
+  --toolbarbutton-icon-fill-attention: {{ sakura }} !important;
+  --toolbarbutton-hover-background: {{ surface1 }} !important;
+  --toolbarbutton-active-background: {{ surface2 }} !important;
+  --toolbarbutton-border-radius: 8px !important;
+  --chrome-content-separator-color: {{ surface0 }} !important;
+  --tabpanel-background-color: {{ base }} !important;
+  --sidebar-background-color: {{ mantle }} !important;
+  --sidebar-text-color: {{ text }} !important;
+  --sidebar-border-color: {{ surface0 }} !important;
+
+  --tab-selected-bgcolor: {{ surface1 }} !important;
+  --tab-selected-textcolor: {{ cream }} !important;
+  --tab-hover-background-color: {{ surface0 }} !important;
+  --tab-loading-fill: {{ sakura }} !important;
+  --tab-border-radius: 8px !important;
+  --tab-attention-icon-color: {{ gold }} !important;
+  --identity-tab-color: {{ sakura }} !important;
+
+  /* ---- Panels / menus ---- */
+  --arrowpanel-background: {{ mantle }} !important;
+  --arrowpanel-color: {{ text }} !important;
+  --arrowpanel-border-color: {{ surface1 }} !important;
+  --arrowpanel-border-radius: 12px !important;
+  --arrowpanel-dimmed: {{ surface1 | rgba:0.6 }} !important;
+  --arrowpanel-dimmed-further: {{ surface2 | rgba:0.75 }} !important;
+  --panel-background: {{ mantle }} !important;
+  --panel-color: {{ text }} !important;
+  --panel-border-color: {{ surface1 }} !important;
+  --panel-border-radius: 12px !important;
+  --panel-separator-color: {{ surface1 }} !important;
+  --panel-item-hover-bgcolor: {{ surface1 }} !important;
+  --panel-item-active-bgcolor: {{ surface2 }} !important;
+  --panel-banner-item-background-color: {{ surface0 }} !important;
+  --menu-background-color: {{ mantle }} !important;
+  --menu-color: {{ text }} !important;
+  --menu-border-color: {{ surface1 }} !important;
+  --menuitem-hover-background-color: {{ surface1 }} !important;
+  --menuitem-disabled-color: {{ overlay }} !important;
+  --menu-disabled-color: {{ overlay }} !important;
+
+  /* ---- URL bar ---- */
+  --urlbar-box-bgcolor: {{ surface0 }} !important;
+  --urlbar-box-focus-bgcolor: {{ surface1 }} !important;
+  --urlbar-box-hover-bgcolor: {{ surface1 }} !important;
+  --urlbar-box-active-bgcolor: {{ surface2 }} !important;
+  --urlbar-box-text-color: {{ text }} !important;
+  --urlbar-popup-url-color: {{ spirit }} !important;
+  --urlbar-popup-action-color: {{ lavender }} !important;
+  --urlbarView-highlight-background: {{ sakura | rgba:0.18 }} !important;
+  --urlbarView-highlight-color: {{ cream }} !important;
+  --urlbarView-hover-background: {{ surface1 }} !important;
+  --urlbarView-separator-color: {{ surface1 }} !important;
+  --urlbarView-action-color: {{ lavender }} !important;
+  --urlbarView-url-color: {{ spirit }} !important;
+
+  /* ---- Buttons / accent ---- */
+  --color-accent-primary: {{ sakura }} !important;
+  --color-accent-primary-hover: {{ blossom }} !important;
+  --color-accent-primary-active: {{ blossom }} !important;
+  --button-bgcolor: {{ surface1 }} !important;
+  --button-hover-bgcolor: {{ surface2 }} !important;
+  --button-active-bgcolor: {{ surface2 }} !important;
+  --button-color: {{ text }} !important;
+  --button-primary-bgcolor: {{ sakura }} !important;
+  --button-primary-hover-bgcolor: {{ blossom }} !important;
+  --button-primary-active-bgcolor: {{ blossom }} !important;
+  --button-primary-color: {{ crust }} !important;
+  --button-background-color: {{ surface1 }} !important;
+  --button-background-color-hover: {{ surface2 }} !important;
+  --button-text-color: {{ text }} !important;
+  --button-background-color-primary: {{ sakura }} !important;
+  --button-background-color-primary-hover: {{ blossom }} !important;
+  --button-text-color-primary: {{ crust }} !important;
+  --focus-outline-color: {{ spirit }} !important;
+  --checkbox-checked-bgcolor: {{ sakura }} !important;
+  --input-bgcolor: {{ surface0 }} !important;
+  --input-color: {{ text }} !important;
+  --input-border-color: {{ surface1 }} !important;
+  --text-color-deemphasized: {{ subtext }} !important;
+  --link-color: {{ spirit }} !important;
+
+  --ahri-glow: 0 0 12px {{ sakura | rgba:0.25 }};
+
+  accent-color: {{ sakura }};
+  color-scheme: dark;
+}
+
+/* Font for chrome UI */
+#navigator-toolbox,
+#sidebar-box,
+#sidebar-main,
+menupopup,
+panel,
+#urlbar,
+tooltip {
+  font-family: "{{ font.ui }}", system-ui, sans-serif !important;
+}
+
+/* Window background behind the rounded web content */
+#zen-main-app-wrapper,
+#zen-browser-background {
+  background: var(--zen-main-browser-background) !important;
+}
+#zen-browser-background::before,
+#zen-browser-background::after {
+  opacity: 0 !important;
+}
+
+/* Rounded content frame with a faint sakura edge */
+.browserSidebarContainer,
+#tabbrowser-tabbox .browserContainer {
+  border-radius: 10px !important;
+}
+.browserSidebarContainer {
+  box-shadow: 0 0 0 1px {{ surface1 | rgba:0.6 }}, 0 4px 20px {{ crust | rgba:0.5 }} !important;
+}
+
+/* ---- Tabs (vertical sidebar) ---- */
+.tabbrowser-tab .tab-background {
+  border-radius: 8px !important;
+  transition: background-color 0.15s ease, box-shadow 0.2s ease;
+}
+.tabbrowser-tab:hover .tab-background:not([selected], [multiselected]) {
+  background-color: {{ surface0 }} !important;
+}
+.tabbrowser-tab[selected] .tab-background,
+.tabbrowser-tab[multiselected] .tab-background {
+  background: {{ surface1 }} !important;
+  box-shadow: inset 2px 0 0 {{ sakura }}, var(--ahri-glow) !important;
+  outline: none !important;
+}
+.tabbrowser-tab[selected] .tab-label {
+  color: {{ cream }} !important;
+}
+.tabbrowser-tab .tab-label {
+  color: {{ subtext }};
+}
+.tabbrowser-tab[pending] .tab-label,
+.tabbrowser-tab[discarded] .tab-label {
+  color: {{ overlay }} !important;
+}
+.tab-throbber[busy]::before {
+  fill: {{ sakura }} !important;
+}
+.tabbrowser-tab[soundplaying] .tab-icon-overlay {
+  fill: {{ lavender }} !important;
+}
+
+/* Pinned / essentials */
+.tabbrowser-tab[pinned] .tab-background {
+  background-color: {{ surface0 | rgba:0.7 }};
+}
+
+/* Workspaces indicator */
+#zen-current-workspace-indicator,
+.zen-current-workspace-indicator {
+  color: {{ lavender }} !important;
+}
+
+/* ---- URL bar ---- */
+#urlbar-background {
+  background-color: {{ surface0 }} !important;
+  border: 1px solid {{ surface1 }} !important;
+  border-radius: 10px !important;
+}
+#urlbar[focused] #urlbar-background,
+#urlbar[open] #urlbar-background,
+#urlbar[breakout-extend="true"] #urlbar-background {
+  background-color: {{ mantle }} !important;
+  border-color: {{ sakura | rgba:0.55 }} !important;
+  box-shadow: var(--ahri-glow), 0 12px 40px {{ crust | rgba:0.6 }} !important;
+  outline: none !important;
+}
+#urlbar-input {
+  color: {{ text }} !important;
+}
+#urlbar-input::placeholder {
+  color: {{ overlay }} !important;
+}
+.urlbarView-row[selected] .urlbarView-row-inner,
+.urlbarView-row:hover .urlbarView-row-inner {
+  border-radius: 8px !important;
+}
+#identity-box[pageproxystate="valid"].verifiedDomain #identity-icon,
+#tracking-protection-icon-container {
+  fill: {{ mint }} !important;
+}
+
+/* ---- Toolbar buttons ---- */
+toolbarbutton .toolbarbutton-icon,
+toolbarbutton .toolbarbutton-badge-stack {
+  border-radius: 8px !important;
+}
+toolbarbutton:not([disabled]):hover > .toolbarbutton-icon,
+toolbarbutton:not([disabled]):hover > .toolbarbutton-badge-stack {
+  background-color: {{ surface1 }} !important;
+}
+toolbarbutton[open] > .toolbarbutton-icon,
+toolbarbutton:not([disabled]):active > .toolbarbutton-icon {
+  background-color: {{ surface2 }} !important;
+}
+.toolbarbutton-badge {
+  background-color: {{ sakura }} !important;
+  color: {{ crust }} !important;
+}
+
+/* ---- Context menus & popups ---- */
+menupopup,
+panel {
+  --panel-border-radius: 12px !important;
+}
+menupopup > menuitem,
+menupopup > menu {
+  border-radius: 6px !important;
+  padding-block: 5px !important;
+}
+menupopup > menuitem[_moz-menuactive],
+menupopup > menu[_moz-menuactive] {
+  background-color: {{ sakura | rgba:0.16 }} !important;
+  color: {{ cream }} !important;
+}
+menupopup > menuitem[disabled],
+menupopup > menu[disabled] {
+  color: {{ overlay }} !important;
+}
+menuseparator {
+  border-color: {{ surface1 }} !important;
+}
+tooltip {
+  appearance: none !important;
+  background-color: {{ surface0 }} !important;
+  color: {{ text }} !important;
+  border: 1px solid {{ surface1 }} !important;
+  border-radius: 8px !important;
+}
+
+/* ---- Findbar / notifications ---- */
+findbar {
+  background-color: {{ mantle }} !important;
+  border-top: 1px solid {{ surface0 }} !important;
+}
+.findbar-textbox {
+  background-color: {{ surface0 }} !important;
+  border-radius: 8px !important;
+}
+.findbar-textbox[status="notfound"] {
+  box-shadow: 0 0 0 1px {{ rose }} !important;
+}
+notification-message,
+.notificationbox-stack notification {
+  border-radius: 10px !important;
+}
+
+/* Scrollbars in chrome */
+* {
+  scrollbar-color: {{ surface2 }} transparent;
+}
