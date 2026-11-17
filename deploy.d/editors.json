@@ -1,16 +1,4 @@
-﻿[
-  {
-    "group": "editors",
-    "src": "editors/vscode/ahri-blossom-theme",
-    "dst": "%USERPROFILE%\\.vscode\\extensions\\local.ahri-blossom-theme-1.0.0",
-    "if_exists": "%USERPROFILE%\\.vscode\\extensions"
-  },
-  {
-    "group": "editors",
-    "src": "editors/vscode/ahri-blossom-theme",
-    "dst": "%USERPROFILE%\\.cursor\\extensions\\local.ahri-blossom-theme-1.0.0",
-    "if_exists": "%USERPROFILE%\\.cursor\\extensions"
-  },
+[
   {
     "group": "editors",
     "src": "editors/nvim/colors",

@@ -20,25 +20,21 @@
     <Color x:Key="LightBG" A="230" R="{{ base | r }}" G="{{ base | g }}" B="{{ base | b }}" />
 
     <system:Double x:Key="ResultItemHeight">50</system:Double>
-    <CornerRadius x:Key="ItemRadius">10</CornerRadius>
+    <CornerRadius x:Key="ItemRadius">4</CornerRadius>
     <Thickness x:Key="ItemMargin">10 0 10 0</Thickness>
     <Thickness x:Key="ResultMargin">0 2 0 10</Thickness>
 
     <Style x:Key="WindowRadius" TargetType="{x:Type Border}">
-        <Setter Property="CornerRadius" Value="12" />
+        <Setter Property="CornerRadius" Value="8" />
     </Style>
 
     <Style
         x:Key="WindowBorderStyle"
         BasedOn="{StaticResource BaseWindowBorderStyle}"
         TargetType="{x:Type Border}">
-        <Setter Property="CornerRadius" Value="12" />
+        <Setter Property="CornerRadius" Value="8" />
         <Setter Property="BorderThickness" Value="1" />
-        <Setter Property="BorderBrush">
-            <Setter.Value>
-                <SolidColorBrush Opacity="0.55" Color="{{ sakura }}" />
-            </Setter.Value>
-        </Setter>
+        <Setter Property="BorderBrush" Value="{{ surface1 }}" />
         <Setter Property="Background">
             <Setter.Value>
                 <SolidColorBrush Opacity="0.94" Color="{{ base }}" />
@@ -78,8 +74,7 @@
         x:Key="SearchIconStyle"
         BasedOn="{StaticResource BaseSearchIconStyle}"
         TargetType="{x:Type Path}">
-        <Setter Property="Fill" Value="{{ sakura }}" />
-        <Setter Property="Opacity" Value="0.75" />
+        <Setter Property="Fill" Value="{{ overlay }}" />
         <Setter Property="Width" Value="24" />
         <Setter Property="Height" Value="24" />
     </Style>
@@ -105,30 +100,22 @@
         <Setter Property="Margin" Value="14 0 14 8" />
     </Style>
 
-    <!--  Result items: sakura left-bar with a soft pink glow on the selected row  -->
+    <!--  Result items: rofi-style inverted selection (solid sakura row, dark text). No bullet, no glow.  -->
     <Style
         x:Key="BulletStyle"
         BasedOn="{StaticResource BaseBulletStyle}"
         TargetType="{x:Type Border}">
-        <Setter Property="Width" Value="3" />
-        <Setter Property="Height" Value="26" />
+        <Setter Property="Width" Value="0" />
         <Setter Property="Background" Value="Transparent" />
     </Style>
     <Style
         x:Key="ItemBulletSelectedStyle"
         BasedOn="{StaticResource BaseBulletStyle}"
         TargetType="{x:Type Border}">
-        <Setter Property="Width" Value="3" />
-        <Setter Property="Height" Value="26" />
-        <Setter Property="CornerRadius" Value="2" />
-        <Setter Property="Background" Value="{{ sakura }}" />
-        <Setter Property="Effect">
-            <Setter.Value>
-                <DropShadowEffect BlurRadius="10" Opacity="0.9" ShadowDepth="0" Color="{{ sakura }}" />
-            </Setter.Value>
-        </Setter>
+        <Setter Property="Width" Value="0" />
+        <Setter Property="Background" Value="Transparent" />
     </Style>
-    <SolidColorBrush x:Key="ItemSelectedBackgroundColor" Color="{{ surface1 }}" />
+    <SolidColorBrush x:Key="ItemSelectedBackgroundColor" Color="{{ sakura }}" />
 
     <Style
         x:Key="ItemTitleStyle"
@@ -150,19 +137,20 @@
         BasedOn="{StaticResource BaseItemTitleSelectedStyle}"
         TargetType="{x:Type TextBlock}">
         <Setter Property="FontFamily" Value="{{ font.mono }}" />
-        <Setter Property="Foreground" Value="{{ cream }}" />
+        <Setter Property="Foreground" Value="{{ crust }}" />
     </Style>
     <Style
         x:Key="ItemSubTitleSelectedStyle"
         BasedOn="{StaticResource BaseItemSubTitleSelectedStyle}"
         TargetType="{x:Type TextBlock}">
         <Setter Property="FontFamily" Value="{{ font.mono }}" />
-        <Setter Property="Foreground" Value="{{ lavender }}" />
+        <Setter Property="Foreground" Value="{{ base }}" />
+        <Setter Property="Opacity" Value="0.7" />
     </Style>
-    <!--  matched characters  -->
+    <!--  matched characters: weight + underline only, so they read on both normal and selected rows  -->
     <Style x:Key="HighlightStyle">
-        <Setter Property="Inline.Foreground" Value="{{ sakura }}" />
         <Setter Property="Inline.FontWeight" Value="Bold" />
+        <Setter Property="Inline.TextDecorations" Value="Underline" />
     </Style>
 
     <Style
@@ -175,7 +163,7 @@
         x:Key="ItemGlyphSelectedStyle"
         BasedOn="{StaticResource BaseGlyphSelectedStyle}"
         TargetType="{x:Type TextBlock}">
-        <Setter Property="Foreground" Value="{{ sakura }}" />
+        <Setter Property="Foreground" Value="{{ crust }}" />
     </Style>
 
     <Style
@@ -190,21 +178,19 @@
         BasedOn="{StaticResource BaseItemHotkeySelectedStyle}"
         TargetType="{x:Type TextBlock}">
         <Setter Property="FontFamily" Value="{{ font.mono }}" />
-        <Setter Property="Foreground" Value="{{ spirit }}" />
+        <Setter Property="Foreground" Value="{{ base }}" />
     </Style>
     <Style
         x:Key="ItemHotkeyBGStyle"
         BasedOn="{StaticResource BaseItemHotkeyBGStyle}"
         TargetType="{x:Type Border}">
-        <Setter Property="Background" Value="{{ surface0 }}" />
-        <Setter Property="CornerRadius" Value="6" />
+        <Setter Property="Background" Value="Transparent" />
     </Style>
     <Style
         x:Key="ItemHotkeyBGSelectedStyle"
         BasedOn="{StaticResource BaseItemHotkeyBGSelectedStyle}"
         TargetType="{x:Type Border}">
-        <Setter Property="Background" Value="{{ surface2 }}" />
-        <Setter Property="CornerRadius" Value="6" />
+        <Setter Property="Background" Value="Transparent" />
     </Style>
 
     <!--  Scrollbar  -->

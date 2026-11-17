@@ -17,14 +17,14 @@ theme
 	item
 	{
 		opacity = 100
-		radius = 3
+		radius = 2
 		prefix = 1
 
 		text
 		{
 			normal = {{ text }}
 			normal.disabled = {{ overlay }}
-			select = {{ sakura }}
+			select = {{ cream }}
 			select.disabled = {{ overlay }}
 		}
 
@@ -36,7 +36,7 @@ theme
 
 		border
 		{
-			select = {{ surface2 }}
+			select = {{ surface1 }}
 			select.disabled = {{ surface0 }}
 		}
 
@@ -48,8 +48,8 @@ theme
 	{
 		enabled = true
 		size = 1
-		color = {{ sakura }}
-		opacity = 45
+		color = {{ surface1 }}
+		opacity = 100
 		radius = 3
 		padding = [4, 6]
 	}
@@ -57,10 +57,10 @@ theme
 	shadow
 	{
 		enabled = true
-		size = 12
-		color = {{ blossom }}
-		opacity = 30
-		offset = 0
+		size = 10
+		color = {{ crust }}
+		opacity = 45
+		offset = 4
 	}
 
 	font
