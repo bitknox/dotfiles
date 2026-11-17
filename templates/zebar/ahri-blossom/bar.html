@@ -1,0 +1,70 @@
+<!doctype html>
+<!-- {{ meta.name }} - Zebar top bar. Rendered from dotfiles/templates/zebar/ahri-blossom. -->
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <div class="bar">
+      <!-- Left: fox sigil (Start) + now playing -->
+      <section class="island island-left">
+        <button class="sigil" id="sigil" title="Start">
+          <span class="sigil-glyph">&#x273F;</span>
+        </button>
+        <div class="media" id="media" data-state="idle">
+          <div class="media-idle">spirit blossom</div>
+          <div class="media-body">
+            <span class="media-note">&#xF0387;</span>
+            <span class="media-text" id="media-text"></span>
+            <span class="media-time" id="media-time"></span>
+            <div class="media-ctrls">
+              <button id="media-prev" title="Previous">&#xF04AE;</button>
+              <button id="media-toggle" class="media-toggle" title="Play / pause">&#xF040A;</button>
+              <button id="media-next" title="Next">&#xF04AD;</button>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Center: clock -->
+      <section class="island island-center" id="clock" title="Notifications &amp; calendar">
+        <span class="kanji">九尾狐</span>
+        <span class="time" id="time">--:--</span>
+        <span class="date" id="date"></span>
+      </section>
+
+      <!-- Right: stats, volume, tray, power -->
+      <section class="island island-right">
+        <div class="stat" id="cpu" title="CPU - click for Task Manager">
+          <span class="ico">&#xF4BC;</span><span class="val" id="cpu-val">--</span>
+        </div>
+        <div class="stat" id="mem" title="Memory - click for Task Manager">
+          <span class="ico">&#xF035B;</span><span class="val" id="mem-val">--</span>
+        </div>
+        <div class="stat net" id="net" title="Network">
+          <span class="ico" id="net-ico">&#xF0200;</span>
+          <span class="net-rates">
+            <span class="rate"><span class="arrow down">&#xF0045;</span><span id="net-down">--</span></span>
+            <span class="rate"><span class="arrow up">&#xF005D;</span><span id="net-up">--</span></span>
+          </span>
+        </div>
+        <div class="stat vol" id="vol" title="Scroll: volume - Click: mute - Right-click: mixer">
+          <span class="ico" id="vol-ico">&#xF057E;</span><span class="val" id="vol-val">--</span>
+        </div>
+
+        <span class="sep"></span>
+
+        <div class="tray" id="tray"></div>
+        <button class="tray-toggle" id="tray-toggle" title="Click: show / hide tray icons - Right-click: refresh tray"><span class="chev">&#xF0142;</span></button>
+
+        <span class="sep"></span>
+
+        <button class="power" id="power" title="Click: shut down / restart - Right-click: lock">&#xF0425;</button>
+      </section>
+    </div>
+
+    <script type="module" src="./main.js"></script>
+  </body>
+</html>

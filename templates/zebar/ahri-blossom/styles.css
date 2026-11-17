@@ -1,0 +1,257 @@
+/* {{ meta.name }} - Zebar bar. Colors come from palette.json via render.py.
+   Flat on purpose: solid fills, 1px borders, no shadows/glows/gradients.
+   Sakura is reserved for the sigil and active (inverted) states. */
+
+:root {
+  --crust: {{ crust }};
+  --base: {{ base }};
+  --surface0: {{ surface0 }};
+  --surface1: {{ surface1 }};
+  --overlay: {{ overlay }};
+  --subtext: {{ subtext }};
+  --text: {{ text }};
+  --sakura: {{ sakura }};
+  --gold: {{ gold }};
+  --rose: {{ rose }};
+
+  --font-ui: '{{ font.mono }}', 'Segoe UI Symbol', sans-serif;
+  --font-display: '{{ font.display }}', 'Yu Mincho', serif;
+
+  --h: 36px;
+  --radius: 7px;
+  --inner-radius: 5px;
+}
+
+* { box-sizing: border-box; }
+
+html, body {
+  margin: 0;
+  height: 100%;
+  overflow: hidden;
+  background: transparent;
+  color: var(--text);
+  font-family: var(--font-ui);
+  font-size: 12.5px;
+  font-feature-settings: 'tnum' 1;
+  user-select: none;
+  cursor: default;
+}
+
+button {
+  all: unset;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* ---------- layout ---------- */
+
+.bar {
+  position: relative;
+  height: 100%;
+  padding: 8px 10px;
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+}
+
+.island {
+  height: var(--h);
+  display: flex;
+  align-items: center;
+  gap: 2px;
+  padding: 0 4px;
+  background: var(--crust);
+  border: 1px solid var(--surface0);
+  border-radius: var(--radius);
+}
+
+.island-left { max-width: 40%; }
+
+.island-center {
+  position: absolute;
+  left: 50%;
+  top: 8px;
+  transform: translateX(-50%);
+  gap: 10px;
+  padding: 0 14px;
+  cursor: pointer;
+  transition: background 0.15s ease;
+}
+.island-center:hover { background: var(--surface0); }
+
+/* Shared "cell" behaviour: plain background change on hover. */
+.sigil, .stat, .media-ctrls button, .tray-icon, .tray-toggle, .power {
+  border-radius: var(--inner-radius);
+  transition: background 0.15s ease, color 0.15s ease;
+}
+.stat:hover, .media-ctrls button:hover, .tray-icon:hover, .tray-toggle:hover, .power:hover {
+  background: var(--surface0);
+}
+
+/* ---------- sigil (inverted: the one loud thing) ---------- */
+
+.sigil {
+  width: 30px;
+  height: 26px;
+  background: var(--sakura);
+  color: var(--crust);
+  font-size: 17px;
+}
+.sigil-glyph { display: inline-block; line-height: 1; transition: transform 0.4s ease; }
+.sigil:hover .sigil-glyph { transform: rotate(72deg); }
+.sigil:active { background: var(--text); }
+
+/* ---------- media ---------- */
+
+.media {
+  display: flex;
+  align-items: center;
+  min-width: 0;
+  height: 100%;
+  padding: 0 2px 0 8px;
+}
+
+.media-idle { color: var(--overlay); padding-right: 6px; }
+
+.media-body { display: none; align-items: center; gap: 8px; min-width: 0; }
+.media[data-state='active'] .media-idle { display: none; }
+.media[data-state='active'] .media-body { display: flex; }
+
+/* Playing state = inverted tag; paused = quiet. */
+.media-note {
+  flex: none;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 22px;
+  height: 20px;
+  border-radius: 4px;
+  font-size: 13px;
+  background: var(--surface0);
+  color: var(--subtext);
+}
+.media[data-playing='true'] .media-note { background: var(--sakura); color: var(--crust); }
+
+.media-text {
+  max-width: 420px;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  color: var(--text);
+}
+.media-text .artist { color: var(--subtext); }
+.media-text .dash { color: var(--overlay); padding: 0 0.4em; }
+
+.media-time { flex: none; color: var(--overlay); font-size: 11px; }
+.media[data-has-timeline='false'] .media-time { display: none; }
+
+.media-ctrls { display: flex; align-items: center; gap: 1px; }
+.media-ctrls button {
+  width: 22px;
+  height: 24px;
+  color: var(--subtext);
+  font-size: 15px;
+}
+.media-ctrls button:hover { color: var(--text); }
+
+/* ---------- clock ---------- */
+
+.time {
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: 19px;
+  letter-spacing: 0.03em;
+  color: var(--text);
+  line-height: 1;
+  padding-top: 1px;
+}
+
+.kanji {
+  font-family: var(--font-display);
+  font-size: 12px;
+  color: var(--overlay);
+  letter-spacing: 0.1em;
+}
+
+.date { color: var(--subtext); }
+
+/* ---------- stats ---------- */
+
+.stat {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  height: 26px;
+  padding: 0 8px;
+  cursor: pointer;
+}
+
+.stat .ico { font-size: 14px; color: var(--subtext); }
+.stat .val { min-width: 3.2ch; text-align: right; color: var(--text); }
+
+.val.warn { color: var(--gold); }
+.val.crit { color: var(--rose); }
+
+.net-rates {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  font-size: 9.5px;
+  line-height: 11px;
+  color: var(--subtext);
+}
+.rate { display: flex; align-items: center; gap: 3px; }
+.rate span:last-child { min-width: 4.5ch; }
+.arrow { font-size: 9px; color: var(--overlay); }
+#net.offline .ico { color: var(--rose); }
+
+#vol.muted .ico, #vol.muted .val { color: var(--overlay); }
+
+.sep {
+  width: 1px;
+  height: 14px;
+  margin: 0 4px;
+  background: var(--surface1);
+}
+
+/* ---------- tray ---------- */
+
+.tray {
+  display: flex;
+  align-items: center;
+  gap: 1px;
+}
+.tray.collapsed { display: none; }
+
+.tray-icon {
+  width: 26px;
+  height: 26px;
+  flex: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+.tray-icon img { width: 16px; height: 16px; pointer-events: none; }
+
+.tray-toggle {
+  width: 18px;
+  height: 26px;
+  color: var(--overlay);
+  font-size: 13px;
+}
+.tray-toggle:hover { color: var(--text); }
+.tray-toggle .chev { display: inline-block; }
+.tray-toggle.collapsed .chev { transform: rotate(180deg); }
+
+/* ---------- power ---------- */
+
+.power {
+  width: 30px;
+  height: 26px;
+  color: var(--subtext);
+  font-size: 15px;
+}
+.power:hover { background: var(--rose); color: var(--crust); }

@@ -1,0 +1,76 @@
+{
+  "$schema": "https://github.com/glzr-io/zebar/raw/v3.3.1/resources/zpack-schema.json",
+  "name": "ahri-blossom",
+  "version": "1.0.0",
+  "description": "{{ meta.name }} top bar: floating islands with media, clock, system stats and the system tray.",
+  "tags": [
+    "topbar",
+    "systray",
+    "media"
+  ],
+  "previewImages": [],
+  "repositoryUrl": "",
+  "widgets": [
+    {
+      "name": "bar",
+      "htmlPath": "./bar.html",
+      "zOrder": "normal",
+      "shownInTaskbar": false,
+      "focused": false,
+      "resizable": false,
+      "transparent": true,
+      "includeFiles": [
+        "*.html",
+        "*.css",
+        "*.js",
+        "lib/*.mjs"
+      ],
+      "caching": {
+        "defaultDuration": 604800,
+        "rules": []
+      },
+      "privileges": {
+        "shellCommands": [
+          {
+            "program": "powershell.exe",
+            "argsRegex": "^-NoProfile -NonInteractive -Command \\(New-Object -ComObject (WScript\\.Shell\\)\\.SendKeys\\('\\^\\{ESC\\}'\\)|Shell\\.Application\\)\\.ShutdownWindows\\(\\))$"
+          },
+          {
+            "program": "powershell.exe",
+            "argsRegex": "^-NoProfile -NonInteractive -ExecutionPolicy Bypass -File [A-Za-z]:\\\\Users\\\\[^\\\\]+\\\\\\.glzr\\\\zebar\\\\ahri-blossom\\\\scripts\\\\(guard|tray-refresh)\\.ps1$"
+          },
+          {
+            "program": "explorer.exe",
+            "argsRegex": "^(ms-actioncenter:(controlcenter/&showFooter=true)?|ms-settings:[a-z-]+)$"
+          },
+          {
+            "program": "rundll32.exe",
+            "argsRegex": "^user32\\.dll,LockWorkStation$"
+          },
+          {
+            "program": "taskmgr.exe",
+            "argsRegex": ""
+          }
+        ]
+      },
+      "presets": [
+        {
+          "name": "default",
+          "anchor": "top_left",
+          "offsetX": "0px",
+          "offsetY": "0px",
+          "width": "100%",
+          "height": "52px",
+          "monitorSelection": {
+            "type": "primary"
+          },
+          "dockToEdge": {
+            "enabled": true,
+            "edge": "top",
+            "windowMargin": "0px"
+          }
+        }
+      ]
+    }
+  ]
+}
