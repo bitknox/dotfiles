@@ -36,9 +36,9 @@
     {
       "target": "Windows.UI.Xaml.Controls.Border#AcrylicBorder",
       "styles": [
-        "BorderThickness=1.5",
-        "CornerRadius=25",
-        "BorderBrush={{ sakura }}",
+        "BorderThickness=1",
+        "CornerRadius=10",
+        "BorderBrush={{ surface1 }}",
         "Background={{ base }}"
       ]
     },
@@ -51,13 +51,13 @@
     {
       "target": "StartMenu.StartBlendedFlexFrame",
       "styles": [
-        "CornerRadius=25"
+        "CornerRadius=10"
       ]
     },
     {
       "target": "Windows.UI.Xaml.Controls.FontIcon > Windows.UI.Xaml.Controls.Grid > Windows.UI.Xaml.Controls.TextBlock",
       "styles": [
-        "Foreground={{ blossom }}"
+        "Foreground={{ subtext }}"
       ]
     },
     {
@@ -108,7 +108,7 @@
         "BorderBrush={{ base }}",
         "BorderThickness=5",
         "Background={{ mantle }}",
-        "CornerRadius=20"
+        "CornerRadius=8"
       ]
     },
     {
@@ -121,7 +121,7 @@
       "target": "StartDocked.NavigationPaneButton#PowerButton > Windows.UI.Xaml.Controls.Grid > Windows.UI.Xaml.Controls.Border#BackgroundBorder",
       "styles": [
         "Background={{ mantle }}",
-        "CornerRadius=20"
+        "CornerRadius=8"
       ]
     },
     {
@@ -140,14 +140,14 @@
       "target": "Windows.UI.Xaml.Controls.TextBlock#PlaceholderText",
       "styles": [
         "Text=Search",
-        "Foreground={{ surface2 }}",
-        "FontFamily={{ font.mono }}"
+        "Foreground={{ subtext }}",
+        "FontFamily={{ font.ui }}"
       ]
     },
     {
       "target": "Windows.UI.Xaml.Controls.TextBlock[Text=]",
       "styles": [
-        "Foreground={{ lavender }}"
+        "Foreground={{ subtext }}"
       ]
     },
     {
@@ -160,13 +160,13 @@
       "target": "Windows.UI.Xaml.Controls.Grid#ContentBorder > Windows.UI.Xaml.Controls.Border#BackgroundBorder",
       "styles": [
         "Background={{ mantle }}",
-        "CornerRadius=20"
+        "CornerRadius=8"
       ]
     },
     {
       "target": "Windows.UI.Xaml.Controls.TextBlock[Text=]",
       "styles": [
-        "Foreground={{ lavender }}"
+        "Foreground={{ subtext }}"
       ]
     },
     {
@@ -179,22 +179,22 @@
       "target": "Windows.UI.Xaml.Controls.Border#AppBorder, Windows.UI.Xaml.Controls.Border#AccentAppBorder",
       "styles": [
         "Background={{ base }}",
-        "BorderThickness=1.5",
-        "BorderBrush={{ sakura }}",
-        "CornerRadius=25"
+        "BorderThickness=1",
+        "BorderBrush={{ surface1 }}",
+        "CornerRadius=10"
       ]
     },
     {
       "target": "Windows.UI.Xaml.Controls.Grid#OuterBorderGrid",
       "styles": [
-        "CornerRadius=25"
+        "CornerRadius=10"
       ]
     },
     {
       "target": "Windows.UI.Xaml.Controls.Border#TaskbarSearchBackground",
       "styles": [
-        "BorderThickness=1.5",
-        "BorderBrush={{ sakura }}"
+        "BorderThickness=1",
+        "BorderBrush={{ surface1 }}"
       ]
     },
     {
@@ -224,7 +224,7 @@
     {
       "target": "Border#StartDropShadow",
       "styles": [
-        "CornerRadius=20"
+        "CornerRadius=8"
       ]
     },
     {
@@ -254,7 +254,7 @@
     {
       "target": "Border#RightCompanionDropShadow",
       "styles": [
-        "CornerRadius=25"
+        "CornerRadius=10"
       ]
     }
   ],
