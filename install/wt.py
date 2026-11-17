@@ -14,6 +14,8 @@ SETTINGS = Path(os.path.expandvars(
 
 src = Path(sys.argv[1]) if len(sys.argv) > 1 else ROOT / "generated/terminal/wt-patch.json"
 patch = json.loads(src.read_text(encoding="utf-8"))
+if not SETTINGS.exists():
+    sys.exit(f"{SETTINGS} not found - open Windows Terminal once so it creates its settings, then re-run")
 cfg = json.loads(SETTINGS.read_text(encoding="utf-8-sig"))
 shutil.copy2(SETTINGS, SETTINGS.with_suffix(".json.bak"))
 

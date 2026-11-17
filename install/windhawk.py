@@ -68,8 +68,10 @@ if not applied:
 
 reg = Path(tempfile.gettempdir()) / "ahri-windhawk.reg"
 reg.write_text("\r\n".join(lines) + "\r\n", encoding="utf-16")
-ps = (f"Start-Process reg.exe -ArgumentList 'import','\"{reg}\"' -Verb RunAs -Wait -WindowStyle Hidden")
-subprocess.run(["powershell", "-NoProfile", "-Command", ps], check=True)
+ps = (f"$p = Start-Process reg.exe -ArgumentList 'import','\"{reg}\"' -Verb RunAs -Wait -WindowStyle Hidden -PassThru; exit $p.ExitCode")
+rc = subprocess.run(["powershell", "-NoProfile", "-Command", ps]).returncode
+if rc != 0:
+    sys.exit(f"reg import failed (exit {rc}) - settings NOT applied (UAC declined?)")
 print("applied:", ", ".join(applied))
 if skipped:
     print("not installed (skipped):", ", ".join(skipped))
