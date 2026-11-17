@@ -20,6 +20,10 @@ shutil.copy2(SETTINGS, SETTINGS.with_suffix(".json.bak"))
 for key, val in patch.items():
     if key == "profiles.defaults":
         cfg.setdefault("profiles", {}).setdefault("defaults", {}).update(val)
+    elif key == "profiles.list":
+        lst = cfg.setdefault("profiles", {}).setdefault("list", [])
+        guids = {p["guid"] for p in val}
+        cfg["profiles"]["list"] = [p for p in lst if p.get("guid") not in guids] + val
     elif key in ("schemes", "themes"):
         lst = [x for x in cfg.get(key, []) if x.get("name") not in {v["name"] for v in val}]
         cfg[key] = lst + val

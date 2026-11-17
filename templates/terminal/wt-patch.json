@@ -12,6 +12,32 @@
     "antialiasingMode": "cleartype",
     "scrollbarState": "hidden"
   },
+  "profiles.list": [
+    {
+      "guid": "{574e775e-4f2a-5b96-ac1e-a2962a402336}",
+      "name": "PowerShell",
+      "source": "Windows.Terminal.PowershellCore",
+      "hidden": false,
+      "commandline": "pwsh.exe -NoLogo"
+    },
+    {
+      "guid": "{61c54bbd-c2c6-5271-96e7-009a87ff44bf}",
+      "name": "Windows PowerShell",
+      "hidden": false,
+      "commandline": "%SystemRoot%\\System32\\WindowsPowerShell\\v1.0\\powershell.exe -NoLogo"
+    },
+    {
+      "guid": "{a8f1b7c2-4e5d-4c3b-9a1f-cafe0000a4b1}",
+      "name": "cava",
+      "commandline": "%LOCALAPPDATA%\\cava\\cava.exe",
+      "icon": "♫",
+      "padding": "24, 16, 24, 8",
+      "font": { "face": "{{ font.mono }}", "size": 9 },
+      "cursorShape": "vintage",
+      "suppressApplicationTitle": true,
+      "tabTitle": "cava"
+    }
+  ],
   "schemes": [
     {
       "name": "Ahri Blossom",
