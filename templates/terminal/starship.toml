@@ -4,6 +4,7 @@
 add_newline = true
 palette = "ahri"
 command_timeout = 400
+scan_timeout = 100   # ms; home folder is large (default 30 times out)
 
 format = """
 [](fg:pill)[✿ ](bg:pill fg:sakura)$directory[](fg:pill)\

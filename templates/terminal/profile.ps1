@@ -3,6 +3,10 @@
 
 $esc = [char]27
 
+# UTF-8 console I/O: the legacy OEM code page turns prompt glyphs (✿, Nerd Font icons) into '?'
+[Console]::OutputEncoding = [Console]::InputEncoding = $OutputEncoding = [Text.UTF8Encoding]::new($false)
+$env:STARSHIP_LOG = 'error'   # no WARN lines (e.g. slow directory scans in big folders) in the terminal
+
 # Tools installed after this terminal started may not be on PATH yet — add their known dirs.
 foreach ($d in "$env:ProgramFiles\starship\bin", "$env:LOCALAPPDATA\cava") {
     if ((Test-Path $d) -and ($env:Path -notlike "*$d*")) { $env:Path += ";$d" }
@@ -54,10 +58,16 @@ if (Get-Module -ListAvailable PSReadLine) {
         Comment            = & $c '{{ overlay | ansi }}'
         Default            = & $c '{{ text | ansi }}'
         Error              = & $c '{{ rose | ansi }}'
-        InlinePrediction   = & $c '{{ overlay | ansi }}'
-        Selection          = "$esc[{{ surface2 | ansibg }}m"
     }
-    try { Set-PSReadLineOption -PredictionSource History -PredictionViewStyle InlineView -ErrorAction Stop } catch {}
+    # Windows PowerShell 5.1 ships PSReadLine 2.0, which lacks these: set them only where supported
+    $opt = Get-PSReadLineOption
+    if ($opt.PSObject.Properties['InlinePredictionColor']) {
+        Set-PSReadLineOption -Colors @{ InlinePrediction = & $c '{{ overlay | ansi }}' }
+        try { Set-PSReadLineOption -PredictionSource History -PredictionViewStyle InlineView -ErrorAction Stop } catch {}
+    }
+    if ($opt.PSObject.Properties['SelectionColor']) {
+        Set-PSReadLineOption -Colors @{ Selection = "$esc[{{ surface2 | ansibg }}m" }
+    }
     Set-PSReadLineOption -BellStyle None
     Set-PSReadLineKeyHandler -Key Tab -Function MenuComplete
 }
