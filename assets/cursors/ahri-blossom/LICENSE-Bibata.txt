@@ -1,0 +1,2 @@
+Cursor shapes: Bibata Cursor (c) Abdulkaiz Khatri / ful1e5, GPL-3.0
+https://github.com/ful1e5/Bibata_Cursor  (recolored + repacked by install/cursors.py)

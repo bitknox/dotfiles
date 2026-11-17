@@ -1,0 +1,37 @@
+; Right-click > Install to register the scheme system-wide (needs admin).
+; Per-user install without admin: install/apply-cursors.ps1
+[Version]
+signature="$CHICAGO$"
+
+[DefaultInstall]
+CopyFiles = Scheme.Cur
+AddReg = Scheme.Reg
+
+[DestinationDirs]
+Scheme.Cur = 10,"%CUR_DIR%"
+
+[Scheme.Reg]
+HKCU,"Control Panel\Cursors\Schemes","%SCHEME_NAME%",,"%10%\%CUR_DIR%\pointer.cur,%10%\%CUR_DIR%\help.cur,%10%\%CUR_DIR%\working.ani,%10%\%CUR_DIR%\busy.ani,%10%\%CUR_DIR%\precision.cur,%10%\%CUR_DIR%\text.cur,%10%\%CUR_DIR%\handwriting.cur,%10%\%CUR_DIR%\unavailable.cur,%10%\%CUR_DIR%\vert.cur,%10%\%CUR_DIR%\horz.cur,%10%\%CUR_DIR%\dgn1.cur,%10%\%CUR_DIR%\dgn2.cur,%10%\%CUR_DIR%\move.cur,%10%\%CUR_DIR%\alternate.cur,%10%\%CUR_DIR%\link.cur,%10%\%CUR_DIR%\pin.cur,%10%\%CUR_DIR%\person.cur"
+
+[Scheme.Cur]
+pointer.cur
+help.cur
+working.ani
+busy.ani
+precision.cur
+text.cur
+handwriting.cur
+unavailable.cur
+vert.cur
+horz.cur
+dgn1.cur
+dgn2.cur
+move.cur
+alternate.cur
+link.cur
+pin.cur
+person.cur
+
+[Strings]
+CUR_DIR = "Cursors\AhriBlossom"
+SCHEME_NAME = "Ahri Blossom"
