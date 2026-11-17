@@ -11,6 +11,8 @@ Placeholder syntax:  {{ sakura }}            -> #f4a7c8
                      {{ sakura | abgr }}     -> 4291340276   (Windows DWORD 0xAABBGGRR, alpha ff)
                      {{ sakura | bgrhex }}   -> c8a7f4       (BBGGRR hex)
                      {{ sakura | r }} / g / b
+                     {{ sakura | ansi }}     -> 38;2;244;167;200  (ansibg -> 48;2;...)
+                     Go-template syntax ({{ .Path }}, {{ end }}) is left untouched.
                      {{ accent }}            roles resolve to colors
                      {{ font.mono }}         fonts
                      {{ meta.name }}         palette name / slug
@@ -24,7 +26,9 @@ COLORS = dict(PAL["colors"])
 for role, target in PAL["roles"].items():
     COLORS[role] = COLORS[target]
 
-TOKEN = re.compile(r"\{\{\s*([\w.]+)\s*(?:\|\s*([\w]+)(?::([\w.]+))?\s*)?\}\}")
+# Keys must start with a letter, so Go-template syntax like {{ .Path }} (oh-my-posh) passes through.
+TOKEN = re.compile(r"\{\{\s*([A-Za-z_][\w.]*)\s*(?:\|\s*([\w]+)(?::([\w.]+))?\s*)?\}\}")
+GO_TEMPLATE_WORDS = {"end", "else", "if", "range", "with", "define", "template", "block", "break", "continue"}
 TEXT_EXT = {".json", ".jsonc", ".css", ".scss", ".js", ".ts", ".html", ".toml", ".yaml", ".yml",
             ".ini", ".conf", ".lua", ".ps1", ".nss", ".xaml", ".xml", ".txt", ".md", ".omp", ".reg",
             ".vim", ".qss", ".theme", ".tdesktop-theme", ".tdesktop-palette", ".ovt", ".obt",
@@ -38,6 +42,8 @@ def rgb(h):
 
 def sub(m):
     key, flt, arg = m.group(1), m.group(2), m.group(3)
+    if key in GO_TEMPLATE_WORDS and flt is None:
+        return m.group(0)
     if key.startswith("font."):
         return PAL["fonts"][key[5:]]
     if key.startswith("meta."):
@@ -54,6 +60,10 @@ def sub(m):
         return f"{r}, {g}, {b}"
     if flt == "rgbs":
         return f"{r} {g} {b}"
+    if flt == "ansi":
+        return f"38;2;{r};{g};{b}"
+    if flt == "ansibg":
+        return f"48;2;{r};{g};{b}"
     if flt == "rgba":
         return f"rgba({r}, {g}, {b}, {arg})"
     if flt == "hexa":
@@ -67,9 +77,13 @@ def sub(m):
     raise KeyError(f"unknown filter '{flt}'")
 
 
-def render(check=False):
-    """Render templates/ -> generated/. With check=True, only validate placeholders (writes nothing)."""
-    src, out = ROOT / "templates", ROOT / "generated"
+def render(check=False, out=None, only=None):
+    """Render templates/ -> generated/ (or `out`). check=True only validates placeholders.
+    `only` restricts to a templates/ subfolder prefix, e.g. "zebar"."""
+    src, out = ROOT / "templates", Path(out) if out else ROOT / "generated"
+    if only:
+        src = src / only
+        out = out / only
     if out.exists() and not check:
         shutil.rmtree(out)
     n, errors = 0, []
@@ -121,9 +135,19 @@ def deploy(only=None):
         print(f"copy  {item['src']} -> {dst}")
 
 
+def _opt(name):
+    return sys.argv[sys.argv.index(name) + 1] if name in sys.argv else None
+
+
 if __name__ == "__main__":
+    # py -3 render.py --check                       validate all templates, write nothing
+    # py -3 render.py --out <dir> [--only <sub>]    render into a scratch dir (safe for parallel work)
+    # py -3 render.py [--deploy [group ...]]        render into generated/ and optionally deploy
     if "--check" in sys.argv:
         render(check=True)
+        sys.exit(0)
+    if "--out" in sys.argv:
+        render(out=_opt("--out"), only=_opt("--only"))
         sys.exit(0)
     render()
     if "--deploy" in sys.argv:

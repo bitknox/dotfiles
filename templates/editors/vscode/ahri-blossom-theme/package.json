@@ -1,0 +1,30 @@
+{
+  "name": "ahri-blossom-theme",
+  "displayName": "{{ meta.name }}",
+  "description": "Dreamy night-time spirit-world theme: night-violet backgrounds, sakura accents, lavender and spirit-teal highlights. Generated from the dotfiles palette.",
+  "publisher": "local",
+  "version": "1.0.0",
+  "license": "MIT",
+  "engines": {
+    "vscode": "^1.70.0"
+  },
+  "categories": [
+    "Themes"
+  ],
+  "keywords": [
+    "theme",
+    "dark",
+    "pink",
+    "sakura",
+    "ahri"
+  ],
+  "contributes": {
+    "themes": [
+      {
+        "label": "{{ meta.name }}",
+        "uiTheme": "vs-dark",
+        "path": "./themes/ahri-blossom-color-theme.json"
+      }
+    ]
+  }
+}

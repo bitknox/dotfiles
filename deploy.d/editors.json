@@ -1,0 +1,44 @@
+﻿[
+  {
+    "group": "editors",
+    "src": "editors/vscode/ahri-blossom-theme",
+    "dst": "%USERPROFILE%\\.vscode\\extensions\\local.ahri-blossom-theme-1.0.0",
+    "if_exists": "%USERPROFILE%\\.vscode\\extensions"
+  },
+  {
+    "group": "editors",
+    "src": "editors/vscode/ahri-blossom-theme",
+    "dst": "%USERPROFILE%\\.cursor\\extensions\\local.ahri-blossom-theme-1.0.0",
+    "if_exists": "%USERPROFILE%\\.cursor\\extensions"
+  },
+  {
+    "group": "editors",
+    "src": "editors/nvim/colors",
+    "dst": "%LOCALAPPDATA%\\nvim\\colors",
+    "if_exists": "%LOCALAPPDATA%\\nvim"
+  },
+  {
+    "group": "editors",
+    "src": "editors/nvim/lua",
+    "dst": "%LOCALAPPDATA%\\nvim\\lua",
+    "if_exists": "%LOCALAPPDATA%\\nvim"
+  },
+  {
+    "group": "editors",
+    "src": "editors/jetbrains/AhriBlossom.icls",
+    "dst": "%APPDATA%\\JetBrains\\Rider2025.1\\colors\\AhriBlossom.icls",
+    "if_exists": "%APPDATA%\\JetBrains\\Rider2025.1"
+  },
+  {
+    "group": "editors",
+    "src": "editors/jetbrains/AhriBlossom.icls",
+    "dst": "%APPDATA%\\JetBrains\\IdeaIC2023.2\\colors\\AhriBlossom.icls",
+    "if_exists": "%APPDATA%\\JetBrains\\IdeaIC2023.2"
+  },
+  {
+    "group": "editors",
+    "src": "editors/notepadpp/AhriBlossom.xml",
+    "dst": "%APPDATA%\\Notepad++\\themes\\AhriBlossom.xml",
+    "if_exists": "%APPDATA%\\Notepad++\\themes"
+  }
+]

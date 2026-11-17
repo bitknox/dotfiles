@@ -1,0 +1,59 @@
+{
+  "theme": "Ahri Blossom",
+  "defaultProfile": "{574e775e-4f2a-5b96-ac1e-a2962a402336}",
+  "profiles.defaults": {
+    "colorScheme": "Ahri Blossom",
+    "font": { "face": "{{ font.mono }}", "size": 12, "features": { "calt": 1, "liga": 1, "cv01": 1, "ss03": 1 } },
+    "opacity": 88,
+    "useAcrylic": true,
+    "padding": "16, 12, 16, 12",
+    "cursorShape": "bar",
+    "intenseTextStyle": "bright",
+    "antialiasingMode": "cleartype",
+    "scrollbarState": "hidden"
+  },
+  "schemes": [
+    {
+      "name": "Ahri Blossom",
+      "background": "{{ base }}",
+      "foreground": "{{ text }}",
+      "cursorColor": "{{ sakura }}",
+      "selectionBackground": "{{ surface2 }}",
+      "black": "{{ ansi0 }}",
+      "red": "{{ ansi1 }}",
+      "green": "{{ ansi2 }}",
+      "yellow": "{{ ansi3 }}",
+      "blue": "{{ ansi4 }}",
+      "purple": "{{ ansi5 }}",
+      "cyan": "{{ ansi6 }}",
+      "white": "{{ ansi7 }}",
+      "brightBlack": "{{ ansi8 }}",
+      "brightRed": "{{ ansi9 }}",
+      "brightGreen": "{{ ansi10 }}",
+      "brightYellow": "{{ ansi11 }}",
+      "brightBlue": "{{ ansi12 }}",
+      "brightPurple": "{{ ansi13 }}",
+      "brightCyan": "{{ ansi14 }}",
+      "brightWhite": "{{ ansi15 }}"
+    }
+  ],
+  "themes": [
+    {
+      "name": "Ahri Blossom",
+      "window": {
+        "applicationTheme": "dark",
+        "useMica": false,
+        "rainbowFrame": false,
+        "frame": "{{ sakura }}",
+        "unfocusedFrame": "{{ surface2 }}"
+      },
+      "tabRow": { "background": "{{ crust | hexa:ee }}", "unfocusedBackground": "{{ crust | hexa:ee }}" },
+      "tab": {
+        "background": "terminalBackground",
+        "unfocusedBackground": "{{ crust | hexa:00 }}",
+        "showCloseButton": "hover",
+        "iconStyle": "monochrome"
+      }
+    }
+  ]
+}
