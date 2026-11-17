@@ -1,7 +1,7 @@
 /* Ahri Blossom - Zen browser userChrome.css (generated from palette.json)
  * Requires toolkit.legacyUserProfileCustomizations.stylesheets = true.
  * Variable-first so it survives Zen/Firefox UI updates.
- * Chrome UI uses {{ font.ui }} (installed locally); no web fonts in chrome. */
+ * Chrome UI keeps the native system font. */
 
 :root,
 :root[lwtheme],
@@ -22,15 +22,12 @@
   --zen-themed-toolbar-bg: {{ mantle }} !important;
   --zen-themed-toolbar-bg-transparent: {{ mantle | rgba:0.85 }} !important;
   --zen-toolbar-element-bg: {{ surface1 | rgba:0.6 }} !important;
-  --zen-main-browser-background:
-    radial-gradient(ellipse at 0% 0%, {{ sakura | rgba:0.10 }}, transparent 55%),
-    radial-gradient(ellipse at 100% 100%, {{ lavender | rgba:0.10 }}, transparent 60%),
-    {{ crust }} !important;
+  --zen-main-browser-background: {{ crust }} !important;
   --zen-main-browser-background-toolbar: var(--zen-main-browser-background) !important;
   --zen-tabs-border-color: {{ surface1 }} !important;
-  --zen-border-radius: 10px !important;
-  --zen-native-inner-radius: 10px !important;
-  --zen-webview-border-radius: 10px !important;
+  --zen-border-radius: 8px !important;
+  --zen-native-inner-radius: 8px !important;
+  --zen-webview-border-radius: 8px !important;
   --zen-browser-gradient-base: {{ crust }} !important;
 
   /* ---- Firefox theme vars ---- */
@@ -40,13 +37,13 @@
   --lwt-sidebar-background-color: {{ mantle }} !important;
   --lwt-sidebar-text-color: {{ text }} !important;
   --lwt-sidebar-highlight-background-color: {{ surface2 }} !important;
-  --lwt-sidebar-highlight-text-color: {{ cream }} !important;
+  --lwt-sidebar-highlight-text-color: {{ text }} !important;
   --lwt-toolbarbutton-icon-fill: {{ subtext }} !important;
   --lwt-toolbarbutton-icon-fill-attention: {{ sakura }} !important;
   --lwt-toolbarbutton-hover-background: {{ surface1 }} !important;
   --lwt-toolbarbutton-active-background: {{ surface2 }} !important;
   --lwt-selected-tab-background-color: {{ surface1 }} !important;
-  --lwt-tab-line-color: {{ sakura }} !important;
+  --lwt-tab-line-color: transparent !important;
 
   --toolbar-bgcolor: {{ mantle }} !important;
   --toolbar-color: {{ text }} !important;
@@ -54,13 +51,13 @@
   --toolbar-field-color: {{ text }} !important;
   --toolbar-field-border-color: {{ surface1 }} !important;
   --toolbar-field-focus-background-color: {{ surface0 }} !important;
-  --toolbar-field-focus-color: {{ cream }} !important;
-  --toolbar-field-focus-border-color: {{ sakura | rgba:0.6 }} !important;
+  --toolbar-field-focus-color: {{ text }} !important;
+  --toolbar-field-focus-border-color: {{ overlay }} !important;
   --toolbarbutton-icon-fill: {{ subtext }} !important;
   --toolbarbutton-icon-fill-attention: {{ sakura }} !important;
   --toolbarbutton-hover-background: {{ surface1 }} !important;
   --toolbarbutton-active-background: {{ surface2 }} !important;
-  --toolbarbutton-border-radius: 8px !important;
+  --toolbarbutton-border-radius: 6px !important;
   --chrome-content-separator-color: {{ surface0 }} !important;
   --tabpanel-background-color: {{ base }} !important;
   --sidebar-background-color: {{ mantle }} !important;
@@ -68,10 +65,10 @@
   --sidebar-border-color: {{ surface0 }} !important;
 
   --tab-selected-bgcolor: {{ surface1 }} !important;
-  --tab-selected-textcolor: {{ cream }} !important;
+  --tab-selected-textcolor: {{ text }} !important;
   --tab-hover-background-color: {{ surface0 }} !important;
   --tab-loading-fill: {{ sakura }} !important;
-  --tab-border-radius: 8px !important;
+  --tab-border-radius: 4px !important;
   --tab-attention-icon-color: {{ gold }} !important;
   --identity-tab-color: {{ sakura }} !important;
 
@@ -79,13 +76,13 @@
   --arrowpanel-background: {{ mantle }} !important;
   --arrowpanel-color: {{ text }} !important;
   --arrowpanel-border-color: {{ surface1 }} !important;
-  --arrowpanel-border-radius: 12px !important;
+  --arrowpanel-border-radius: 8px !important;
   --arrowpanel-dimmed: {{ surface1 | rgba:0.6 }} !important;
   --arrowpanel-dimmed-further: {{ surface2 | rgba:0.75 }} !important;
   --panel-background: {{ mantle }} !important;
   --panel-color: {{ text }} !important;
   --panel-border-color: {{ surface1 }} !important;
-  --panel-border-radius: 12px !important;
+  --panel-border-radius: 8px !important;
   --panel-separator-color: {{ surface1 }} !important;
   --panel-item-hover-bgcolor: {{ surface1 }} !important;
   --panel-item-active-bgcolor: {{ surface2 }} !important;
@@ -104,12 +101,12 @@
   --urlbar-box-active-bgcolor: {{ surface2 }} !important;
   --urlbar-box-text-color: {{ text }} !important;
   --urlbar-popup-url-color: {{ spirit }} !important;
-  --urlbar-popup-action-color: {{ lavender }} !important;
-  --urlbarView-highlight-background: {{ sakura | rgba:0.18 }} !important;
+  --urlbar-popup-action-color: {{ subtext }} !important;
+  --urlbarView-highlight-background: {{ surface2 }} !important;
   --urlbarView-highlight-color: {{ cream }} !important;
   --urlbarView-hover-background: {{ surface1 }} !important;
   --urlbarView-separator-color: {{ surface1 }} !important;
-  --urlbarView-action-color: {{ lavender }} !important;
+  --urlbarView-action-color: {{ subtext }} !important;
   --urlbarView-url-color: {{ spirit }} !important;
 
   /* ---- Buttons / accent ---- */
@@ -138,21 +135,10 @@
   --text-color-deemphasized: {{ subtext }} !important;
   --link-color: {{ spirit }} !important;
 
-  --ahri-glow: 0 0 12px {{ sakura | rgba:0.25 }};
+  --ahri-elevation: 0 8px 24px {{ crust | rgba:0.45 }};
 
   accent-color: {{ sakura }};
   color-scheme: dark;
-}
-
-/* Font for chrome UI */
-#navigator-toolbox,
-#sidebar-box,
-#sidebar-main,
-menupopup,
-panel,
-#urlbar,
-tooltip {
-  font-family: "{{ font.ui }}", system-ui, sans-serif !important;
 }
 
 /* Window background behind the rounded web content */
@@ -165,19 +151,18 @@ tooltip {
   opacity: 0 !important;
 }
 
-/* Rounded content frame with a faint sakura edge */
+/* Rounded content frame, flat */
 .browserSidebarContainer,
 #tabbrowser-tabbox .browserContainer {
-  border-radius: 10px !important;
+  border-radius: 8px !important;
 }
 .browserSidebarContainer {
-  box-shadow: 0 0 0 1px {{ surface1 | rgba:0.6 }}, 0 4px 20px {{ crust | rgba:0.5 }} !important;
+  box-shadow: none !important;
 }
 
 /* ---- Tabs (vertical sidebar) ---- */
 .tabbrowser-tab .tab-background {
-  border-radius: 8px !important;
-  transition: background-color 0.15s ease, box-shadow 0.2s ease;
+  border-radius: 4px !important;
 }
 .tabbrowser-tab:hover .tab-background:not([selected], [multiselected]) {
   background-color: {{ surface0 }} !important;
@@ -185,24 +170,22 @@ tooltip {
 .tabbrowser-tab[selected] .tab-background,
 .tabbrowser-tab[multiselected] .tab-background {
   background: {{ surface1 }} !important;
-  box-shadow: inset 2px 0 0 {{ sakura }}, var(--ahri-glow) !important;
+  box-shadow: none !important;
   outline: none !important;
 }
+.tabbrowser-tab .tab-label,
 .tabbrowser-tab[selected] .tab-label {
-  color: {{ cream }} !important;
-}
-.tabbrowser-tab .tab-label {
-  color: {{ subtext }};
+  color: {{ text }} !important;
 }
 .tabbrowser-tab[pending] .tab-label,
 .tabbrowser-tab[discarded] .tab-label {
-  color: {{ overlay }} !important;
+  color: {{ subtext }} !important;
 }
 .tab-throbber[busy]::before {
   fill: {{ sakura }} !important;
 }
 .tabbrowser-tab[soundplaying] .tab-icon-overlay {
-  fill: {{ lavender }} !important;
+  fill: {{ text }} !important;
 }
 
 /* Pinned / essentials */
@@ -213,32 +196,38 @@ tooltip {
 /* Workspaces indicator */
 #zen-current-workspace-indicator,
 .zen-current-workspace-indicator {
-  color: {{ lavender }} !important;
+  color: {{ subtext }} !important;
 }
 
 /* ---- URL bar ---- */
 #urlbar-background {
   background-color: {{ surface0 }} !important;
   border: 1px solid {{ surface1 }} !important;
-  border-radius: 10px !important;
+  border-radius: 6px !important;
 }
-#urlbar[focused] #urlbar-background,
+#urlbar[focused] #urlbar-background {
+  border-color: {{ overlay }} !important;
+  box-shadow: none !important;
+  outline: none !important;
+}
+/* Open results dropdown floats: hairline + one neutral shadow */
 #urlbar[open] #urlbar-background,
 #urlbar[breakout-extend="true"] #urlbar-background {
   background-color: {{ mantle }} !important;
-  border-color: {{ sakura | rgba:0.55 }} !important;
-  box-shadow: var(--ahri-glow), 0 12px 40px {{ crust | rgba:0.6 }} !important;
+  border-color: {{ surface1 }} !important;
+  border-radius: 8px !important;
+  box-shadow: var(--ahri-elevation) !important;
   outline: none !important;
 }
 #urlbar-input {
   color: {{ text }} !important;
 }
 #urlbar-input::placeholder {
-  color: {{ overlay }} !important;
+  color: {{ subtext }} !important;
 }
 .urlbarView-row[selected] .urlbarView-row-inner,
 .urlbarView-row:hover .urlbarView-row-inner {
-  border-radius: 8px !important;
+  border-radius: 4px !important;
 }
 #identity-box[pageproxystate="valid"].verifiedDomain #identity-icon,
 #tracking-protection-icon-container {
@@ -248,7 +237,7 @@ tooltip {
 /* ---- Toolbar buttons ---- */
 toolbarbutton .toolbarbutton-icon,
 toolbarbutton .toolbarbutton-badge-stack {
-  border-radius: 8px !important;
+  border-radius: 6px !important;
 }
 toolbarbutton:not([disabled]):hover > .toolbarbutton-icon,
 toolbarbutton:not([disabled]):hover > .toolbarbutton-badge-stack {
@@ -266,16 +255,16 @@ toolbarbutton:not([disabled]):active > .toolbarbutton-icon {
 /* ---- Context menus & popups ---- */
 menupopup,
 panel {
-  --panel-border-radius: 12px !important;
+  --panel-border-radius: 8px !important;
 }
 menupopup > menuitem,
 menupopup > menu {
-  border-radius: 6px !important;
+  border-radius: 4px !important;
   padding-block: 5px !important;
 }
 menupopup > menuitem[_moz-menuactive],
 menupopup > menu[_moz-menuactive] {
-  background-color: {{ sakura | rgba:0.16 }} !important;
+  background-color: {{ surface1 }} !important;
   color: {{ cream }} !important;
 }
 menupopup > menuitem[disabled],
@@ -300,14 +289,15 @@ findbar {
 }
 .findbar-textbox {
   background-color: {{ surface0 }} !important;
-  border-radius: 8px !important;
+  border-radius: 6px !important;
 }
 .findbar-textbox[status="notfound"] {
-  box-shadow: 0 0 0 1px {{ rose }} !important;
+  outline: 1px solid {{ rose }} !important;
+  outline-offset: -1px !important;
 }
 notification-message,
 .notificationbox-stack notification {
-  border-radius: 10px !important;
+  border-radius: 8px !important;
 }
 
 /* Scrollbars in chrome */

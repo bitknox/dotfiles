@@ -1,12 +1,10 @@
 /**
  * @name Ahri Blossom
  * @author dotfiles
- * @description Spirit Blossom Ahri: night-violet surfaces, sakura accents, soft pink glow. Use with Discord's Dark (or Midnight) theme.
+ * @description Spirit Blossom Ahri: night-violet surfaces, sakura for primary actions. Use with Discord's Dark (or Midnight) theme.
  * @version 1.0.0
  * @source generated from palette.json by render.py
  */
-
-@import url("https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@500;700&display=swap");
 
 /* ------------------------------------------------------------------ */
 /*  Palette (mirrors palette.json; everything below reads from these)  */
@@ -31,13 +29,9 @@
   --ahri-lavender: {{ lavender }};
   --ahri-violet: {{ violet }};
 
-  --ahri-glow: 0 0 12px {{ sakura | rgba:0.25 }};
-  --ahri-glow-strong: 0 0 16px {{ sakura | rgba:0.38 }};
-  --ahri-radius: 10px;
+  --ahri-elevation: 0 8px 24px {{ crust | rgba:0.45 }};
+  --ahri-radius: 8px;
 
-  --font-primary: "{{ font.ui }}", "gg sans", "Noto Sans", sans-serif;
-  --font-display: "{{ font.ui }}", "gg sans", "Noto Sans", sans-serif;
-  --font-headline: "{{ font.display }}", "{{ font.ui }}", serif;
   --font-code: "{{ font.mono }}", Consolas, monospace;
 }
 
@@ -64,9 +58,9 @@
   --background-nested-floating: var(--ahri-surface0);
   --background-mobile-primary: var(--ahri-base);
   --background-mobile-secondary: var(--ahri-mantle);
-  --background-message-hover: {{ surface0 | rgba:0.45 }};
-  --background-message-highlight: {{ sakura | rgba:0.08 }};
-  --background-message-highlight-hover: {{ sakura | rgba:0.12 }};
+  --background-message-hover: {{ surface0 | rgba:0.5 }};
+  --background-message-highlight: {{ gold | rgba:0.10 }};
+  --background-message-highlight-hover: {{ gold | rgba:0.14 }};
   --background-message-automod: {{ gold | rgba:0.08 }};
   --background-message-automod-hover: {{ gold | rgba:0.12 }};
   --background-mentioned: {{ gold | rgba:0.10 }};
@@ -140,8 +134,8 @@
   --input-border: var(--ahri-surface1);
   --input-border-default: var(--ahri-surface1);
   --input-border-hover: var(--ahri-surface2);
-  --input-placeholder-text: var(--ahri-overlay);
-  --input-placeholder-text-default: var(--ahri-overlay);
+  --input-placeholder-text: var(--ahri-subtext);
+  --input-placeholder-text-default: var(--ahri-subtext);
   --channeltextarea-background: var(--ahri-surface0);
   --deprecated-text-input-bg: var(--ahri-surface0);
   --deprecated-text-input-border: var(--ahri-surface1);
@@ -149,7 +143,7 @@
   --deprecated-card-editable-bg: var(--ahri-surface0);
   --deprecated-store-bg: var(--ahri-base);
   --deprecated-quickswitcher-input-background: var(--ahri-surface0);
-  --deprecated-quickswitcher-input-placeholder: var(--ahri-overlay);
+  --deprecated-quickswitcher-input-placeholder: var(--ahri-subtext);
   --activity-card-background: var(--ahri-surface0);
   --user-profile-overlay-background: var(--ahri-mantle);
   --redesign-input-control-selected: var(--ahri-sakura);
@@ -160,10 +154,10 @@
   --text-primary: var(--ahri-text);
   --text-strong: var(--ahri-cream);
   --text-secondary: var(--ahri-subtext);
-  --text-tertiary: var(--ahri-overlay);
+  --text-tertiary: var(--ahri-subtext);
   --text-subtle: var(--ahri-subtext);
   --text-muted: var(--ahri-subtext);
-  --text-faint: var(--ahri-overlay);
+  --text-faint: var(--ahri-subtext);
   --text-link: var(--ahri-spirit);
   --text-link-low-saturation: var(--ahri-spirit);
   --text-brand: var(--ahri-sakura);
@@ -177,11 +171,11 @@
   --header-primary: var(--ahri-cream);
   --header-secondary: var(--ahri-subtext);
   --channels-default: var(--ahri-subtext);
-  --channel-icon: var(--ahri-overlay);
-  --channel-text-area-placeholder: var(--ahri-overlay);
-  --textbox-markdown-syntax: var(--ahri-overlay);
+  --channel-icon: var(--ahri-subtext);
+  --channel-text-area-placeholder: var(--ahri-subtext);
+  --textbox-markdown-syntax: var(--ahri-subtext);
   --mention-foreground: var(--ahri-gold);
-  --mention-background: {{ gold | rgba:0.16 }};
+  --mention-background: {{ gold | rgba:0.10 }};
   --info-warning-foreground: var(--ahri-gold);
   --info-danger-foreground: var(--ahri-rose);
   --info-positive-foreground: var(--ahri-mint);
@@ -190,14 +184,14 @@
   /* --- icons / interactive --- */
   --interactive-normal: var(--ahri-subtext);
   --interactive-hover: var(--ahri-text);
-  --interactive-active: var(--ahri-sakura);
+  --interactive-active: var(--ahri-text);
   --interactive-muted: var(--ahri-overlay);
   --interactive-text-default: var(--ahri-subtext);
   --interactive-text-hover: var(--ahri-text);
-  --interactive-text-active: var(--ahri-cream);
+  --interactive-text-active: var(--ahri-text);
   --interactive-icon-default: var(--ahri-subtext);
   --interactive-icon-hover: var(--ahri-text);
-  --interactive-icon-active: var(--ahri-sakura);
+  --interactive-icon-active: var(--ahri-text);
   --icon-default: var(--ahri-subtext);
   --icon-muted: var(--ahri-overlay);
   --icon-strong: var(--ahri-text);
@@ -306,14 +300,14 @@
   --spoiler-revealed-background: var(--ahri-surface0);
   --embed-background: var(--ahri-mantle);
   --embed-title: var(--ahri-cream);
-  --logo-primary: var(--ahri-sakura);
-  --home-icon: var(--ahri-sakura);
+  --logo-primary: var(--ahri-text);
+  --home-icon: var(--ahri-text);
 
   /* --- radii (visual refresh) --- */
-  --radius-xs: 6px;
-  --radius-sm: 8px;
-  --radius-md: 10px;
-  --radius-lg: 12px;
+  --radius-xs: 4px;
+  --radius-sm: 6px;
+  --radius-md: 8px;
+  --radius-lg: 8px;
 }
 
 /* ------------------------------------------------------------------ */
@@ -321,55 +315,42 @@
 /* ------------------------------------------------------------------ */
 
 ::selection {
-  background: {{ sakura | rgba:0.3 }};
+  background: var(--ahri-surface2);
   color: var(--ahri-cream);
 }
 
-/* Server list: pink pill + glow on the selected server */
-[class*="pill_"] [class*="item_"] {
-  background-color: var(--ahri-sakura) !important;
-}
-[class*="blobContainer_"][class*="selected_"] {
-  filter: drop-shadow(0 0 6px {{ sakura | rgba:0.45 }});
-}
-[class*="blobContainer_"]:hover {
-  filter: drop-shadow(0 0 5px {{ lavender | rgba:0.25 }});
-}
-
-/* Selected channel / DM: soft pink wash, inset accent, glow */
+/* Selected channel / DM: one surface step up */
 [class*="modeSelected_"] [class*="link_"],
 [class*="containerDefault_"][class*="selected_"] [class*="link_"],
 [class*="channel_"][class*="selected_"] [class*="interactive_"],
 [class*="interactiveSelected_"] {
-  background: {{ sakura | rgba:0.12 }} !important;
-  box-shadow: inset 2px 0 0 var(--ahri-sakura), var(--ahri-glow);
-  border-radius: 8px;
+  background: var(--ahri-surface1) !important;
+  box-shadow: none;
+  border-radius: 4px;
 }
 [class*="modeSelected_"] [class*="name_"],
 [class*="modeSelected_"] [class*="icon_"] {
-  color: var(--ahri-cream) !important;
+  color: var(--ahri-text) !important;
 }
 [class*="modeUnread_"] [class*="name_"] {
   color: var(--ahri-text) !important;
 }
 
-/* Message input: rounded, soft border, glow when focused */
+/* Message input: soft border, brighter border when focused */
 [class*="channelTextArea_"] [class*="scrollableContainer_"],
 [class*="channelTextArea_"] > [class*="inner_"] {
-  border-radius: 12px !important;
+  border-radius: 6px !important;
 }
 form [class*="channelTextArea_"] {
-  border-radius: 12px;
+  border-radius: 6px;
   border: 1px solid var(--ahri-surface1);
   background: var(--ahri-surface0);
-  transition: border-color 0.2s ease, box-shadow 0.2s ease;
 }
 form [class*="channelTextArea_"]:focus-within {
-  border-color: {{ sakura | rgba:0.55 }};
-  box-shadow: var(--ahri-glow);
+  border-color: var(--ahri-overlay);
 }
 
-/* Mentions: gold accent bar */
+/* Mentions: Discord's native mention bar, in gold */
 [class*="mentioned_"]::before {
   background: var(--ahri-gold) !important;
 }
@@ -383,34 +364,30 @@ a[class*="anchor_"] {
   color: var(--ahri-spirit);
 }
 
-/* Floating surfaces: rounded + soft border */
+/* Floating surfaces: hairline border + one neutral shadow */
 [class*="menu_"][role="menu"],
 [class*="popout_"],
 [class*="tooltip_"] {
   border-radius: var(--ahri-radius) !important;
   border: 1px solid var(--ahri-surface1);
+  box-shadow: var(--ahri-elevation);
 }
 [class*="menu_"] [class*="focused_"] {
-  background: {{ sakura | rgba:0.18 }} !important;
+  background: var(--ahri-surface1) !important;
   color: var(--ahri-cream) !important;
 }
 [role="dialog"][class*="root_"] {
-  border-radius: 12px;
+  border-radius: var(--ahri-radius);
+  box-shadow: var(--ahri-elevation);
 }
 
-/* Inputs / search: spirit-teal focus ring */
+/* Inputs / search: neutral focus border */
 input:focus,
 [class*="inputDefault_"]:focus,
 [class*="searchBar_"]:focus-within {
-  outline: none;
-  box-shadow: 0 0 0 1px {{ spirit | rgba:0.6 }};
-}
-
-/* Big titles get the display serif */
-[class*="title_"][class*="defaultColor_"] h1,
-[class*="emptyChannelIcon_"] + h3,
-[class*="welcomeMessage_"] h3 {
-  font-family: var(--font-headline);
+  outline: 1px solid var(--ahri-overlay);
+  outline-offset: -1px;
+  box-shadow: none;
 }
 
 /* Scrollbars (webkit) */

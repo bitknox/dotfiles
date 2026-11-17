@@ -2,14 +2,10 @@
  * Leans on --spice-* variables and data-testid / data-encore-id hooks so it
  * degrades gracefully when Spotify reshuffles class names. */
 
-@import url("https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@500;700&display=swap");
-
 :root {
-  --ahri-radius: 10px;
-  --ahri-radius-lg: 12px;
-  --ahri-glow: 0 0 12px {{ sakura | rgba:0.25 }};
-  --ahri-glow-strong: 0 0 16px {{ sakura | rgba:0.4 }};
-  --ahri-border: {{ surface1 | rgba:0.7 }};
+  --ahri-radius: 8px;
+  --ahri-elevation: 0 8px 24px {{ crust | rgba:0.45 }};
+  --ahri-border: {{ surface1 }};
   --ahri-spirit: {{ spirit }};
   --ahri-gold: {{ gold }};
 }
@@ -33,43 +29,20 @@
   --essential-bright-accent: var(--spice-button) !important;
   --decorative-base: var(--spice-text) !important;
   --decorative-subdued: {{ surface1 }} !important;
-
-  --font-family: "{{ font.ui }}", spotify-circular, sans-serif;
-  --encore-body-font-stack: "{{ font.ui }}", sans-serif !important;
-  --encore-title-font-stack: "{{ font.display }}", "{{ font.ui }}", serif !important;
-  --encore-variable-font-stack: "{{ font.ui }}", sans-serif !important;
-}
-
-body,
-input,
-button,
-.encore-text {
-  font-family: "{{ font.ui }}", spotify-circular, sans-serif !important;
-}
-
-/* Large page titles only: display serif */
-[data-testid="entityTitle"] h1,
-[data-testid="adaptiveEntityTitle"] h1,
-.main-entityHeader-title h1 {
-  font-family: "{{ font.display }}", "{{ font.ui }}", serif !important;
-  letter-spacing: 0.01em;
 }
 
 ::selection {
-  background: rgba(var(--spice-rgb-button), 0.3);
+  background: {{ surface2 }};
   color: var(--spice-text);
 }
 
-/* ---------- Layout panels: rounded, soft borders ---------- */
+/* ---------- Layout panels ---------- */
 .Root__nav-bar,
 .Root__main-view,
 .Root__right-sidebar,
 #Desktop_LeftSidebar_Id,
 [data-testid="root-nav-bar"] {
-  border-radius: var(--ahri-radius-lg);
-}
-.Root__main-view {
-  box-shadow: inset 0 0 0 1px var(--ahri-border);
+  border-radius: var(--ahri-radius);
 }
 .Root__now-playing-bar,
 [data-testid="now-playing-bar"] {
@@ -80,47 +53,44 @@ button,
 .main-card-card,
 [data-encore-id="card"] {
   background-color: var(--spice-card) !important;
-  border-radius: var(--ahri-radius-lg) !important;
-  transition: background-color 0.2s ease, box-shadow 0.2s ease;
+  border-radius: var(--ahri-radius) !important;
+  transition: background-color 120ms ease, color 120ms ease;
 }
 .main-card-card:hover,
 [data-encore-id="card"]:hover {
   background-color: var(--spice-highlight) !important;
-  box-shadow: var(--ahri-glow);
+  box-shadow: none;
 }
 .main-card-card img,
 [data-encore-id="card"] img,
 .main-cardImage-imageWrapper {
-  border-radius: 8px !important;
+  border-radius: 6px !important;
 }
 
-/* ---------- Track rows ---------- */
+/* ---------- Track rows: selection is a surface step ---------- */
 [data-testid="tracklist-row"] {
-  border-radius: 8px;
+  border-radius: 4px;
 }
 [data-testid="tracklist-row"]:hover {
-  background-color: rgba(var(--spice-rgb-selected-row), 0.07) !important;
+  background-color: var(--spice-main-elevated) !important;
 }
 [data-testid="tracklist-row"][aria-selected="true"],
 [role="row"][aria-selected="true"] [data-testid="tracklist-row"] {
-  background-color: rgba(var(--spice-rgb-selected-row), 0.14) !important;
-  box-shadow: inset 2px 0 0 var(--spice-button);
+  background-color: var(--spice-highlight) !important;
+  box-shadow: none;
 }
 
-/* ---------- Play buttons: gentle pink glow ---------- */
-[data-testid="play-button"],
-[data-testid="control-button-playpause"] {
-  transition: box-shadow 0.2s ease, transform 0.2s ease;
-}
-[data-testid="play-button"]:hover,
-[data-testid="control-button-playpause"]:hover {
-  box-shadow: var(--ahri-glow-strong);
-  border-radius: 50%;
-}
+/* ---------- Play buttons: solid sakura, darker on hover ---------- */
 [data-testid="play-button"] [data-encore-id="buttonPrimary"] > span,
 [data-testid="control-button-playpause"] {
   background-color: var(--spice-button) !important;
   color: var(--spice-main) !important;
+  transition: background-color 120ms ease, color 120ms ease;
+}
+[data-testid="play-button"]:hover [data-encore-id="buttonPrimary"] > span,
+[data-testid="control-button-playpause"]:hover {
+  background-color: var(--spice-button-active) !important;
+  transform: none !important;
 }
 
 /* ---------- Progress / volume bars ---------- */
@@ -130,22 +100,21 @@ button,
 [data-testid="volume-bar"] .progress-bar {
   --fg-color: var(--spice-button) !important;
   --bg-color: rgba(var(--spice-rgb-text), 0.15) !important;
-  --progress-bar-radius: 6px;
+  --progress-bar-radius: 4px;
 }
 .x-progressBar-fillColor,
 .progress-bar__fg {
   background-color: var(--spice-button) !important;
-  box-shadow: 0 0 8px {{ sakura | rgba:0.45 }};
-  border-radius: 6px;
+  border-radius: 4px;
 }
 .x-progressBar-progressBarBg,
 .progress-bar__bg {
-  border-radius: 6px;
+  border-radius: 4px;
 }
 .progress-bar__slider,
 [data-testid="progress-bar-handle"] {
   background-color: {{ cream }} !important;
-  box-shadow: 0 0 8px {{ sakura | rgba:0.6 }};
+  box-shadow: none !important;
 }
 
 /* ---------- Inputs ---------- */
@@ -154,21 +123,21 @@ input[type="search"],
 .main-topBar-searchBar,
 .x-searchInput-searchInputInput {
   background-color: var(--spice-main-elevated) !important;
-  border-radius: var(--ahri-radius) !important;
+  border-radius: 6px !important;
   border: 1px solid var(--ahri-border) !important;
   color: var(--spice-text) !important;
 }
 [data-testid="search-input"]:focus,
 input[type="search"]:focus,
 .x-searchInput-searchInputInput:focus {
-  border-color: rgba(var(--spice-rgb-button), 0.6) !important;
-  box-shadow: var(--ahri-glow) !important;
+  border-color: {{ overlay }} !important;
+  box-shadow: none !important;
   outline: none !important;
 }
 
-/* ---------- Chips / pills ---------- */
+/* ---------- Chips ---------- */
 [data-encore-id="chip"] {
-  border-radius: 999px;
+  border-radius: 4px;
 }
 [data-encore-id="chip"][aria-checked="true"],
 [data-encore-id="chip"][aria-pressed="true"] {
@@ -184,23 +153,24 @@ input[type="search"]:focus,
   background-color: var(--spice-main-elevated) !important;
   border: 1px solid var(--ahri-border);
   border-radius: var(--ahri-radius) !important;
-  box-shadow: 0 8px 24px rgba(var(--spice-rgb-shadow), 0.6) !important;
+  box-shadow: var(--ahri-elevation) !important;
 }
 .main-contextMenu-menuItemButton:hover,
 .main-contextMenu-menuItemButton:focus,
 [role="menuitem"]:hover,
 [role="menuitem"]:focus {
-  background-color: rgba(var(--spice-rgb-button), 0.14) !important;
-  border-radius: 6px;
+  background-color: var(--spice-highlight) !important;
+  border-radius: 4px;
 }
 [data-tippy-root] .main-trackInfo-tooltip,
 .encore-dark-theme [role="tooltip"] {
   background-color: var(--spice-highlight-elevated) !important;
   color: var(--spice-text) !important;
-  border-radius: 8px;
+  border-radius: var(--ahri-radius);
+  box-shadow: var(--ahri-elevation);
 }
 
-/* ---------- Links & accents ---------- */
+/* ---------- Links & toggles ---------- */
 a:not([data-testid]):not([draggable]):hover {
   color: var(--ahri-spirit);
 }
@@ -211,7 +181,7 @@ a:not([data-testid]):not([draggable]):hover {
 }
 .main-nowPlayingWidget-coverArt img,
 [data-testid="cover-art-image"] {
-  border-radius: 8px;
+  border-radius: 6px;
 }
 
 /* ---------- Scrollbars ---------- */
