@@ -114,7 +114,7 @@ def load_deploy_spec():
     """deploy.d/<group>.json files, each a list of {group, src, dst, [if_exists]}."""
     spec = []
     for f in sorted((ROOT / "deploy.d").glob("*.json")):
-        spec += json.loads(f.read_text(encoding="utf-8"))
+        spec += json.loads(f.read_text(encoding="utf-8-sig"))  # tolerate BOM (PowerShell-written files)
     return spec
 
 

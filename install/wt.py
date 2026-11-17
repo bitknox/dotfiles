@@ -12,7 +12,8 @@ ROOT = Path(__file__).resolve().parent.parent
 SETTINGS = Path(os.path.expandvars(
     r"%LOCALAPPDATA%\Packages\Microsoft.WindowsTerminal_8wekyb3d8bbwe\LocalState\settings.json"))
 
-patch = json.loads((ROOT / "generated/terminal/wt-patch.json").read_text(encoding="utf-8"))
+src = Path(sys.argv[1]) if len(sys.argv) > 1 else ROOT / "generated/terminal/wt-patch.json"
+patch = json.loads(src.read_text(encoding="utf-8"))
 cfg = json.loads(SETTINGS.read_text(encoding="utf-8-sig"))
 shutil.copy2(SETTINGS, SETTINGS.with_suffix(".json.bak"))
 

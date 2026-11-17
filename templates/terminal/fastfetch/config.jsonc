@@ -1,0 +1,41 @@
+{
+  "$schema": "https://github.com/fastfetch-cli/fastfetch/raw/dev/doc/json_schema.json",
+  "logo": {
+    "type": "file",
+    "source": "~/.config/fastfetch/ahri.txt",
+    "color": {
+      "1": "{{ sakura | ansi }}",
+      "2": "{{ lavender | ansi }}",
+      "3": "{{ spirit | ansi }}",
+      "4": "{{ blossom | ansi }}",
+      "5": "{{ cream | ansi }}"
+    },
+    "padding": { "top": 1, "left": 2, "right": 4 }
+  },
+  "display": {
+    "separator": "  ",
+    "color": { "keys": "{{ lavender | ansi }}", "title": "{{ sakura | ansi }}", "separator": "{{ overlay | ansi }}" },
+    "key": { "width": 10 },
+    "percent": { "color": { "green": "{{ mint | ansi }}", "yellow": "{{ gold | ansi }}", "red": "{{ rose | ansi }}" } },
+    "bar": { "char": { "elapsed": "━", "total": "━" }, "width": 12 }
+  },
+  "modules": [
+    { "type": "title", "format": "{user-name-colored}{at-symbol-colored}{host-name-colored}" },
+    { "type": "custom", "format": "\u001b[{{ overlay | ansi }}m九尾狐 · spirit blossom\u001b[0m" },
+    "break",
+    { "type": "os", "key": "os", "format": "{name} {version}" },
+    { "type": "kernel", "key": "build", "format": "{release}" },
+    { "type": "uptime", "key": "uptime" },
+    { "type": "shell", "key": "shell" },
+    { "type": "terminal", "key": "term" },
+    { "type": "terminalfont", "key": "font" },
+    "break",
+    { "type": "cpu", "key": "cpu", "format": "{name}" },
+    { "type": "gpu", "key": "gpu", "format": "{name}" },
+    { "type": "memory", "key": "memory" },
+    { "type": "disk", "key": "disk", "folders": "C:\\" },
+    { "type": "display", "key": "display", "format": "{width}×{height} @ {refresh-rate}Hz" },
+    "break",
+    { "type": "colors", "symbol": "circle", "paddingLeft": 0 }
+  ]
+}
