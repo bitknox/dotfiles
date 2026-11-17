@@ -34,7 +34,7 @@ BIBATA_REV = "ddb09273cde49faeb6a32282660ff4293f52d6e0"  # commit the scheme was
 SCHEME = "Ahri Blossom"
 STATIC_SIZES = [32, 40, 48, 64, 96, 128]  # 100/125/150/200/300/400 % (+ pointer-size slider headroom)
 ANIM_SIZES = [32, 40, 48, 64]             # keep .ani files small
-CONTENT = 26 / 32                         # glyph-to-canvas ratio (Bibata "large" proportions)
+CONTENT = 22 / 32                         # glyph-to-canvas ratio (Bibata "normal"-ish; 26/32 = "large"). --content overrides
 ANIM_FRAME_STEP = 2                       # use every 2nd of Bibata's 54 spinner frames
 ANIM_JIFFIES = 3                          # 1 jiffy = 1/60 s -> 20 fps, ~1.35 s per spin
 
@@ -63,6 +63,10 @@ CURSORS = {
 VARIANTS = {
     "night": {"fill": "base", "outline": "sakura", "watch_bg": "base", "badge_glyph": "cream"},
     "cream": {"fill": "cream", "outline": "blossom", "watch_bg": "base", "badge_glyph": "cream"},
+    # calmer: soft pink edge
+    "petal": {"fill": "cream", "outline": "sakura", "watch_bg": "base", "badge_glyph": "cream"},
+    # calmest: muted plum edge, pink only in spinner + badges
+    "dusk":  {"fill": "cream", "outline": "overlay", "watch_bg": "base", "badge_glyph": "cream"},
 }
 SPINNER = ["sakura", "lavender", "spirit", "violet"]  # replaces Bibata's 4 quadrant colors, in order
 SPINNER_SRC = ["#F05024", "#FCB813", "#7EBA41", "#32A0DA"]
@@ -276,10 +280,12 @@ def main() -> None:
     ap = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
     ap.add_argument("--bibata", help="path to a Bibata_Cursor checkout")
     ap.add_argument("--variant", choices=VARIANTS, default="cream")
-    ap.add_argument("--outline", type=float, default=17, help="outline stroke width on the 256 canvas (Bibata: 17)")
+    ap.add_argument("--outline", type=float, default=10, help="outline stroke width on the 256 canvas (Bibata: 17; 10 = calmer)")
     ap.add_argument("--out", default=str(ROOT / "assets" / "cursors" / "ahri-blossom"))
     ap.add_argument("--sheet", help="also write a contact-sheet PNG here")
+    ap.add_argument("--content", type=float, default=CONTENT, help="glyph size as a fraction of the canvas (22/32 normal, 26/32 large)")
     a = ap.parse_args()
+    globals()["CONTENT"] = a.content
     pal = palette()
     previews = build(ensure_bibata(a.bibata), Path(a.out), pal, a.variant, a.outline)
     if a.sheet:
