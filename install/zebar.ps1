@@ -41,7 +41,16 @@ $sc.Save()
 
 if (-not $NoRestart) {
     Get-Process zebar -ErrorAction SilentlyContinue | Stop-Process -Force
-    Start-Sleep -Milliseconds 800
-    Start-Process $exe -ArgumentList 'startup' -WorkingDirectory (Split-Path $exe)
+    # Zebar's WebView2 helpers keep the profile dir locked for a few seconds; a new instance started
+    # before they exit can't load the bar page (blank bar). Wait for them, then force the stragglers.
+    $helpers = { Get-CimInstance Win32_Process -Filter "Name='msedgewebview2.exe'" | Where-Object CommandLine -match 'webview-exe-name=zebar\.exe' }
+    foreach ($i in 1..20) { if (-not (& $helpers)) { break }; Start-Sleep -Milliseconds 250 }
+    & $helpers | ForEach-Object { Stop-Process -Id $_.ProcessId -Force -ErrorAction SilentlyContinue }
+    Start-Sleep -Milliseconds 500
+    Start-Process $exe -WorkingDirectory (Split-Path $exe)    # same as the login shortcut
+    # the bar's script spawns guard.ps1 within a few seconds once the page is up
+    $ok = $false
+    foreach ($i in 1..30) { Start-Sleep -Milliseconds 500; if (Get-CimInstance Win32_Process -Filter "Name='powershell.exe'" | Where-Object CommandLine -match 'guard\.ps1') { $ok = $true; break } }
+    if (-not $ok) { Write-Warning 'zebar restarted but the bar page did not come up (guard not running) - run this script again' }
 }
 "zebar: pack -> $packDir, startup shortcut -> $lnk"
