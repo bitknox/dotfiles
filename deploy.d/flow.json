@@ -1,0 +1,8 @@
+[
+  {
+    "group": "flow",
+    "src": "flow/AhriBlossom.xaml",
+    "dst": "%APPDATA%\\FlowLauncher\\Themes\\AhriBlossom.xaml",
+    "if_exists": "%LOCALAPPDATA%\\FlowLauncher\\Flow.Launcher.exe"
+  }
+]

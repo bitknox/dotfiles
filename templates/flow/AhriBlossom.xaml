@@ -1,0 +1,284 @@
+<!--
+    Name: Ahri Blossom
+    IsDark: True
+    HasBlur: True
+    Spirit Blossom Ahri - rendered from palette.json by render.py ({{ meta.name }})
+-->
+<ResourceDictionary
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:system="clr-namespace:System;assembly=mscorlib">
+
+    <ResourceDictionary.MergedDictionaries>
+        <ResourceDictionary Source="pack://application:,,,/Themes/Base.xaml" />
+    </ResourceDictionary.MergedDictionaries>
+
+    <!--  Acrylic backdrop tinted with the night-time base (XAML colors are ARGB, so build them by channel)  -->
+    <system:Boolean x:Key="ThemeBlurEnabled">True</system:Boolean>
+    <system:String x:Key="SystemBG">Dark</system:String>
+    <Color x:Key="DarkBG" A="230" R="{{ base | r }}" G="{{ base | g }}" B="{{ base | b }}" />
+    <Color x:Key="LightBG" A="230" R="{{ base | r }}" G="{{ base | g }}" B="{{ base | b }}" />
+
+    <system:Double x:Key="ResultItemHeight">50</system:Double>
+    <CornerRadius x:Key="ItemRadius">10</CornerRadius>
+    <Thickness x:Key="ItemMargin">10 0 10 0</Thickness>
+    <Thickness x:Key="ResultMargin">0 2 0 10</Thickness>
+
+    <Style x:Key="WindowRadius" TargetType="{x:Type Border}">
+        <Setter Property="CornerRadius" Value="12" />
+    </Style>
+
+    <Style
+        x:Key="WindowBorderStyle"
+        BasedOn="{StaticResource BaseWindowBorderStyle}"
+        TargetType="{x:Type Border}">
+        <Setter Property="CornerRadius" Value="12" />
+        <Setter Property="BorderThickness" Value="1" />
+        <Setter Property="BorderBrush">
+            <Setter.Value>
+                <SolidColorBrush Opacity="0.55" Color="{{ sakura }}" />
+            </Setter.Value>
+        </Setter>
+        <Setter Property="Background">
+            <Setter.Value>
+                <SolidColorBrush Opacity="0.94" Color="{{ base }}" />
+            </Setter.Value>
+        </Setter>
+    </Style>
+    <Style
+        x:Key="WindowStyle"
+        BasedOn="{StaticResource BaseWindowStyle}"
+        TargetType="{x:Type Window}">
+        <Setter Property="Width" Value="760" />
+    </Style>
+
+    <!--  Query box  -->
+    <Style
+        x:Key="QueryBoxStyle"
+        BasedOn="{StaticResource BaseQueryBoxStyle}"
+        TargetType="{x:Type TextBox}">
+        <Setter Property="FontFamily" Value="{{ font.mono }}" />
+        <Setter Property="Foreground" Value="{{ text }}" />
+        <Setter Property="CaretBrush" Value="{{ sakura }}" />
+        <Setter Property="SelectionBrush" Value="{{ lavender }}" />
+        <Setter Property="Padding" Value="0 0 56 0" />
+        <Setter Property="Height" Value="46" />
+    </Style>
+    <Style
+        x:Key="QuerySuggestionBoxStyle"
+        BasedOn="{StaticResource BaseQuerySuggestionBoxStyle}"
+        TargetType="{x:Type TextBox}">
+        <Setter Property="FontFamily" Value="{{ font.mono }}" />
+        <Setter Property="Foreground" Value="{{ overlay }}" />
+        <Setter Property="Background" Value="Transparent" />
+        <Setter Property="Padding" Value="0 0 56 0" />
+        <Setter Property="Height" Value="46" />
+    </Style>
+    <Style
+        x:Key="SearchIconStyle"
+        BasedOn="{StaticResource BaseSearchIconStyle}"
+        TargetType="{x:Type Path}">
+        <Setter Property="Fill" Value="{{ sakura }}" />
+        <Setter Property="Opacity" Value="0.75" />
+        <Setter Property="Width" Value="24" />
+        <Setter Property="Height" Value="24" />
+    </Style>
+    <Style x:Key="SearchIconPosition" TargetType="{x:Type Canvas}">
+        <Setter Property="Background" Value="Transparent" />
+        <Setter Property="Width" Value="32" />
+        <Setter Property="Height" Value="32" />
+        <Setter Property="Margin" Value="0 8 10 0" />
+        <Setter Property="HorizontalAlignment" Value="Right" />
+    </Style>
+    <Style
+        x:Key="PendingLineStyle"
+        BasedOn="{StaticResource BasePendingLineStyle}"
+        TargetType="{x:Type Line}">
+        <Setter Property="Stroke" Value="{{ spirit }}" />
+    </Style>
+    <Style
+        x:Key="SeparatorStyle"
+        BasedOn="{StaticResource BaseSeparatorStyle}"
+        TargetType="{x:Type Rectangle}">
+        <Setter Property="Fill" Value="{{ surface1 }}" />
+        <Setter Property="Height" Value="1" />
+        <Setter Property="Margin" Value="14 0 14 8" />
+    </Style>
+
+    <!--  Result items: sakura left-bar with a soft pink glow on the selected row  -->
+    <Style
+        x:Key="BulletStyle"
+        BasedOn="{StaticResource BaseBulletStyle}"
+        TargetType="{x:Type Border}">
+        <Setter Property="Width" Value="3" />
+        <Setter Property="Height" Value="26" />
+        <Setter Property="Background" Value="Transparent" />
+    </Style>
+    <Style
+        x:Key="ItemBulletSelectedStyle"
+        BasedOn="{StaticResource BaseBulletStyle}"
+        TargetType="{x:Type Border}">
+        <Setter Property="Width" Value="3" />
+        <Setter Property="Height" Value="26" />
+        <Setter Property="CornerRadius" Value="2" />
+        <Setter Property="Background" Value="{{ sakura }}" />
+        <Setter Property="Effect">
+            <Setter.Value>
+                <DropShadowEffect BlurRadius="10" Opacity="0.9" ShadowDepth="0" Color="{{ sakura }}" />
+            </Setter.Value>
+        </Setter>
+    </Style>
+    <SolidColorBrush x:Key="ItemSelectedBackgroundColor" Color="{{ surface1 }}" />
+
+    <Style
+        x:Key="ItemTitleStyle"
+        BasedOn="{StaticResource BaseItemTitleStyle}"
+        TargetType="{x:Type TextBlock}">
+        <Setter Property="FontFamily" Value="{{ font.mono }}" />
+        <Setter Property="Foreground" Value="{{ text }}" />
+    </Style>
+    <Style
+        x:Key="ItemSubTitleStyle"
+        BasedOn="{StaticResource BaseItemSubTitleStyle}"
+        TargetType="{x:Type TextBlock}">
+        <Setter Property="FontFamily" Value="{{ font.mono }}" />
+        <Setter Property="Foreground" Value="{{ subtext }}" />
+        <Setter Property="Opacity" Value="0.8" />
+    </Style>
+    <Style
+        x:Key="ItemTitleSelectedStyle"
+        BasedOn="{StaticResource BaseItemTitleSelectedStyle}"
+        TargetType="{x:Type TextBlock}">
+        <Setter Property="FontFamily" Value="{{ font.mono }}" />
+        <Setter Property="Foreground" Value="{{ cream }}" />
+    </Style>
+    <Style
+        x:Key="ItemSubTitleSelectedStyle"
+        BasedOn="{StaticResource BaseItemSubTitleSelectedStyle}"
+        TargetType="{x:Type TextBlock}">
+        <Setter Property="FontFamily" Value="{{ font.mono }}" />
+        <Setter Property="Foreground" Value="{{ lavender }}" />
+    </Style>
+    <!--  matched characters  -->
+    <Style x:Key="HighlightStyle">
+        <Setter Property="Inline.Foreground" Value="{{ sakura }}" />
+        <Setter Property="Inline.FontWeight" Value="Bold" />
+    </Style>
+
+    <Style
+        x:Key="ItemGlyph"
+        BasedOn="{StaticResource BaseGlyphStyle}"
+        TargetType="{x:Type TextBlock}">
+        <Setter Property="Foreground" Value="{{ lavender }}" />
+    </Style>
+    <Style
+        x:Key="ItemGlyphSelectedStyle"
+        BasedOn="{StaticResource BaseGlyphSelectedStyle}"
+        TargetType="{x:Type TextBlock}">
+        <Setter Property="Foreground" Value="{{ sakura }}" />
+    </Style>
+
+    <Style
+        x:Key="ItemHotkeyStyle"
+        BasedOn="{StaticResource BaseItemHotkeyStyle}"
+        TargetType="{x:Type TextBlock}">
+        <Setter Property="FontFamily" Value="{{ font.mono }}" />
+        <Setter Property="Foreground" Value="{{ overlay }}" />
+    </Style>
+    <Style
+        x:Key="ItemHotkeySelectedStyle"
+        BasedOn="{StaticResource BaseItemHotkeySelectedStyle}"
+        TargetType="{x:Type TextBlock}">
+        <Setter Property="FontFamily" Value="{{ font.mono }}" />
+        <Setter Property="Foreground" Value="{{ spirit }}" />
+    </Style>
+    <Style
+        x:Key="ItemHotkeyBGStyle"
+        BasedOn="{StaticResource BaseItemHotkeyBGStyle}"
+        TargetType="{x:Type Border}">
+        <Setter Property="Background" Value="{{ surface0 }}" />
+        <Setter Property="CornerRadius" Value="6" />
+    </Style>
+    <Style
+        x:Key="ItemHotkeyBGSelectedStyle"
+        BasedOn="{StaticResource BaseItemHotkeyBGSelectedStyle}"
+        TargetType="{x:Type Border}">
+        <Setter Property="Background" Value="{{ surface2 }}" />
+        <Setter Property="CornerRadius" Value="6" />
+    </Style>
+
+    <!--  Scrollbar  -->
+    <Style
+        x:Key="ThumbStyle"
+        BasedOn="{StaticResource BaseThumbStyle}"
+        TargetType="{x:Type Thumb}">
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type Thumb}">
+                    <Border
+                        Background="{{ surface2 }}"
+                        BorderBrush="Transparent"
+                        BorderThickness="0"
+                        CornerRadius="2"
+                        DockPanel.Dock="Right" />
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+    <Style
+        x:Key="ScrollBarStyle"
+        BasedOn="{StaticResource BaseScrollBarStyle}"
+        TargetType="{x:Type ScrollBar}">
+        <Setter Property="Width" Value="4" />
+    </Style>
+
+    <!--  Clock / date (shown on the empty query)  -->
+    <Style
+        x:Key="ClockPanel"
+        BasedOn="{StaticResource ClockPanel}"
+        TargetType="{x:Type StackPanel}">
+        <Setter Property="Margin" Value="0 0 56 0" />
+    </Style>
+    <Style
+        x:Key="ClockBox"
+        BasedOn="{StaticResource BaseClockBox}"
+        TargetType="{x:Type TextBlock}">
+        <Setter Property="FontFamily" Value="{{ font.mono }}" />
+        <Setter Property="Foreground" Value="{{ spirit }}" />
+    </Style>
+    <Style
+        x:Key="DateBox"
+        BasedOn="{StaticResource BaseDateBox}"
+        TargetType="{x:Type TextBlock}">
+        <Setter Property="FontFamily" Value="{{ font.mono }}" />
+        <Setter Property="Foreground" Value="{{ subtext }}" />
+    </Style>
+
+    <!--  Preview pane (F1)  -->
+    <Style
+        x:Key="PreviewBorderStyle"
+        BasedOn="{StaticResource BasePreviewBorderStyle}"
+        TargetType="{x:Type Border}">
+        <Setter Property="BorderBrush" Value="{{ surface1 }}" />
+    </Style>
+    <Style
+        x:Key="PreviewItemTitleStyle"
+        BasedOn="{StaticResource BasePreviewItemTitleStyle}"
+        TargetType="{x:Type TextBlock}">
+        <Setter Property="FontFamily" Value="{{ font.mono }}" />
+        <Setter Property="Foreground" Value="{{ sakura }}" />
+    </Style>
+    <Style
+        x:Key="PreviewItemSubTitleStyle"
+        BasedOn="{StaticResource BasePreviewItemSubTitleStyle}"
+        TargetType="{x:Type TextBlock}">
+        <Setter Property="FontFamily" Value="{{ font.mono }}" />
+        <Setter Property="Foreground" Value="{{ subtext }}" />
+    </Style>
+    <Style
+        x:Key="PreviewGlyph"
+        BasedOn="{StaticResource BasePreviewGlyph}"
+        TargetType="{x:Type TextBlock}">
+        <Setter Property="Foreground" Value="{{ lavender }}" />
+    </Style>
+</ResourceDictionary>
