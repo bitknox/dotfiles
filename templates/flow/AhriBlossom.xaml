@@ -53,7 +53,7 @@
         x:Key="QueryBoxStyle"
         BasedOn="{StaticResource BaseQueryBoxStyle}"
         TargetType="{x:Type TextBox}">
-        <Setter Property="FontFamily" Value="{{ font.mono }}" />
+        <Setter Property="FontFamily" Value="{{ font.ui }}" />
         <Setter Property="Foreground" Value="{{ text }}" />
         <Setter Property="CaretBrush" Value="{{ sakura }}" />
         <Setter Property="SelectionBrush" Value="{{ lavender }}" />
@@ -64,7 +64,7 @@
         x:Key="QuerySuggestionBoxStyle"
         BasedOn="{StaticResource BaseQuerySuggestionBoxStyle}"
         TargetType="{x:Type TextBox}">
-        <Setter Property="FontFamily" Value="{{ font.mono }}" />
+        <Setter Property="FontFamily" Value="{{ font.ui }}" />
         <Setter Property="Foreground" Value="{{ overlay }}" />
         <Setter Property="Background" Value="Transparent" />
         <Setter Property="Padding" Value="0 0 56 0" />
@@ -121,14 +121,14 @@
         x:Key="ItemTitleStyle"
         BasedOn="{StaticResource BaseItemTitleStyle}"
         TargetType="{x:Type TextBlock}">
-        <Setter Property="FontFamily" Value="{{ font.mono }}" />
+        <Setter Property="FontFamily" Value="{{ font.ui }}" />
         <Setter Property="Foreground" Value="{{ text }}" />
     </Style>
     <Style
         x:Key="ItemSubTitleStyle"
         BasedOn="{StaticResource BaseItemSubTitleStyle}"
         TargetType="{x:Type TextBlock}">
-        <Setter Property="FontFamily" Value="{{ font.mono }}" />
+        <Setter Property="FontFamily" Value="{{ font.ui }}" />
         <Setter Property="Foreground" Value="{{ subtext }}" />
         <Setter Property="Opacity" Value="0.8" />
     </Style>
@@ -136,14 +136,14 @@
         x:Key="ItemTitleSelectedStyle"
         BasedOn="{StaticResource BaseItemTitleSelectedStyle}"
         TargetType="{x:Type TextBlock}">
-        <Setter Property="FontFamily" Value="{{ font.mono }}" />
+        <Setter Property="FontFamily" Value="{{ font.ui }}" />
         <Setter Property="Foreground" Value="{{ crust }}" />
     </Style>
     <Style
         x:Key="ItemSubTitleSelectedStyle"
         BasedOn="{StaticResource BaseItemSubTitleSelectedStyle}"
         TargetType="{x:Type TextBlock}">
-        <Setter Property="FontFamily" Value="{{ font.mono }}" />
+        <Setter Property="FontFamily" Value="{{ font.ui }}" />
         <Setter Property="Foreground" Value="{{ base }}" />
         <Setter Property="Opacity" Value="0.7" />
     </Style>
@@ -170,14 +170,14 @@
         x:Key="ItemHotkeyStyle"
         BasedOn="{StaticResource BaseItemHotkeyStyle}"
         TargetType="{x:Type TextBlock}">
-        <Setter Property="FontFamily" Value="{{ font.mono }}" />
+        <Setter Property="FontFamily" Value="{{ font.ui }}" />
         <Setter Property="Foreground" Value="{{ overlay }}" />
     </Style>
     <Style
         x:Key="ItemHotkeySelectedStyle"
         BasedOn="{StaticResource BaseItemHotkeySelectedStyle}"
         TargetType="{x:Type TextBlock}">
-        <Setter Property="FontFamily" Value="{{ font.mono }}" />
+        <Setter Property="FontFamily" Value="{{ font.ui }}" />
         <Setter Property="Foreground" Value="{{ base }}" />
     </Style>
     <Style
@@ -229,14 +229,14 @@
         x:Key="ClockBox"
         BasedOn="{StaticResource BaseClockBox}"
         TargetType="{x:Type TextBlock}">
-        <Setter Property="FontFamily" Value="{{ font.mono }}" />
+        <Setter Property="FontFamily" Value="{{ font.ui }}" />
         <Setter Property="Foreground" Value="{{ spirit }}" />
     </Style>
     <Style
         x:Key="DateBox"
         BasedOn="{StaticResource BaseDateBox}"
         TargetType="{x:Type TextBlock}">
-        <Setter Property="FontFamily" Value="{{ font.mono }}" />
+        <Setter Property="FontFamily" Value="{{ font.ui }}" />
         <Setter Property="Foreground" Value="{{ subtext }}" />
     </Style>
 
@@ -251,14 +251,14 @@
         x:Key="PreviewItemTitleStyle"
         BasedOn="{StaticResource BasePreviewItemTitleStyle}"
         TargetType="{x:Type TextBlock}">
-        <Setter Property="FontFamily" Value="{{ font.mono }}" />
+        <Setter Property="FontFamily" Value="{{ font.ui }}" />
         <Setter Property="Foreground" Value="{{ sakura }}" />
     </Style>
     <Style
         x:Key="PreviewItemSubTitleStyle"
         BasedOn="{StaticResource BasePreviewItemSubTitleStyle}"
         TargetType="{x:Type TextBlock}">
-        <Setter Property="FontFamily" Value="{{ font.mono }}" />
+        <Setter Property="FontFamily" Value="{{ font.ui }}" />
         <Setter Property="Foreground" Value="{{ subtext }}" />
     </Style>
     <Style

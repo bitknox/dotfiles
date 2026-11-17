@@ -65,7 +65,7 @@ theme
 
 	font
 	{
-		name = "{{ font.mono }}"
+		name = "{{ font.ui }}"
 		size = 14
 		weight = 4
 	}
