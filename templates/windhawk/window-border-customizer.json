@@ -1,0 +1,23 @@
+﻿{
+  "normal_window_border": {
+    "enable_custom_border": true,
+    "color": "#FF{{ sakura | strip }}",
+    "dark_color": "#FF{{ sakura | strip }}",
+    "enable_unfocused": true,
+    "unfocused_color": "#FF{{ surface2 | strip }}",
+    "unfocused_dark_color": "#FF{{ surface2 | strip }}"
+  },
+  "maximized_window_border": {
+    "show_custom_border": false
+  },
+  "context_menu_border": {
+    "enable_custom_border": true,
+    "color": "#FF{{ surface1 | strip }}",
+    "dark_color": "#FF{{ surface1 | strip }}"
+  },
+  "tooltip_border": {
+    "enable_custom_border": true,
+    "color": "#FF{{ surface1 | strip }}",
+    "dark_color": "#FF{{ surface1 | strip }}"
+  }
+}

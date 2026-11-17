@@ -1,0 +1,9 @@
+﻿{
+  "mode": "keyboardOnlyFullyHide",
+  "showTemporarilyHotkey": "Alt+Escape",
+  "toggleAlwaysShowHotkey": "Alt+`",
+  "toggleAlwaysShowMouseEvent": "disabled",
+  "showTemporarilyDurationMs": 1000,
+  "winKeyAction": "defaultWindowsBehavior",
+  "oldTaskbarOnWin11": false
+}
