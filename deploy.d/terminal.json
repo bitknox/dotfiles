@@ -1,5 +1,5 @@
 [
-  { "group": "terminal", "src": "terminal/ahri-blossom.omp.json", "dst": "%USERPROFILE%\\.config\\ahri-blossom.omp.json" },
+  { "group": "terminal", "src": "terminal/starship.toml", "dst": "%USERPROFILE%\\.config\\starship.toml" },
   { "group": "terminal", "src": "terminal/profile.ps1", "dst": "%USERPROFILE%\\Documents\\PowerShell\\Microsoft.PowerShell_profile.ps1" },
   { "group": "terminal", "src": "terminal/profile.ps1", "dst": "%USERPROFILE%\\Documents\\WindowsPowerShell\\Microsoft.PowerShell_profile.ps1" },
   { "group": "terminal", "src": "terminal/fastfetch", "dst": "%USERPROFILE%\\.config\\fastfetch" },

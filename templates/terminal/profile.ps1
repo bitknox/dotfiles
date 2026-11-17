@@ -3,10 +3,39 @@
 
 $esc = [char]27
 
+# Tools installed after this terminal started may not be on PATH yet — add their known dirs.
+foreach ($d in "$env:ProgramFiles\starship\bin", "$env:LOCALAPPDATA\cava") {
+    if ((Test-Path $d) -and ($env:Path -notlike "*$d*")) { $env:Path += ";$d" }
+}
+
+# --- cached init scripts --------------------------------------------------------------
+# Generating init scripts is the slow part of shell startup; cache them and only
+# regenerate when the tool's binary changes (i.e. after an update).
+function Import-CachedInit([string]$Name, [string]$Exe, [string[]]$InitArgs) {
+    $cmd = Get-Command $Exe -CommandType Application -ErrorAction SilentlyContinue | Select-Object -First 1
+    if (-not $cmd) { return }
+    if ($Exe -eq 'starship') { $env:STARSHIP_EXE = $cmd.Source }
+    $dir = "$env:LOCALAPPDATA\ahri-rice\init"
+    $cache = "$dir\$Name-$($PSVersionTable.PSEdition).ps1"
+    if (-not (Test-Path $cache) -or (Get-Item $cmd.Source).LastWriteTime -gt (Get-Item $cache).LastWriteTime) {
+        New-Item -ItemType Directory -Force $dir | Out-Null
+        $script = & $cmd.Source @InitArgs | Out-String
+        if ($Name -eq 'starship') {
+            # starship runs itself once at load just to fetch the continuation prompt; bake it in instead
+            $script = [regex]::Replace($script, '(?s)Set-PSReadLineOption -ContinuationPrompt \(\s*Invoke-Native.*?--continuation"\s*\)\s*\)',
+                "Set-PSReadLineOption -ContinuationPrompt `"`$([char]27)[38;2;{{ overlay | r }};{{ overlay | g }};{{ overlay | b }}m❯❯ `$([char]27)[0m`"")
+        }
+        $script | Set-Content $cache -Encoding utf8
+    }
+    . $cache
+}
+
 # --- prompt -------------------------------------------------------------------
-if (Get-Command oh-my-posh -ErrorAction SilentlyContinue) {
-    oh-my-posh init $(if ($PSVersionTable.PSEdition -eq 'Core') { 'pwsh' } else { 'powershell' }) `
-        --config "$HOME\.config\ahri-blossom.omp.json" | Invoke-Expression
+$env:STARSHIP_CONFIG = "$HOME\.config\starship.toml"
+Import-CachedInit starship starship @('init', 'powershell', '--print-full-init')
+if (Get-Command Enable-TransientPrompt -ErrorAction SilentlyContinue) {
+    function global:Invoke-Starship-TransientFunction { &starship module character }
+    Enable-TransientPrompt
 }
 
 # --- PSReadLine -------------------------------------------------------------------
@@ -35,9 +64,7 @@ if (Get-Module -ListAvailable PSReadLine) {
 
 # --- tools ----------------------------------------------------------------------
 $env:BAT_THEME = 'ansi'                       # bat follows the terminal's Ahri ANSI palette
-if (Get-Command zoxide -ErrorAction SilentlyContinue) {
-    Invoke-Expression (& { (zoxide init powershell --cmd cd | Out-String) })
-}
+Import-CachedInit zoxide zoxide @('init', 'powershell', '--cmd', 'cd')
 if (Get-Command eza -ErrorAction SilentlyContinue) {
     Remove-Item Alias:ls -Force -ErrorAction SilentlyContinue
     function ls { eza --icons=auto --group-directories-first @args }

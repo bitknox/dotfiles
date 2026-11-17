@@ -1,0 +1,92 @@
+"$schema" = 'https://starship.rs/config-schema.json'
+# Ahri Blossom prompt (rendered from ~/dotfiles/templates/terminal/starship.toml)
+
+add_newline = true
+palette = "ahri"
+command_timeout = 400
+
+format = """
+[](fg:pill)[✿ ](bg:pill fg:sakura)$directory[](fg:pill)\
+$git_branch$git_status\
+$python$nodejs$golang$rust$dotnet\
+$cmd_duration
+$character"""
+
+[palettes.ahri]
+pill = "{{ surface0 }}"
+muted = "{{ overlay }}"
+text = "{{ text }}"
+sakura = "{{ sakura }}"
+blossom = "{{ blossom }}"
+lavender = "{{ lavender }}"
+spirit = "{{ spirit }}"
+gold = "{{ gold }}"
+mint = "{{ mint }}"
+rose = "{{ rose }}"
+peach = "{{ peach }}"
+sky = "{{ sky }}"
+
+[directory]
+style = "bg:pill fg:sakura"
+format = "[$path]($style)[$read_only]($read_only_style)"
+read_only = " \U000f033e"
+read_only_style = "bg:pill fg:rose"
+truncation_length = 3
+truncate_to_repo = false
+home_symbol = "~"
+
+[git_branch]
+symbol = " "
+style = "bg:pill fg:lavender"
+format = " [](fg:pill)[$symbol$branch]($style)[](fg:pill)"
+truncation_length = 28
+
+[git_status]
+style = "fg:gold"
+format = "( [$all_status$ahead_behind]($style))"
+ahead = "[⇡${count}](fg:spirit)"
+behind = "[⇣${count}](fg:spirit)"
+diverged = "[⇕⇡${ahead_count}⇣${behind_count}](fg:spirit)"
+modified = "~${count}"
+untracked = "?${count}"
+staged = "[+${count}](fg:mint)"
+deleted = "-${count}"
+renamed = "»${count}"
+conflicted = "[=${count}](fg:rose)"
+stashed = ""
+
+[python]
+# icon only: printing versions means launching each runtime on every prompt (~100ms each)
+python_binary = ["py"]   # 'python' is the Microsoft Store stub on this machine
+symbol = " "
+style = "fg:gold"
+format = " [via](fg:muted) [${symbol}( \\($virtualenv\\))]($style)"
+
+[nodejs]
+symbol = " "
+style = "fg:mint"
+format = " [via](fg:muted) [$symbol]($style)"
+
+[golang]
+symbol = " "
+style = "fg:sky"
+format = " [via](fg:muted) [$symbol]($style)"
+
+[rust]
+symbol = " "
+style = "fg:peach"
+format = " [via](fg:muted) [$symbol]($style)"
+
+[dotnet]
+symbol = " "
+style = "fg:lavender"
+format = " [via](fg:muted) [$symbol]($style)"
+
+[cmd_duration]
+min_time = 2000
+style = "fg:spirit"
+format = " [took](fg:muted) [$duration]($style)"
+
+[character]
+success_symbol = "[❯](fg:sakura)"
+error_symbol = "[❯](fg:rose)"
