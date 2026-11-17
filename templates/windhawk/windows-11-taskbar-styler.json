@@ -1,4 +1,4 @@
-﻿{
+{
   "theme": "DockLike",
   "styleConstants": [
     "DockTopGap=4",
@@ -12,6 +12,12 @@
         "CornerRadius=10",
         "BorderThickness=1",
         "BorderBrush:=<SolidColorBrush Color=\"#FF{{ surface1 | strip }}\" />"
+      ]
+    },
+    {
+      "target": "Taskbar.AugmentedEntryPointButton#AugmentedEntryPointButton",
+      "styles": [
+        "Visibility=Collapsed"
       ]
     }
   ]

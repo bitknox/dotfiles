@@ -99,8 +99,7 @@ button {
   color: var(--crust);
   font-size: 17px;
 }
-.sigil-glyph { display: inline-block; line-height: 1; transition: transform 0.4s ease; }
-.sigil:hover .sigil-glyph { transform: rotate(72deg); }
+.sigil-glyph { display: inline-block; line-height: 1; }
 .sigil:active { background: var(--text); }
 
 /* ---------- media ---------- */
@@ -144,7 +143,7 @@ button {
 .media-text .artist { color: var(--subtext); }
 .media-text .dash { color: var(--overlay); padding: 0 0.4em; }
 
-.media-time { flex: none; color: var(--overlay); font-size: 11px; }
+.media-time { flex: none; color: var(--subtext); font-size: 11px; font-variant-numeric: tabular-nums; }
 .media[data-has-timeline='false'] .media-time { display: none; }
 
 .media-ctrls { display: flex; align-items: center; gap: 1px; }
@@ -158,16 +157,7 @@ button {
 
 /* ---------- clock ---------- */
 
-.time {
-  font-family: var(--font-display);
-  font-weight: 600;
-  font-size: 19px;
-  letter-spacing: 0.03em;
-  color: var(--text);
-  line-height: 1;
-  padding-top: 1px;
-}
-
+/* decorative flourish (kept on purpose) */
 .kanji {
   font-family: var(--font-display);
   font-size: 12px;
@@ -175,7 +165,17 @@ button {
   letter-spacing: 0.1em;
 }
 
-.date { color: var(--subtext); }
+/* clock: same mono as the rest of the bar, tabular digits so minutes don't shift width */
+.time {
+  font-weight: 600;
+  color: var(--text);
+  font-variant-numeric: tabular-nums;
+}
+
+.date {
+  color: var(--subtext);
+  font-variant-numeric: tabular-nums;
+}
 
 /* ---------- stats ---------- */
 
