@@ -1,0 +1,12 @@
+# Firefox Add-ons (AMO) slugs for Zen — Brave extension equivalents. install/zen-addons.ps1 opens each page.
+ublock-origin               # replaces Brave Shields
+bitwarden-password-manager
+betterttv
+google-search-maps-button
+image-downloader-addon
+pdf-mage
+return-youtube-dislikes
+ruffle_rs
+tampermonkey                # export scripts from Brave's Tampermonkey dashboard (Utilities > Export), import here
+pp-calculator               # osu! pp calculator
+# no Firefox version: Webrecorder ArchiveWeb.page (desktop app is installed instead)
