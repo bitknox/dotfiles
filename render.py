@@ -66,27 +66,45 @@ def sub(m):
     raise KeyError(f"unknown filter '{flt}'")
 
 
-def render():
+def render(check=False):
+    """Render templates/ -> generated/. With check=True, only validate placeholders (writes nothing)."""
     src, out = ROOT / "templates", ROOT / "generated"
-    if out.exists():
+    if out.exists() and not check:
         shutil.rmtree(out)
-    n = 0
+    n, errors = 0, []
     for f in src.rglob("*"):
         if f.is_dir():
             continue
         dst = out / f.relative_to(src)
-        dst.parent.mkdir(parents=True, exist_ok=True)
-        if f.suffix.lower() in TEXT_EXT:
-            dst.write_text(TOKEN.sub(sub, f.read_text(encoding="utf-8")), encoding="utf-8", newline="")
-        else:
-            shutil.copy2(f, dst)
+        try:
+            if f.suffix.lower() in TEXT_EXT:
+                text = TOKEN.sub(sub, f.read_text(encoding="utf-8"))
+                if not check:
+                    dst.parent.mkdir(parents=True, exist_ok=True)
+                    dst.write_text(text, encoding="utf-8", newline="")
+            elif not check:
+                dst.parent.mkdir(parents=True, exist_ok=True)
+                shutil.copy2(f, dst)
+        except KeyError as e:
+            errors.append(f"{f.relative_to(src)}: {e}")
         n += 1
-    print(f"rendered {n} files -> {out}")
+    for e in errors:
+        print("ERROR", e)
+    print(f"{'checked' if check else 'rendered'} {n} files" + ("" if check else f" -> {out}"))
+    if errors:
+        sys.exit(1)
+
+
+def load_deploy_spec():
+    """deploy.d/<group>.json files, each a list of {group, src, dst, [if_exists]}."""
+    spec = []
+    for f in sorted((ROOT / "deploy.d").glob("*.json")):
+        spec += json.loads(f.read_text(encoding="utf-8"))
+    return spec
 
 
 def deploy(only=None):
-    spec = json.loads((ROOT / "deploy.json").read_text(encoding="utf-8"))
-    for item in spec:
+    for item in load_deploy_spec():
         if only and item["group"] not in only:
             continue
         src = ROOT / "generated" / item["src"]
@@ -103,6 +121,9 @@ def deploy(only=None):
 
 
 if __name__ == "__main__":
+    if "--check" in sys.argv:
+        render(check=True)
+        sys.exit(0)
     render()
     if "--deploy" in sys.argv:
         groups = [a for a in sys.argv[1:] if not a.startswith("--")]
