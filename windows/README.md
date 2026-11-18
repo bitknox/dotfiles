@@ -2,6 +2,8 @@
 
 A Windows 11 setup with a night-violet base, a sakura pink accent, and lavender and spirit-teal highlights. There is no tiling window manager. Zebar draws a bar along the top, and Windhawk restyles the native taskbar as a centered dock.
 
+![Desktop with the Spirit Blossom Ahri wallpaper, the Zebar top bar, the dock, fastfetch, cava and Spotify](assets/screenshot.jpg)
+
 ```powershell
 git clone https://github.com/bitknox/dotfiles $HOME\dotfiles
 cd $HOME\dotfiles
