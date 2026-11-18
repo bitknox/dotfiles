@@ -58,13 +58,13 @@ The rest goes through `install/`:
 - Windows Terminal settings are merged into your existing `settings.json`, which keeps your own keybindings and profiles.
 - Flow's settings are merged, and Flow is restarted.
 - The VS Code theme is packed into a `.vsix` and installed.
-- The accent color is written to the registry straight from `palette.json`.
+- The accent color is written to the registry from the resolved palette in `generated/palette.json`.
 
 `deploy.d` hardcodes this machine's Zen profile (`kk4sqtcv.Default (release)`) and JetBrains versions (`Rider2025.1`, `IdeaIC2023.2`). On another machine those entries are skipped, and the `zen` and `jetbrains` install steps look up the real paths.
 
 ### Changing a color everywhere
 
-1. Edit `../palette.json`. Change a value under `colors`, or point a role somewhere else. For example, `"accent": "lavender"` changes the accent in every app.
+1. Edit `../palettes/ahri-blossom.json`. Change a value under `colors`, or point a role somewhere else. For example, `"accent": "lavender"` changes the accent in every app.
 2. Run `py -3 render.py --check`.
 3. Run `.\windows\install.ps1 -Only render,deploy,accent,terminal,flow,nilesoft,zebar,windhawk,vscode-theme,jetbrains,zen,spicetify`.
 4. Restart Discord, Zen and OBS. Ctrl + right-click once reloads Nilesoft.

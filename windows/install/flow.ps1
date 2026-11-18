@@ -11,7 +11,10 @@ param(
     [switch]$NoRestart
 )
 $ErrorActionPreference = 'Stop'
-$pal      = Get-Content "$PSScriptRoot\..\..\palette.json" -Raw | ConvertFrom-Json
+# generated\palette.json is the resolved theme written by render.py; fall back to the default theme
+$palFile = "$PSScriptRoot\..\generated\palette.json"
+if (-not (Test-Path $palFile)) { $palFile = "$PSScriptRoot\..\..\palettes\$((Get-Content "$PSScriptRoot\..\themes" | Select-Object -First 1).Trim()).json" }
+$pal = Get-Content $palFile -Raw | ConvertFrom-Json
 $font     = $pal.fonts.ui
 $data     = "$env:APPDATA\FlowLauncher"
 $settings = "$data\Settings\Settings.json"

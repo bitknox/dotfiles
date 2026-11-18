@@ -4,3 +4,5 @@ generated/
 backup/
 __pycache__/
 *.log
+# the theme picked on this machine (theme.sh writes it)
+.current-theme

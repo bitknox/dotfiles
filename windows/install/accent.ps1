@@ -1,7 +1,10 @@
-# Sets Windows dark mode + accent color (and its 8-shade AccentPalette) from palette.json.
+# Sets Windows dark mode + accent color (and its 8-shade AccentPalette) from the theme palette.
 # Title bars stay dark (ColorPrevalence=0); window borders are colored by Windhawk's window-border-customizer.
 $ErrorActionPreference = 'Stop'
-$pal = Get-Content "$PSScriptRoot\..\..\palette.json" -Raw | ConvertFrom-Json
+# generated\palette.json is the resolved theme written by render.py; fall back to the default theme
+$palFile = "$PSScriptRoot\..\generated\palette.json"
+if (-not (Test-Path $palFile)) { $palFile = "$PSScriptRoot\..\..\palettes\$((Get-Content "$PSScriptRoot\..\themes" | Select-Object -First 1).Trim()).json" }
+$pal = Get-Content $palFile -Raw | ConvertFrom-Json
 $accentHex = $pal.colors.($pal.roles.accent)
 
 function ConvertTo-Rgb($hex) { $h = $hex.TrimStart('#'); ,@([Convert]::ToByte($h.Substring(0,2),16), [Convert]::ToByte($h.Substring(2,2),16), [Convert]::ToByte($h.Substring(4,2),16)) }

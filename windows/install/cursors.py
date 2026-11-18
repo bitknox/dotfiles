@@ -1,4 +1,4 @@
-"""Build the "Ahri Blossom" Windows cursor scheme from Bibata SVG sources, colored from palette.json.
+"""Build the "Ahri Blossom" Windows cursor scheme from Bibata SVG sources, colored from the theme palette.
 
 Output: assets/cursors/ahri-blossom/*.cur|*.ani + install.inf  (install with install/apply-cursors.ps1)
 
@@ -75,7 +75,12 @@ TAG_ON = 'stroke="#0000FF" stroke-width="17"'
 
 
 def palette() -> dict:
-    with open(ROOT.parent / "palette.json", encoding="utf-8") as f:
+    """The resolved theme from render.py (generated/palette.json), else the platform default theme."""
+    path = ROOT / "generated" / "palette.json"
+    if not path.exists():
+        default = (ROOT / "themes").read_text(encoding="utf-8").split()[0]
+        path = ROOT.parent / "palettes" / f"{default}.json"
+    with open(path, encoding="utf-8") as f:
         return json.load(f)
 
 

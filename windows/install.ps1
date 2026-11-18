@@ -350,7 +350,7 @@ Add-Step 'fonts' 'Maple Mono NF v7.9 + Shippori Mincho, per-user (no admin)' `
     -Plan  { 'install\fonts.ps1' } `
     -Run   { Invoke-InstallScript 'fonts.ps1' }
 
-Add-Step 'render' 'Render templates\ -> generated\ from palette.json' `
+Add-Step 'render' 'Render templates\ -> generated\ from the theme palette (palettes\<theme>.json)' `
     -Check { Get-NeedPy } `
     -Plan  { 'py -3 ..\render.py' } `
     -Run   { $script:Rendered = $false; Invoke-Render }

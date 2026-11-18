@@ -53,6 +53,8 @@
     "warn":      "gold",
     "error":     "rose",
     "ok":        "mint",
+    "info":      "sky",
+    "link":      "sky",
     "bg":        "base",
     "bg_alt":    "mantle",
     "fg":        "text",
