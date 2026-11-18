@@ -1,0 +1,200 @@
+/* {{ meta.name }}: Spicetify user.css, generated from the dotfiles palette by render.py
+ * Leans on --spice-* variables and data-testid / data-encore-id hooks so it
+ * degrades gracefully when Spotify reshuffles class names. */
+
+:root {
+  --rice-radius: 8px;
+  --rice-elevation: 0 8px 24px {{ crust | rgba:0.45 }};
+  --rice-border: {{ surface1 }};
+  --rice-link: {{ link }};
+  --rice-warn: {{ warn }};
+}
+
+/* Encore design tokens (Spotify's own variables, defined on theme-set classes) */
+:root,
+.encore-dark-theme,
+.encore-dark-theme .encore-base-set {
+  --background-base: var(--spice-main) !important;
+  --background-highlight: var(--spice-highlight) !important;
+  --background-press: var(--spice-main) !important;
+  --background-elevated-base: var(--spice-main-elevated) !important;
+  --background-elevated-highlight: var(--spice-highlight-elevated) !important;
+  --background-tinted-base: {{ surface1 | rgba:0.55 }} !important;
+  --background-tinted-highlight: {{ surface2 | rgba:0.6 }} !important;
+  --text-base: var(--spice-text) !important;
+  --text-subdued: var(--spice-subtext) !important;
+  --text-bright-accent: var(--spice-button) !important;
+  --essential-base: var(--spice-text) !important;
+  --essential-subdued: {{ overlay }} !important;
+  --essential-bright-accent: var(--spice-button) !important;
+  --decorative-base: var(--spice-text) !important;
+  --decorative-subdued: {{ surface1 }} !important;
+}
+
+::selection {
+  background: {{ surface2 }};
+  color: var(--spice-text);
+}
+
+/* ---------- Layout panels ---------- */
+.Root__nav-bar,
+.Root__main-view,
+.Root__right-sidebar,
+#Desktop_LeftSidebar_Id,
+[data-testid="root-nav-bar"] {
+  border-radius: var(--rice-radius);
+}
+.Root__now-playing-bar,
+[data-testid="now-playing-bar"] {
+  background-color: var(--spice-player) !important;
+}
+
+/* ---------- Cards ---------- */
+.main-card-card,
+[data-encore-id="card"] {
+  background-color: var(--spice-card) !important;
+  border-radius: var(--rice-radius) !important;
+  transition: background-color 120ms ease, color 120ms ease;
+}
+.main-card-card:hover,
+[data-encore-id="card"]:hover {
+  background-color: var(--spice-highlight) !important;
+  box-shadow: none;
+}
+.main-card-card img,
+[data-encore-id="card"] img,
+.main-cardImage-imageWrapper {
+  border-radius: 6px !important;
+}
+
+/* ---------- Track rows: selection is a surface step ---------- */
+[data-testid="tracklist-row"] {
+  border-radius: 4px;
+}
+[data-testid="tracklist-row"]:hover {
+  background-color: var(--spice-main-elevated) !important;
+}
+[data-testid="tracklist-row"][aria-selected="true"],
+[role="row"][aria-selected="true"] [data-testid="tracklist-row"] {
+  background-color: var(--spice-highlight) !important;
+  box-shadow: none;
+}
+
+/* ---------- Play buttons: solid accent, a second accent on hover ---------- */
+[data-testid="play-button"] [data-encore-id="buttonPrimary"] > span,
+[data-testid="control-button-playpause"] {
+  background-color: var(--spice-button) !important;
+  color: var(--spice-main) !important;
+  transition: background-color 120ms ease, color 120ms ease;
+}
+[data-testid="play-button"]:hover [data-encore-id="buttonPrimary"] > span,
+[data-testid="control-button-playpause"]:hover {
+  background-color: var(--spice-button-active) !important;
+  transform: none !important;
+}
+
+/* ---------- Progress / volume bars ---------- */
+.progress-bar,
+[data-testid="progress-bar"],
+[data-testid="playback-progressbar"] .progress-bar,
+[data-testid="volume-bar"] .progress-bar {
+  --fg-color: var(--spice-button) !important;
+  --bg-color: rgba(var(--spice-rgb-text), 0.15) !important;
+  --progress-bar-radius: 4px;
+}
+.x-progressBar-fillColor,
+.progress-bar__fg {
+  background-color: var(--spice-button) !important;
+  border-radius: 4px;
+}
+.x-progressBar-progressBarBg,
+.progress-bar__bg {
+  border-radius: 4px;
+}
+.progress-bar__slider,
+[data-testid="progress-bar-handle"] {
+  background-color: {{ cream }} !important;
+  box-shadow: none !important;
+}
+
+/* ---------- Inputs ---------- */
+[data-testid="search-input"],
+input[type="search"],
+.main-topBar-searchBar,
+.x-searchInput-searchInputInput {
+  background-color: var(--spice-main-elevated) !important;
+  border-radius: 6px !important;
+  border: 1px solid var(--rice-border) !important;
+  color: var(--spice-text) !important;
+}
+[data-testid="search-input"]:focus,
+input[type="search"]:focus,
+.x-searchInput-searchInputInput:focus {
+  border-color: {{ overlay }} !important;
+  box-shadow: none !important;
+  outline: none !important;
+}
+
+/* ---------- Chips ---------- */
+[data-encore-id="chip"] {
+  border-radius: 4px;
+}
+[data-encore-id="chip"][aria-checked="true"],
+[data-encore-id="chip"][aria-pressed="true"] {
+  background-color: var(--spice-button) !important;
+  color: var(--spice-main) !important;
+}
+
+/* ---------- Menus / popovers / tooltips ---------- */
+#context-menu ul,
+.main-contextMenu-menu,
+[data-testid="context-menu"],
+[data-tippy-root] [role="menu"] {
+  background-color: var(--spice-main-elevated) !important;
+  border: 1px solid var(--rice-border);
+  border-radius: var(--rice-radius) !important;
+  box-shadow: var(--rice-elevation) !important;
+}
+.main-contextMenu-menuItemButton:hover,
+.main-contextMenu-menuItemButton:focus,
+[role="menuitem"]:hover,
+[role="menuitem"]:focus {
+  background-color: var(--spice-highlight) !important;
+  border-radius: 4px;
+}
+[data-tippy-root] .main-trackInfo-tooltip,
+.encore-dark-theme [role="tooltip"] {
+  background-color: var(--spice-highlight-elevated) !important;
+  color: var(--spice-text) !important;
+  border-radius: var(--rice-radius);
+  box-shadow: var(--rice-elevation);
+}
+
+/* ---------- Links & toggles ---------- */
+a:not([data-testid]):not([draggable]):hover {
+  color: var(--rice-link);
+}
+[data-testid="add-button"][aria-checked="true"] svg,
+.main-addButton-active svg {
+  fill: var(--spice-button) !important;
+  color: var(--spice-button) !important;
+}
+.main-nowPlayingWidget-coverArt img,
+[data-testid="cover-art-image"] {
+  border-radius: 6px;
+}
+
+/* ---------- Scrollbars ---------- */
+.os-scrollbar-handle,
+.os-theme-spotify .os-scrollbar-handle {
+  background: rgba(var(--spice-rgb-selected-row), 0.25) !important;
+  border-radius: 8px !important;
+}
+.os-scrollbar-handle:hover,
+.os-scrollbar-handle.active {
+  background: rgba(var(--spice-rgb-selected-row), 0.45) !important;
+}
+::-webkit-scrollbar-thumb {
+  background: {{ surface2 }};
+  border-radius: 8px;
+}

@@ -1,0 +1,237 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<!-- {{ meta.name }}: Xcode color theme, generated from the dotfiles palette by render.py.
+     Xcode names the theme after the file; the install step saves one file per theme.
+     Fonts use Maple Mono NF PostScript names; Xcode falls back to its default font when they are missing. -->
+<plist version="1.0">
+<dict>
+	<key>DVTConsoleDebuggerInputTextColor</key>
+	<string>{{ text | float }} 1</string>
+	<key>DVTConsoleDebuggerInputTextFont</key>
+	<string>MapleMono-NF-Regular - 13.0</string>
+	<key>DVTConsoleDebuggerOutputTextColor</key>
+	<string>{{ subtext | float }} 1</string>
+	<key>DVTConsoleDebuggerOutputTextFont</key>
+	<string>MapleMono-NF-Regular - 13.0</string>
+	<key>DVTConsoleDebuggerPromptTextColor</key>
+	<string>{{ accent | float }} 1</string>
+	<key>DVTConsoleDebuggerPromptTextFont</key>
+	<string>MapleMono-NF-Bold - 13.0</string>
+	<key>DVTConsoleExectuableInputTextColor</key>
+	<string>{{ text | float }} 1</string>
+	<key>DVTConsoleExectuableInputTextFont</key>
+	<string>MapleMono-NF-Regular - 13.0</string>
+	<key>DVTConsoleExectuableOutputTextColor</key>
+	<string>{{ text | float }} 1</string>
+	<key>DVTConsoleExectuableOutputTextFont</key>
+	<string>MapleMono-NF-Regular - 13.0</string>
+	<key>DVTConsoleTextBackgroundColor</key>
+	<string>{{ mantle | float }} 1</string>
+	<key>DVTConsoleTextInsertionPointColor</key>
+	<string>{{ accent | float }} 1</string>
+	<key>DVTConsoleTextSelectionColor</key>
+	<string>{{ surface2 | float }} 1</string>
+	<key>DVTDebuggerInstructionPointerColor</key>
+	<string>{{ ok | float }} 1</string>
+	<key>DVTFontAndColorVersion</key>
+	<integer>1</integer>
+	<key>DVTLineSpacing</key>
+	<real>1.1</real>
+	<key>DVTMarkupTextBackgroundColor</key>
+	<string>{{ surface0 | float }} 1</string>
+	<key>DVTMarkupTextBorderColor</key>
+	<string>{{ surface1 | float }} 1</string>
+	<key>DVTMarkupTextCodeFont</key>
+	<string>MapleMono-NF-Regular - 13.0</string>
+	<key>DVTMarkupTextEmphasisColor</key>
+	<string>{{ text | float }} 1</string>
+	<key>DVTMarkupTextEmphasisFont</key>
+	<string>.SFNS-RegularItalic - 11.0</string>
+	<key>DVTMarkupTextInlineCodeColor</key>
+	<string>{{ ok | float }} 1</string>
+	<key>DVTMarkupTextLinkColor</key>
+	<string>{{ link | float }} 1</string>
+	<key>DVTMarkupTextLinkFont</key>
+	<string>.SFNS-Regular - 11.0</string>
+	<key>DVTMarkupTextNormalColor</key>
+	<string>{{ text | float }} 1</string>
+	<key>DVTMarkupTextNormalFont</key>
+	<string>.SFNS-Regular - 11.0</string>
+	<key>DVTMarkupTextOtherHeadingColor</key>
+	<string>{{ cream | float }} 1</string>
+	<key>DVTMarkupTextOtherHeadingFont</key>
+	<string>.SFNS-Bold - 13.2</string>
+	<key>DVTMarkupTextPrimaryHeadingColor</key>
+	<string>{{ cream | float }} 1</string>
+	<key>DVTMarkupTextPrimaryHeadingFont</key>
+	<string>.SFNS-Bold - 24.2</string>
+	<key>DVTMarkupTextSecondaryHeadingColor</key>
+	<string>{{ cream | float }} 1</string>
+	<key>DVTMarkupTextSecondaryHeadingFont</key>
+	<string>.SFNS-Bold - 18.7</string>
+	<key>DVTMarkupTextStrongColor</key>
+	<string>{{ text | float }} 1</string>
+	<key>DVTMarkupTextStrongFont</key>
+	<string>.SFNS-Bold - 11.0</string>
+	<key>DVTScrollbarMarkerAnalyzerColor</key>
+	<string>{{ info | float }} 1</string>
+	<key>DVTScrollbarMarkerBreakpointColor</key>
+	<string>{{ accent | float }} 1</string>
+	<key>DVTScrollbarMarkerDiffColor</key>
+	<string>{{ accent2 | float }} 1</string>
+	<key>DVTScrollbarMarkerDiffConflictColor</key>
+	<string>{{ highlight | float }} 1</string>
+	<key>DVTScrollbarMarkerErrorColor</key>
+	<string>{{ error | float }} 1</string>
+	<key>DVTScrollbarMarkerRuntimeIssueColor</key>
+	<string>{{ ansi5 | float }} 1</string>
+	<key>DVTScrollbarMarkerWarningColor</key>
+	<string>{{ warn | float }} 1</string>
+	<key>DVTSourceTextBackground</key>
+	<string>{{ base | float }} 1</string>
+	<key>DVTSourceTextBlockDimBackgroundColor</key>
+	<string>{{ mantle | float }} 1</string>
+	<key>DVTSourceTextCurrentLineHighlightColor</key>
+	<string>{{ surface0 | float }} 1</string>
+	<key>DVTSourceTextInsertionPointColor</key>
+	<string>{{ accent | float }} 1</string>
+	<key>DVTSourceTextInvisiblesColor</key>
+	<string>{{ surface2 | float }} 1</string>
+	<key>DVTSourceTextSelectionColor</key>
+	<string>{{ surface2 | float }} 1</string>
+	<key>DVTSourceTextSyntaxColors</key>
+	<dict>
+		<key>xcode.syntax.attribute</key>
+		<string>{{ ansi13 | float }} 1</string>
+		<key>xcode.syntax.character</key>
+		<string>{{ warn | float }} 1</string>
+		<key>xcode.syntax.comment</key>
+		<string>{{ overlay | float }} 1</string>
+		<key>xcode.syntax.comment.doc</key>
+		<string>{{ overlay | float }} 1</string>
+		<key>xcode.syntax.comment.doc.keyword</key>
+		<string>{{ ansi5 | float }} 1</string>
+		<key>xcode.syntax.declaration.other</key>
+		<string>{{ accent2 | float }} 1</string>
+		<key>xcode.syntax.declaration.type</key>
+		<string>{{ ansi6 | float }} 1</string>
+		<key>xcode.syntax.identifier.class</key>
+		<string>{{ ansi6 | float }} 1</string>
+		<key>xcode.syntax.identifier.class.system</key>
+		<string>{{ ansi6 | float }} 1</string>
+		<key>xcode.syntax.identifier.constant</key>
+		<string>{{ warn | float }} 1</string>
+		<key>xcode.syntax.identifier.constant.system</key>
+		<string>{{ warn | float }} 1</string>
+		<key>xcode.syntax.identifier.function</key>
+		<string>{{ accent2 | float }} 1</string>
+		<key>xcode.syntax.identifier.function.system</key>
+		<string>{{ ansi13 | float }} 1</string>
+		<key>xcode.syntax.identifier.macro</key>
+		<string>{{ ansi13 | float }} 1</string>
+		<key>xcode.syntax.identifier.macro.system</key>
+		<string>{{ ansi13 | float }} 1</string>
+		<key>xcode.syntax.identifier.type</key>
+		<string>{{ ansi6 | float }} 1</string>
+		<key>xcode.syntax.identifier.type.system</key>
+		<string>{{ ansi6 | float }} 1</string>
+		<key>xcode.syntax.identifier.variable</key>
+		<string>{{ ansi12 | float }} 1</string>
+		<key>xcode.syntax.identifier.variable.system</key>
+		<string>{{ ansi12 | float }} 1</string>
+		<key>xcode.syntax.keyword</key>
+		<string>{{ ansi5 | float }} 1</string>
+		<key>xcode.syntax.mark</key>
+		<string>{{ subtext | float }} 1</string>
+		<key>xcode.syntax.markup.code</key>
+		<string>{{ ok | float }} 1</string>
+		<key>xcode.syntax.number</key>
+		<string>{{ warn | float }} 1</string>
+		<key>xcode.syntax.plain</key>
+		<string>{{ text | float }} 1</string>
+		<key>xcode.syntax.preprocessor</key>
+		<string>{{ ansi13 | float }} 1</string>
+		<key>xcode.syntax.regex</key>
+		<string>{{ ansi14 | float }} 1</string>
+		<key>xcode.syntax.regex.capturename</key>
+		<string>{{ ansi12 | float }} 1</string>
+		<key>xcode.syntax.regex.charname</key>
+		<string>{{ ansi14 | float }} 1</string>
+		<key>xcode.syntax.regex.number</key>
+		<string>{{ warn | float }} 1</string>
+		<key>xcode.syntax.regex.other</key>
+		<string>{{ subtext | float }} 1</string>
+		<key>xcode.syntax.string</key>
+		<string>{{ ok | float }} 1</string>
+		<key>xcode.syntax.url</key>
+		<string>{{ link | float }} 1</string>
+	</dict>
+	<key>DVTSourceTextSyntaxFonts</key>
+	<dict>
+		<key>xcode.syntax.attribute</key>
+		<string>MapleMono-NF-Regular - 13.0</string>
+		<key>xcode.syntax.character</key>
+		<string>MapleMono-NF-Regular - 13.0</string>
+		<key>xcode.syntax.comment</key>
+		<string>MapleMono-NF-Italic - 13.0</string>
+		<key>xcode.syntax.comment.doc</key>
+		<string>MapleMono-NF-Italic - 13.0</string>
+		<key>xcode.syntax.comment.doc.keyword</key>
+		<string>MapleMono-NF-Italic - 13.0</string>
+		<key>xcode.syntax.declaration.other</key>
+		<string>MapleMono-NF-Regular - 13.0</string>
+		<key>xcode.syntax.declaration.type</key>
+		<string>MapleMono-NF-Regular - 13.0</string>
+		<key>xcode.syntax.identifier.class</key>
+		<string>MapleMono-NF-Regular - 13.0</string>
+		<key>xcode.syntax.identifier.class.system</key>
+		<string>MapleMono-NF-Regular - 13.0</string>
+		<key>xcode.syntax.identifier.constant</key>
+		<string>MapleMono-NF-Regular - 13.0</string>
+		<key>xcode.syntax.identifier.constant.system</key>
+		<string>MapleMono-NF-Regular - 13.0</string>
+		<key>xcode.syntax.identifier.function</key>
+		<string>MapleMono-NF-Regular - 13.0</string>
+		<key>xcode.syntax.identifier.function.system</key>
+		<string>MapleMono-NF-Regular - 13.0</string>
+		<key>xcode.syntax.identifier.macro</key>
+		<string>MapleMono-NF-Regular - 13.0</string>
+		<key>xcode.syntax.identifier.macro.system</key>
+		<string>MapleMono-NF-Regular - 13.0</string>
+		<key>xcode.syntax.identifier.type</key>
+		<string>MapleMono-NF-Regular - 13.0</string>
+		<key>xcode.syntax.identifier.type.system</key>
+		<string>MapleMono-NF-Regular - 13.0</string>
+		<key>xcode.syntax.identifier.variable</key>
+		<string>MapleMono-NF-Regular - 13.0</string>
+		<key>xcode.syntax.identifier.variable.system</key>
+		<string>MapleMono-NF-Regular - 13.0</string>
+		<key>xcode.syntax.keyword</key>
+		<string>MapleMono-NF-Regular - 13.0</string>
+		<key>xcode.syntax.mark</key>
+		<string>MapleMono-NF-Bold - 13.0</string>
+		<key>xcode.syntax.markup.code</key>
+		<string>MapleMono-NF-Regular - 13.0</string>
+		<key>xcode.syntax.number</key>
+		<string>MapleMono-NF-Regular - 13.0</string>
+		<key>xcode.syntax.plain</key>
+		<string>MapleMono-NF-Regular - 13.0</string>
+		<key>xcode.syntax.preprocessor</key>
+		<string>MapleMono-NF-Regular - 13.0</string>
+		<key>xcode.syntax.regex</key>
+		<string>MapleMono-NF-Regular - 13.0</string>
+		<key>xcode.syntax.regex.capturename</key>
+		<string>MapleMono-NF-Regular - 13.0</string>
+		<key>xcode.syntax.regex.charname</key>
+		<string>MapleMono-NF-Regular - 13.0</string>
+		<key>xcode.syntax.regex.number</key>
+		<string>MapleMono-NF-Regular - 13.0</string>
+		<key>xcode.syntax.regex.other</key>
+		<string>MapleMono-NF-Regular - 13.0</string>
+		<key>xcode.syntax.string</key>
+		<string>MapleMono-NF-Regular - 13.0</string>
+		<key>xcode.syntax.url</key>
+		<string>MapleMono-NF-Regular - 13.0</string>
+	</dict>
+</dict>
+</plist>

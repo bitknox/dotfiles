@@ -1,0 +1,27 @@
+{
+  "name": "dotfiles-themes",
+  "displayName": "Dotfiles themes",
+  "description": "Color themes generated from the dotfiles palettes. The install step renders every theme the Mac rice lists into this one extension.",
+  "publisher": "local",
+  "version": "1.0.0",
+  "license": "MIT",
+  "engines": {
+    "vscode": "^1.70.0"
+  },
+  "categories": [
+    "Themes"
+  ],
+  "keywords": [
+    "theme",
+    "dark"
+  ],
+  "contributes": {
+    "themes": [
+      {
+        "label": "{{ meta.name }}",
+        "uiTheme": "vs-dark",
+        "path": "./themes/color-theme.json"
+      }
+    ]
+  }
+}

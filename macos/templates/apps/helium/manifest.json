@@ -1,0 +1,34 @@
+{
+  "manifest_version": 3,
+  "name": "Dotfiles theme",
+  "description": "{{ meta.name }} colors for Helium, generated from the dotfiles palette by render.py.",
+  "version": "1.0.0",
+  "theme": {
+    "colors": {
+      "frame": [{{ crust | rgb }}],
+      "frame_inactive": [{{ crust | rgb }}],
+      "frame_incognito": [{{ crust | rgb }}],
+      "frame_incognito_inactive": [{{ crust | rgb }}],
+      "background_tab": [{{ crust | rgb }}],
+      "background_tab_inactive": [{{ crust | rgb }}],
+      "background_tab_incognito": [{{ crust | rgb }}],
+      "background_tab_incognito_inactive": [{{ crust | rgb }}],
+      "toolbar": [{{ mantle | rgb }}],
+      "toolbar_text": [{{ text | rgb }}],
+      "toolbar_button_icon": [{{ subtext | rgb }}],
+      "tab_text": [{{ text | rgb }}],
+      "tab_background_text": [{{ subtext | rgb }}],
+      "tab_background_text_inactive": [{{ overlay | rgb }}],
+      "tab_background_text_incognito": [{{ subtext | rgb }}],
+      "tab_background_text_incognito_inactive": [{{ overlay | rgb }}],
+      "bookmark_text": [{{ subtext | rgb }}],
+      "omnibox_background": [{{ surface0 | rgb }}],
+      "omnibox_text": [{{ text | rgb }}],
+      "ntp_background": [{{ base | rgb }}],
+      "ntp_text": [{{ text | rgb }}],
+      "ntp_link": [{{ link | rgb }}],
+      "ntp_header": [{{ surface1 | rgb }}],
+      "button_background": [{{ surface1 | rgb }}]
+    }
+  }
+}

@@ -1,0 +1,20 @@
+[
+  {
+    "group": "discord",
+    "src": "apps/discord/dotfiles.theme.css",
+    "dst": "$HOME/Library/Application Support/Vencord/themes/dotfiles.theme.css",
+    "if_exists": "$HOME/Library/Application Support/Vencord"
+  },
+  {
+    "group": "discord",
+    "src": "apps/discord/dotfiles.theme.css",
+    "dst": "$HOME/Library/Application Support/vesktop/themes/dotfiles.theme.css",
+    "if_exists": "$HOME/Library/Application Support/vesktop"
+  },
+  {
+    "group": "spotify",
+    "src": "apps/spicetify/Dotfiles",
+    "dst": "$HOME/.config/spicetify/Themes/Dotfiles",
+    "if_exists": "$HOME/.config/spicetify"
+  }
+]

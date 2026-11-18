@@ -1,0 +1,225 @@
+/* {{ meta.name }}: Zen userContent.css, generated from the dotfiles palette by render.py */
+
+/* Gentle scrollbars + selection everywhere (author styles still win) */
+:root {
+  scrollbar-color: {{ surface2 }} transparent;
+}
+::selection {
+  background-color: {{ surface2 }};
+  color: {{ cream }};
+}
+
+/* ---------- about: pages (settings, addons, config, etc.) ---------- */
+@-moz-document url-prefix("about:") {
+  :root {
+    --in-content-page-background: {{ base }} !important;
+    --in-content-page-color: {{ text }} !important;
+    --in-content-text-color: {{ text }} !important;
+    --in-content-deemphasized-text: {{ subtext }} !important;
+    --in-content-box-background: {{ surface0 }} !important;
+    --in-content-box-background-hover: {{ surface1 }} !important;
+    --in-content-box-background-active: {{ surface2 }} !important;
+    --in-content-box-border-color: {{ surface1 }} !important;
+    --in-content-box-info-background: {{ surface0 }} !important;
+    --in-content-border-color: {{ surface1 }} !important;
+    --in-content-border-hover: {{ surface2 }} !important;
+    --in-content-item-hover: {{ surface1 }} !important;
+    --in-content-item-hover-text: {{ cream }} !important;
+    --in-content-item-selected: {{ surface2 }} !important;
+    --in-content-item-selected-text: {{ cream }} !important;
+    --in-content-link-color: {{ link }} !important;
+    --in-content-link-color-hover: {{ link }} !important;
+    --in-content-link-color-active: {{ accent2 }} !important;
+    --in-content-link-color-visited: {{ accent2 }} !important;
+    --in-content-button-background: {{ surface1 }} !important;
+    --in-content-button-background-hover: {{ surface2 }} !important;
+    --in-content-button-background-active: {{ surface2 }} !important;
+    --in-content-button-text-color: {{ text }} !important;
+    --in-content-primary-button-background: {{ accent }} !important;
+    --in-content-primary-button-background-hover: {{ accent | rgba:0.85 }} !important;
+    --in-content-primary-button-background-active: {{ accent | rgba:0.85 }} !important;
+    --in-content-primary-button-text-color: {{ crust }} !important;
+    --in-content-focus-outline-color: {{ link }} !important;
+    --in-content-table-background: {{ mantle }} !important;
+    --in-content-table-header-background: {{ surface1 }} !important;
+    --in-content-table-header-color: {{ text }} !important;
+    --in-content-danger-button-background: {{ error }} !important;
+    --in-content-error-text-color: {{ error }} !important;
+    --in-content-warning-container-background: {{ warn | rgba:0.15 }} !important;
+
+    --color-accent-primary: {{ accent }} !important;
+    --color-accent-primary-hover: {{ accent | rgba:0.85 }} !important;
+    --color-accent-primary-active: {{ accent | rgba:0.85 }} !important;
+    --color-canvas: {{ base }} !important;
+    --text-color: {{ text }} !important;
+    --text-color-deemphasized: {{ subtext }} !important;
+    --link-color: {{ link }} !important;
+    --link-color-hover: {{ link }} !important;
+    --border-color: {{ surface1 }} !important;
+    --border-color-interactive: {{ surface2 }} !important;
+    --border-radius-small: 6px !important;
+    --border-radius-medium: 8px !important;
+    --border-radius-large: 8px !important;
+    --background-color-box: {{ surface0 }} !important;
+    --background-color-canvas: {{ base }} !important;
+    --button-background-color: {{ surface1 }} !important;
+    --button-background-color-hover: {{ surface2 }} !important;
+    --button-background-color-active: {{ surface2 }} !important;
+    --button-text-color: {{ text }} !important;
+    --button-background-color-primary: {{ accent }} !important;
+    --button-background-color-primary-hover: {{ accent | rgba:0.85 }} !important;
+    --button-background-color-primary-active: {{ accent | rgba:0.85 }} !important;
+    --button-text-color-primary: {{ crust }} !important;
+    --focus-outline-color: {{ link }} !important;
+    --icon-color: {{ subtext }} !important;
+    --icon-color-success: {{ ok }} !important;
+    --icon-color-warning: {{ warn }} !important;
+    --icon-color-critical: {{ error }} !important;
+
+    color-scheme: dark;
+    accent-color: {{ accent }};
+  }
+
+  body {
+    background-color: {{ base }} !important;
+    color: {{ text }} !important;
+  }
+
+  h1, .main-heading, .header-name {
+    color: {{ cream }} !important;
+  }
+
+  input, select, textarea, button {
+    border-radius: 6px !important;
+  }
+  input:focus-visible, select:focus-visible, textarea:focus-visible {
+    outline-color: {{ link }} !important;
+  }
+
+  .card, addon-card .card, .info-box, moz-card {
+    background-color: {{ surface0 }} !important;
+    border: 1px solid {{ surface1 }} !important;
+    border-radius: 8px !important;
+  }
+
+  ::selection {
+    background-color: {{ surface2 }};
+    color: {{ cream }};
+  }
+}
+
+/* ---------- New tab / home ---------- */
+@-moz-document url("about:newtab"), url("about:home"), url("about:privatebrowsing") {
+  :root,
+  body,
+  .outer-wrapper,
+  .activity-stream {
+    --newtab-background-color: {{ base }} !important;
+    --newtab-background-color-secondary: {{ surface0 }} !important;
+    --newtab-text-primary-color: {{ text }} !important;
+    --newtab-text-secondary-color: {{ subtext }} !important;
+    --newtab-primary-action-background: {{ accent }} !important;
+    --newtab-primary-element-hover-color: {{ accent | rgba:0.85 }} !important;
+    --newtab-primary-element-active-color: {{ accent | rgba:0.85 }} !important;
+    --newtab-primary-element-text-color: {{ crust }} !important;
+    --newtab-element-hover-color: {{ surface1 }} !important;
+    --newtab-element-active-color: {{ surface2 }} !important;
+    --newtab-element-secondary-color: {{ surface1 }} !important;
+    --newtab-element-secondary-hover-color: {{ surface2 }} !important;
+    --newtab-border-color: {{ surface1 }} !important;
+    --newtab-wordmark-color: {{ text }} !important;
+    --newtab-search-icon-color: {{ subtext }} !important;
+    --newtab-search-icon: none;
+    --newtab-overlay-color: {{ crust | rgba:0.85 }} !important;
+    --newtab-textbox-focus-color: {{ overlay }} !important;
+    --newtab-textbox-focus-boxshadow: none !important;
+    --newtab-contextual-text-primary-color: {{ text }} !important;
+    --newtab-contextual-text-secondary-color: {{ subtext }} !important;
+    --newtab-button-background: {{ surface1 }} !important;
+    --newtab-button-hover-background: {{ surface2 }} !important;
+    --newtab-button-text: {{ text }} !important;
+    --newtab-button-focus-border: {{ link }} !important;
+    --newtab-button-primary-color: {{ accent }} !important;
+    --newtab-link-primary-color: {{ link }} !important;
+    --newtab-status-success: {{ ok }} !important;
+    --newtab-status-error: {{ error }} !important;
+    --in-content-page-background: {{ base }} !important;
+    --in-content-page-color: {{ text }} !important;
+  }
+
+  body {
+    background: {{ base }} !important;
+  }
+
+  /* Search box */
+  .search-wrapper .search-inner-wrapper,
+  .search-handoff-button,
+  .search-wrapper input {
+    background-color: {{ surface0 }} !important;
+    border: 1px solid {{ surface1 }} !important;
+    border-radius: 6px !important;
+    color: {{ text }} !important;
+  }
+  .search-wrapper input:focus,
+  .search-handoff-button.focused,
+  .fake-focus .search-handoff-button {
+    border-color: {{ overlay }} !important;
+    box-shadow: none !important;
+  }
+
+  /* Shortcut tiles */
+  .top-site-outer .tile,
+  .top-site-outer .top-site-icon {
+    background-color: {{ surface0 }} !important;
+    border-radius: 8px !important;
+    box-shadow: none !important;
+  }
+  .top-site-outer:hover .tile,
+  .top-site-outer:focus-within .tile {
+    background-color: {{ surface1 }} !important;
+    box-shadow: none !important;
+  }
+  .top-site-outer .title,
+  .top-site-outer .title span {
+    color: {{ subtext }} !important;
+  }
+
+  /* Cards (stories / highlights) */
+  .ds-card,
+  .card-outer,
+  .ds-card-grid .ds-card {
+    background-color: {{ surface0 }} !important;
+    border-radius: 8px !important;
+    transition: background-color 120ms ease, color 120ms ease;
+  }
+  .ds-card:hover,
+  .card-outer:hover {
+    background-color: {{ surface1 }} !important;
+    box-shadow: none !important;
+  }
+
+  /* Context menus inside newtab */
+  .context-menu {
+    background-color: {{ mantle }} !important;
+    border: 1px solid {{ surface1 }} !important;
+    border-radius: 8px !important;
+    box-shadow: 0 8px 24px {{ crust | rgba:0.45 }} !important;
+  }
+  .context-menu > ul > li > button:hover,
+  .context-menu > ul > li > button:focus {
+    background-color: {{ surface1 }} !important;
+    color: {{ cream }} !important;
+  }
+
+  .logo-and-wordmark .wordmark,
+  .logo-and-wordmark .logo {
+    fill: {{ text }} !important;
+  }
+}
+
+/* Plain blank page */
+@-moz-document url("about:blank") {
+  html:not([lang]) body:empty {
+    background-color: {{ base }} !important;
+  }
+}

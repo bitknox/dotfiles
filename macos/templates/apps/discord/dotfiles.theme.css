@@ -1,0 +1,399 @@
+/**
+ * @name Dotfiles
+ * @author dotfiles
+ * @description {{ meta.name }}: palette surfaces with the accent on primary actions. Use with Discord's Dark or Midnight theme.
+ * @version 1.0.0
+ * @source generated from palette.json by render.py
+ */
+
+/* ------------------------------------------------------------------ */
+/*  Palette (mirrors palette.json; everything below reads from these)  */
+/* ------------------------------------------------------------------ */
+:root {
+  --rice-crust: {{ crust }};
+  --rice-mantle: {{ mantle }};
+  --rice-base: {{ base }};
+  --rice-surface0: {{ surface0 }};
+  --rice-surface1: {{ surface1 }};
+  --rice-surface2: {{ surface2 }};
+  --rice-overlay: {{ overlay }};
+  --rice-subtext: {{ subtext }};
+  --rice-text: {{ text }};
+  --rice-cream: {{ cream }};
+  --rice-accent: {{ accent }};
+  --rice-accent-hover: {{ accent | rgba:0.85 }};
+  --rice-error: {{ error }};
+  --rice-warn: {{ warn }};
+  --rice-ok: {{ ok }};
+  --rice-link: {{ link }};
+  --rice-accent2: {{ accent2 }};
+
+  --rice-elevation: 0 8px 24px {{ crust | rgba:0.45 }};
+  --rice-radius: 8px;
+
+  --font-code: "{{ font.mono }}", Menlo, monospace;
+}
+
+/* ------------------------------------------------------------------ */
+/*  Discord variables: legacy + visual-refresh (2025-26) names         */
+/* ------------------------------------------------------------------ */
+:root,
+.theme-dark,
+.theme-darker,
+.theme-midnight,
+.visual-refresh.theme-dark,
+.visual-refresh.theme-darker,
+.visual-refresh.theme-midnight,
+.visual-refresh .theme-dark,
+.visual-refresh .theme-darker,
+.visual-refresh .theme-midnight {
+  /* --- legacy background tiers --- */
+  --background-primary: var(--rice-base);
+  --background-secondary: var(--rice-mantle);
+  --background-secondary-alt: var(--rice-crust);
+  --background-tertiary: var(--rice-crust);
+  --background-accent: var(--rice-surface2);
+  --background-floating: var(--rice-mantle);
+  --background-nested-floating: var(--rice-surface0);
+  --background-mobile-primary: var(--rice-base);
+  --background-mobile-secondary: var(--rice-mantle);
+  --background-message-hover: {{ surface0 | rgba:0.5 }};
+  --background-message-highlight: {{ warn | rgba:0.10 }};
+  --background-message-highlight-hover: {{ warn | rgba:0.14 }};
+  --background-message-automod: {{ warn | rgba:0.08 }};
+  --background-message-automod-hover: {{ warn | rgba:0.12 }};
+  --background-mentioned: {{ warn | rgba:0.10 }};
+  --background-mentioned-hover: {{ warn | rgba:0.14 }};
+  --background-modifier-hover: {{ surface1 | rgba:0.55 }};
+  --background-modifier-active: {{ surface1 | rgba:0.8 }};
+  --background-modifier-selected: {{ surface2 | rgba:0.75 }};
+  --background-modifier-accent: {{ surface1 | rgba:0.7 }};
+  --background-mod-subtle: {{ surface1 | rgba:0.45 }};
+  --background-mod-normal: {{ surface1 | rgba:0.7 }};
+  --background-mod-strong: {{ surface2 | rgba:0.8 }};
+  --background-mod-muted: {{ surface0 | rgba:0.6 }};
+
+  /* --- visual refresh base / surface tiers --- */
+  --background-base-lowest: var(--rice-crust);
+  --background-base-lower: var(--rice-mantle);
+  --background-base-low: var(--rice-base);
+  --background-surface-high: var(--rice-surface0);
+  --background-surface-higher: var(--rice-surface0);
+  --background-surface-highest: var(--rice-surface1);
+  --background-code: var(--rice-crust);
+  --background-scrim: {{ crust | rgba:0.7 }};
+  --background-brand: var(--rice-accent);
+
+  /* --- 2025+ bg-* tokens --- */
+  --bg-base-primary: var(--rice-base);
+  --bg-base-secondary: var(--rice-mantle);
+  --bg-base-tertiary: var(--rice-crust);
+  --bg-surface-raised: var(--rice-surface0);
+  --bg-surface-overlay: var(--rice-mantle);
+  --bg-surface-overlay-tmp: var(--rice-mantle);
+  --bg-brand: var(--rice-accent);
+  --bg-mod-faint: {{ surface1 | rgba:0.3 }};
+  --bg-mod-subtle: {{ surface1 | rgba:0.5 }};
+  --bg-mod-strong: {{ surface2 | rgba:0.75 }};
+  --bg-backdrop: {{ crust | rgba:0.75 }};
+  --bg-backdrop-no-opacity: var(--rice-crust);
+  --bg-overlay-1: var(--rice-mantle);
+  --bg-overlay-2: var(--rice-mantle);
+  --bg-overlay-3: var(--rice-surface0);
+  --bg-overlay-4: var(--rice-surface0);
+  --bg-overlay-5: var(--rice-surface1);
+  --bg-overlay-6: var(--rice-surface1);
+  --bg-overlay-chat: var(--rice-base);
+  --bg-overlay-app-frame: var(--rice-crust);
+  --bg-overlay-floating: var(--rice-mantle);
+  --bg-overlay-hover: {{ surface1 | rgba:0.55 }};
+  --bg-overlay-active: {{ surface1 | rgba:0.8 }};
+  --bg-overlay-selected: {{ surface2 | rgba:0.75 }};
+  --bg-overlay-active-hover: {{ surface2 | rgba:0.85 }};
+  --bg-overlay-selected-hover: {{ surface2 | rgba:0.9 }};
+
+  /* --- misc surfaces --- */
+  --app-frame-background: var(--rice-crust);
+  --app-border-frame: var(--rice-surface0);
+  --chat-background: var(--rice-base);
+  --chat-background-default: var(--rice-base);
+  --chat-border: var(--rice-surface0);
+  --home-background: var(--rice-base);
+  --panel-bg: var(--rice-mantle);
+  --modal-background: var(--rice-mantle);
+  --modal-footer-background: var(--rice-crust);
+  --card-primary-bg: var(--rice-surface0);
+  --card-secondary-bg: var(--rice-mantle);
+  --card-background-default: var(--rice-surface0);
+  --card-background-hover: var(--rice-surface1);
+  --profile-gradient-overlay: {{ base | rgba:0.6 }};
+  --guild-header-text-shadow: none;
+  --input-background: var(--rice-surface0);
+  --input-background-default: var(--rice-surface0);
+  --input-border: var(--rice-surface1);
+  --input-border-default: var(--rice-surface1);
+  --input-border-hover: var(--rice-surface2);
+  --input-placeholder-text: var(--rice-subtext);
+  --input-placeholder-text-default: var(--rice-subtext);
+  --channeltextarea-background: var(--rice-surface0);
+  --deprecated-text-input-bg: var(--rice-surface0);
+  --deprecated-text-input-border: var(--rice-surface1);
+  --deprecated-card-bg: var(--rice-surface0);
+  --deprecated-card-editable-bg: var(--rice-surface0);
+  --deprecated-store-bg: var(--rice-base);
+  --deprecated-quickswitcher-input-background: var(--rice-surface0);
+  --deprecated-quickswitcher-input-placeholder: var(--rice-subtext);
+  --activity-card-background: var(--rice-surface0);
+  --user-profile-overlay-background: var(--rice-mantle);
+  --redesign-input-control-selected: var(--rice-accent);
+
+  /* --- text --- */
+  --text-normal: var(--rice-text);
+  --text-default: var(--rice-text);
+  --text-primary: var(--rice-text);
+  --text-strong: var(--rice-cream);
+  --text-secondary: var(--rice-subtext);
+  --text-tertiary: var(--rice-subtext);
+  --text-subtle: var(--rice-subtext);
+  --text-muted: var(--rice-subtext);
+  --text-faint: var(--rice-subtext);
+  --text-link: var(--rice-link);
+  --text-link-low-saturation: var(--rice-link);
+  --text-brand: var(--rice-accent);
+  --text-positive: var(--rice-ok);
+  --text-warning: var(--rice-warn);
+  --text-danger: var(--rice-error);
+  --text-feedback-positive: var(--rice-ok);
+  --text-feedback-warning: var(--rice-warn);
+  --text-feedback-critical: var(--rice-error);
+  --text-feedback-info: var(--rice-link);
+  --header-primary: var(--rice-cream);
+  --header-secondary: var(--rice-subtext);
+  --channels-default: var(--rice-subtext);
+  --channel-icon: var(--rice-subtext);
+  --channel-text-area-placeholder: var(--rice-subtext);
+  --textbox-markdown-syntax: var(--rice-subtext);
+  --mention-foreground: var(--rice-warn);
+  --mention-background: {{ warn | rgba:0.10 }};
+  --info-warning-foreground: var(--rice-warn);
+  --info-danger-foreground: var(--rice-error);
+  --info-positive-foreground: var(--rice-ok);
+  --info-help-foreground: var(--rice-link);
+
+  /* --- icons / interactive --- */
+  --interactive-normal: var(--rice-subtext);
+  --interactive-hover: var(--rice-text);
+  --interactive-active: var(--rice-text);
+  --interactive-muted: var(--rice-overlay);
+  --interactive-text-default: var(--rice-subtext);
+  --interactive-text-hover: var(--rice-text);
+  --interactive-text-active: var(--rice-text);
+  --interactive-icon-default: var(--rice-subtext);
+  --interactive-icon-hover: var(--rice-text);
+  --interactive-icon-active: var(--rice-text);
+  --icon-default: var(--rice-subtext);
+  --icon-muted: var(--rice-overlay);
+  --icon-strong: var(--rice-text);
+  --icon-subtle: var(--rice-overlay);
+  --icon-primary: var(--rice-text);
+  --icon-secondary: var(--rice-subtext);
+  --icon-tertiary: var(--rice-overlay);
+  --icon-transparent: transparent;
+
+  /* --- brand: the palette accent instead of blurple --- */
+  --brand-experiment: var(--rice-accent);
+  --brand-experiment-100: {{ cream }};
+  --brand-experiment-160: {{ accent | rgba:0.16 }};
+  --brand-experiment-200: {{ accent | rgba:0.25 }};
+  --brand-experiment-300: {{ accent }};
+  --brand-experiment-360: {{ accent }};
+  --brand-experiment-400: {{ accent }};
+  --brand-experiment-430: {{ accent }};
+  --brand-experiment-460: {{ accent }};
+  --brand-experiment-500: {{ accent }};
+  --brand-experiment-530: {{ accent | rgba:0.85 }};
+  --brand-experiment-560: {{ accent | rgba:0.85 }};
+  --brand-experiment-600: {{ accent | rgba:0.85 }};
+  --brand-experiment-630: {{ accent | rgba:0.85 }};
+  --brand-experiment-660: {{ accent | rgba:0.85 }};
+  --brand-experiment-700: {{ accent | rgba:0.85 }};
+  --brand-experiment-05a: {{ accent | rgba:0.05 }};
+  --brand-experiment-10a: {{ accent | rgba:0.10 }};
+  --brand-experiment-15a: {{ accent | rgba:0.15 }};
+  --brand-experiment-20a: {{ accent | rgba:0.20 }};
+  --brand-experiment-25a: {{ accent | rgba:0.25 }};
+  --brand-experiment-30a: {{ accent | rgba:0.30 }};
+  --brand-experiment-40a: {{ accent | rgba:0.40 }};
+  --brand-experiment-50a: {{ accent | rgba:0.50 }};
+  --brand-experiment-60a: {{ accent | rgba:0.60 }};
+  --brand-experiment-70a: {{ accent | rgba:0.70 }};
+  --brand-experiment-80a: {{ accent | rgba:0.80 }};
+  --brand-experiment-90a: {{ accent | rgba:0.90 }};
+  --brand-260: {{ accent }};
+  --brand-360: {{ accent }};
+  --brand-400: {{ accent }};
+  --brand-500: {{ accent }};
+  --brand-530: {{ accent | rgba:0.85 }};
+  --brand-560: {{ accent | rgba:0.85 }};
+  --brand-600: {{ accent | rgba:0.85 }};
+  --brand-660: {{ accent | rgba:0.85 }};
+  --control-brand-foreground: var(--rice-accent);
+  --control-brand-foreground-new: var(--rice-accent);
+  --button-filled-brand-background: var(--rice-accent);
+  --button-filled-brand-background-hover: var(--rice-accent-hover);
+  --button-filled-brand-background-active: var(--rice-accent-hover);
+  --button-filled-brand-text: var(--rice-crust);
+  --button-filled-brand-inverted-text: var(--rice-crust);
+  --button-secondary-background: var(--rice-surface1);
+  --button-secondary-background-hover: var(--rice-surface2);
+  --button-secondary-background-active: var(--rice-surface2);
+  --button-outline-brand-border: var(--rice-accent);
+  --button-outline-brand-text: var(--rice-accent);
+  --button-danger-background: var(--rice-error);
+  --button-danger-background-hover: {{ error | rgba:0.85 }};
+  --button-positive-background: {{ ok | rgba:0.85 }};
+  --button-positive-background-hover: var(--rice-ok);
+  --focus-primary: var(--rice-link);
+
+  /* --- status --- */
+  --status-positive: var(--rice-ok);
+  --status-positive-background: var(--rice-ok);
+  --status-positive-text: var(--rice-crust);
+  --status-warning: var(--rice-warn);
+  --status-warning-background: var(--rice-warn);
+  --status-warning-text: var(--rice-crust);
+  --status-danger: var(--rice-error);
+  --status-danger-background: var(--rice-error);
+  --status-danger-text: var(--rice-crust);
+  --status-online: var(--rice-ok);
+  --status-idle: var(--rice-warn);
+  --status-dnd: var(--rice-error);
+  --status-offline: var(--rice-overlay);
+  --status-streaming: var(--rice-accent2);
+  --green-360: var(--rice-ok);
+  --yellow-300: var(--rice-warn);
+  --red-400: var(--rice-error);
+
+  /* --- borders --- */
+  --border-faint: {{ surface0 | rgba:0.6 }};
+  --border-subtle: var(--rice-surface0);
+  --border-normal: var(--rice-surface1);
+  --border-strong: var(--rice-surface2);
+  --border-mod-subtle: var(--rice-surface0);
+  --border-mod-normal: var(--rice-surface1);
+  --border-mod-strong: var(--rice-surface2);
+  --app-border: var(--rice-surface0);
+  --divider: var(--rice-surface0);
+
+  /* --- scrollbars --- */
+  --scrollbar-auto-thumb: var(--rice-surface2);
+  --scrollbar-auto-track: transparent;
+  --scrollbar-auto-scrollbar-color-thumb: var(--rice-surface2);
+  --scrollbar-auto-scrollbar-color-track: transparent;
+  --scrollbar-thin-thumb: var(--rice-surface2);
+  --scrollbar-thin-track: transparent;
+
+  /* --- spoilers / code / misc --- */
+  --spoiler-hidden-background: var(--rice-surface1);
+  --spoiler-hidden-background-hover: var(--rice-surface2);
+  --spoiler-revealed-background: var(--rice-surface0);
+  --embed-background: var(--rice-mantle);
+  --embed-title: var(--rice-cream);
+  --logo-primary: var(--rice-text);
+  --home-icon: var(--rice-text);
+
+  /* --- radii (visual refresh) --- */
+  --radius-xs: 4px;
+  --radius-sm: 6px;
+  --radius-md: 8px;
+  --radius-lg: 8px;
+}
+
+/* ------------------------------------------------------------------ */
+/*  Targeted touches (attribute-substring selectors survive hashing)   */
+/* ------------------------------------------------------------------ */
+
+::selection {
+  background: var(--rice-surface2);
+  color: var(--rice-cream);
+}
+
+/* Selected channel / DM: one surface step up */
+[class*="modeSelected_"] [class*="link_"],
+[class*="containerDefault_"][class*="selected_"] [class*="link_"],
+[class*="channel_"][class*="selected_"] [class*="interactive_"],
+[class*="interactiveSelected_"] {
+  background: var(--rice-surface1) !important;
+  box-shadow: none;
+  border-radius: 4px;
+}
+[class*="modeSelected_"] [class*="name_"],
+[class*="modeSelected_"] [class*="icon_"] {
+  color: var(--rice-text) !important;
+}
+[class*="modeUnread_"] [class*="name_"] {
+  color: var(--rice-text) !important;
+}
+
+/* Message input: soft border, brighter border when focused */
+[class*="channelTextArea_"] [class*="scrollableContainer_"],
+[class*="channelTextArea_"] > [class*="inner_"] {
+  border-radius: 6px !important;
+}
+form [class*="channelTextArea_"] {
+  border-radius: 6px;
+  border: 1px solid var(--rice-surface1);
+  background: var(--rice-surface0);
+}
+form [class*="channelTextArea_"]:focus-within {
+  border-color: var(--rice-overlay);
+}
+
+/* Mentions: Discord's native mention bar, in the warn color */
+[class*="mentioned_"]::before {
+  background: var(--rice-warn) !important;
+}
+.mention,
+[class*="mention"][class*="interactive"] {
+  border-radius: 4px;
+}
+
+/* Links */
+a[class*="anchor_"] {
+  color: var(--rice-link);
+}
+
+/* Floating surfaces: hairline border + one neutral shadow */
+[class*="menu_"][role="menu"],
+[class*="popout_"],
+[class*="tooltip_"] {
+  border-radius: var(--rice-radius) !important;
+  border: 1px solid var(--rice-surface1);
+  box-shadow: var(--rice-elevation);
+}
+[class*="menu_"] [class*="focused_"] {
+  background: var(--rice-surface1) !important;
+  color: var(--rice-cream) !important;
+}
+[role="dialog"][class*="root_"] {
+  border-radius: var(--rice-radius);
+  box-shadow: var(--rice-elevation);
+}
+
+/* Inputs / search: neutral focus border */
+input:focus,
+[class*="inputDefault_"]:focus,
+[class*="searchBar_"]:focus-within {
+  outline: 1px solid var(--rice-overlay);
+  outline-offset: -1px;
+  box-shadow: none;
+}
+
+/* Scrollbars (webkit) */
+::-webkit-scrollbar-thumb {
+  background-color: var(--rice-surface2);
+  border-radius: 8px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background-color: var(--rice-overlay);
+}
