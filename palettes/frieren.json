@@ -59,10 +59,6 @@
     "bg_alt":    "mantle",
     "fg":        "text",
     "border":    "moonweed",
-    "border_inactive": "surface2",
-    "bar_fg":    "text",
-    "bar_dim":   "silver",
-    "bar_accent": "moonweed",
-    "bar_halo":  "crust"
+    "border_inactive": "surface2"
   }
 }

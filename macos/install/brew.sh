@@ -9,8 +9,8 @@ case "${1:-}" in
     have brew || { echo "Homebrew is missing; install it from brew.sh first"; exit 1; }
     ;;
   run)
-    # Homebrew only loads formulae from third-party taps once they are trusted. Trust just the two we use.
-    brew trust --formula felixkratz/formulae/sketchybar felixkratz/formulae/borders >/dev/null 2>&1 || true
+    # Homebrew only loads formulae from third-party taps once they are trusted. Trust just the one we use.
+    brew trust --formula felixkratz/formulae/borders >/dev/null 2>&1 || true
     status=0
     HOMEBREW_NO_AUTO_UPDATE=1 brew bundle --no-upgrade --file "$MAC/Brewfile" || status=1
     # SF Pro: the cask runs Apple's installer with sudo, so unpack its download into ~/Library/Fonts.
@@ -27,12 +27,12 @@ case "${1:-}" in
         find "$tmp/x" -name 'SF-Pro*.otf' -exec cp {} "$HOME/Library/Fonts/" \;
         say "SF Pro installed for this user"
       else
-        warn "could not install SF Pro; the bar falls back to the system font"
+        warn "could not install SF Pro"
       fi
       [ -d "$tmp/dmg" ] && hdiutil detach "$tmp/dmg" -quiet >/dev/null 2>&1
       rm -rf "$tmp"
     fi
-    have sketchybar && have borders || status=1
+    have borders || status=1
     exit $status
     ;;
   *) die "usage: $0 check|run" ;;

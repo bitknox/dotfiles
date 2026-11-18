@@ -2,12 +2,8 @@
 
 tap "FelixKratz/formulae"
 
-# Bar and borders
-brew "FelixKratz/formulae/sketchybar"
+# Window borders
 brew "FelixKratz/formulae/borders"
-brew "media-control"     # now playing for any player (SketchyBar media item)
-brew "switchaudio-osx"   # output list in the volume popup
-brew "jq"
 
 # Shell
 brew "starship"

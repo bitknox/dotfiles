@@ -7,7 +7,7 @@ My dotfiles. They cover a Windows 11 machine, themed after the Spirit Blossom Ah
 | Platform | Folder | Notes |
 |---|---|---|
 | Windows 11 | [`windows/`](windows/README.md) | Zebar bar, taskbar restyled as a dock, no tiling WM |
-| macOS | [`macos/`](macos/README.md) | SketchyBar around the notch, JankyBorders, hidden Dock, theme switching with `theme.sh` |
+| macOS | [`macos/`](macos/README.md) | native menu bar, JankyBorders, hidden Dock, theme switching with `theme.sh` |
 
 ## Layout
 
@@ -29,7 +29,6 @@ macos/
   theme.sh          switches every app to another theme
   Brewfile          the tools, apps and fonts
   wallpapers.json   where each theme's wallpaper and logo come from
-  raycast/          the theme switch script commands
   install/, templates/, deploy.d/   as on Windows
 ```
 

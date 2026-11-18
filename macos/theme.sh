@@ -4,11 +4,10 @@
 #   ./theme.sh shinkai
 #
 # Renders the theme, copies it into place (keeping first originals in backup/), then has each app
-# pick it up: SketchyBar crossfades its colors, borders and Ghostty reload in place, the wallpaper
-# and accent change, and Zen, Spotify, Discord and the editors get the new theme. Apps that need a
-# click or a restart are listed at the end.
+# pick it up: borders and Ghostty reload in place, the wallpaper and accent change, and Zen, Spotify,
+# Discord and the editors get the new theme. Apps that need a click or a restart are listed at the end.
 set -u
-export PATH="/opt/homebrew/bin:/usr/local/bin:$PATH"   # Raycast runs this with a short PATH
+export PATH="/opt/homebrew/bin:/usr/local/bin:$PATH"   # the Theme apps run this with a short PATH
 # shellcheck source-path=SCRIPTDIR source=install/lib.sh
 . "$(dirname "$0")/install/lib.sh"
 
@@ -35,10 +34,7 @@ step() { # step <name>: re-run an install step quietly when it can run
 
 LATER=""
 
-# Bar and borders change in place.
-if pgrep -x sketchybar >/dev/null; then
-  "$HOME/.config/sketchybar/recolor.sh" animate && say "bar"
-fi
+# Borders change in place.
 if pgrep -x borders >/dev/null; then
   "$HOME/.config/borders/bordersrc" && say "borders"   # borders with arguments updates the running one
 fi
@@ -82,7 +78,5 @@ if step vencord; then say "Discord"; fi
 if step helium; then LATER="$LATER
   Helium: press Reload on the theme in chrome://extensions"; fi
 LATER="$LATER
-  Raycast: open this link once and choose Add to Raycast:
-    $(bash "$MAC/install/raycast.sh" link "$target")
   Xcode and Android Studio: both themes are installed; pick $NAME in their settings"
 printf '\nStill to do by hand:%s\n' "$LATER"

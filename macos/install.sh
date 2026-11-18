@@ -16,17 +16,17 @@ set -u
 
 # name|optional|description
 STEPS="
-brew|0|Homebrew bundle: SketchyBar, JankyBorders, Ghostty, Raycast, Zen, fonts and the CLI tools
+brew|0|Homebrew bundle: JankyBorders, Ghostty, Raycast, Zen, fonts and the CLI tools
 render|0|Check every template against both themes, then render the current theme into generated/
 deploy|0|Copy generated/ into each app's config folder (deploy.d/*.json), keeping the originals
 art|0|Download each theme's wallpaper and cut its fastfetch logo (never committed)
 wallpaper|0|Set the current theme's wallpaper on every desktop
 shell|0|Source rice.zsh from .zshrc, switch the prompt to starship (keeps your PATH lines)
-sketchybar|0|Hide the native menu bar and start SketchyBar
+menubar|0|Clock with weekday and date, battery percentage; lists the menu bar settings macOS keeps manual
 borders|0|Start JankyBorders (focused window in the accent color)
 dock|0|Dock auto-hides, smaller, no recent apps
 appearance|0|Dark mode, nearest accent color, highlight color from the palette
-raycast|0|Install the theme script commands; prints the theme import link to confirm in Raycast
+raycast|0|Build the Theme apps that Raycast and Spotlight list; prints the hotkey to set
 vscode|0|Build the theme extension and install it into VS Code, Insiders and Cursor
 xcode|0|Copy both Xcode color themes into place
 android-studio|0|Copy the color schemes into every Android Studio version

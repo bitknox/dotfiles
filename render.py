@@ -179,12 +179,11 @@ def ratio(a, b):
 
 def contrast_errors():
     """Palettes with "aa": true promise WCAG AA: text, roles and ANSI colors at 4.5:1 on base and the
-    surfaces, the overlay (hints, comments) at 4.5:1 on base and 3:1 on the surfaces. Roles named bar_*
-    sit on the wallpaper, not on base, so they are measured against the wallpaper instead."""
+    surfaces, the overlay (hints, comments) at 4.5:1 on base and 3:1 on the surfaces."""
     if not PAL.get("aa"):
         return []
     fg = ["text", "subtext"] + list(PAL["roles"]) + [f"ansi{i}" for i in range(1, 16) if i != 8]
-    fg = [k for k in dict.fromkeys(fg) if k not in ("bg", "bg_alt", "border_inactive") and not k.startswith("bar_")]
+    fg = [k for k in dict.fromkeys(fg) if k not in ("bg", "bg_alt", "border_inactive")]
     out = []
     for bg in ("base", "surface0", "surface1"):
         for k in fg + ["overlay"]:
