@@ -2,6 +2,8 @@
 
 My dotfiles. They currently cover one Windows 11 machine, themed after the Spirit Blossom Ahri skin from League of Legends. Each operating system has its own folder. The color palette and the script that renders it into app configs sit at the root and are shared.
 
+![Windows 11 desktop with the Spirit Blossom Ahri wallpaper, the Zebar top bar, the dock, fastfetch, cava and Spotify](windows/assets/screenshot.jpg)
+
 | Platform | Folder | Notes |
 |---|---|---|
 | Windows 11 | [`windows/`](windows/README.md) | Zebar bar, taskbar restyled as a dock, no tiling WM |
