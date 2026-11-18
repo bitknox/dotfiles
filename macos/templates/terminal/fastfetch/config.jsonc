@@ -5,8 +5,8 @@
   // The art step cuts this scenery square from the theme's wallpaper. The kitty graphics protocol shows it
   // in Ghostty; when the file is missing or cannot be decoded, fastfetch prints its built-in logo instead.
   "logo": {
-    "type": "kitty",
-    "source": "~/Library/Application Support/dotfiles/art/{{ meta.slug }}/logo.png",
+    "type": "kitty-direct",
+    "source": "~/Library/Application\\ Support/dotfiles/art/{{ meta.slug }}/logo.png",
     "width": 30,
     "height": 15,
     "padding": { "top": 1, "left": 2, "right": 4 }
