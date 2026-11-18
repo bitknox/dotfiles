@@ -34,7 +34,7 @@ zen|0|Zen userChrome, userContent and user.js into the default profile
 helium|0|Render the Helium (Chromium) theme folder and print how to load it
 spicetify|0|Spicetify theme for Spotify, then apply
 vencord|0|Vencord theme for Discord
-cava|1|cava visualizer config; needs BlackHole 2ch and a multi-output device (changes audio routing)
+cava|0|cava visualizer config, listening to the system output
 "
 
 ONLY="" SKIP="" DRY=0 ALL=0 LIST=0

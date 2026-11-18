@@ -23,7 +23,7 @@ Commands in this file run from the repo root. File paths are relative to `macos/
 | Terminal | Ghostty with a generated theme | `templates/terminal/ghostty/` |
 | Shell | zsh with Starship, zoxide, eza, bat, fzf and yazi | `templates/terminal/zsh/rice.zsh`, `templates/terminal/starship.toml`, `install/shell.sh` |
 | Greeter | fastfetch, logo through the kitty graphics protocol | `templates/terminal/fastfetch/config.jsonc` |
-| Visualizer | cava (optional step) | `templates/terminal/cava/config`, `install/cava.sh` |
+| Visualizer | cava, listening to the system output | `templates/terminal/cava/config`, `install/cava.sh` |
 | Wallpaper | one picture per theme, set on every desktop | `wallpapers.json`, `install/art.sh`, `install/wallpaper.sh` |
 | Accent and dark mode | `defaults`: nearest accent preset, selection color from the palette | `install/appearance.sh` |
 | Fonts | Maple Mono NF, SF Pro, Shippori Mincho | `Brewfile` |
@@ -70,7 +70,7 @@ The apps "Theme Frieren" and "Theme Shinkai skies" in `~/Applications` run the s
 | `raycast` | Builds the two Theme apps and prints the hotkey to set. |
 | `vscode`, `xcode`, `android-studio` | Install both editor themes. |
 | `zen`, `helium`, `spicetify`, `vencord` | Theme the apps that are present. |
-| `cava` (optional) | cava config. Needs BlackHole 2ch and a multi-output device, so it changes audio routing; run it with `--only cava`. |
+| `cava` | cava config. cava captures the system output itself, so no audio routing changes; the first run asks for System Audio Recording permission. |
 
 ```sh
 macos/install.sh --list            # every step

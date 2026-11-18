@@ -1,6 +1,6 @@
 ## cava for the {{ meta.name }} rice, rendered from ~/dotfiles/macos/templates/terminal/cava/config.
-## macOS has no loopback capture, so cava listens to the BlackHole 2ch virtual device. Music only reaches it
-## through a Multi-Output Device that plays to the speakers and BlackHole at once (see install/cava.sh).
+## cava taps the system output through Core Audio (macOS 14.2 and later). The first run asks for
+## System Audio Recording permission for the terminal.
 
 [general]
 framerate = 60
@@ -10,9 +10,9 @@ bar_spacing = 2
 sleep_timer = 5
 
 [input]
-; coreaudio takes a device name; older builds without it can use method = portaudio and source = list
+; tap is everything the Mac plays, mixed to stereo; tap_mono folds it to one channel
 method = coreaudio
-source = BlackHole 2ch
+source = tap
 
 [output]
 method = noncurses
