@@ -1,7 +1,8 @@
 """Tiny pywal-style renderer.
 
-templates/**  ->  generated/**   with placeholders substituted from palette.json
-Then (with --deploy) copies files to the destinations listed in deploy.json.
+<os>/templates/**  ->  <os>/generated/**   with placeholders substituted from palette.json
+Then (with --deploy) copies files to the destinations listed in <os>/deploy.d/*.json.
+<os> is the platform folder (windows, linux, macos). --os <name> overrides the current platform.
 
 Placeholder syntax:  {{ sakura }}            -> #f4a7c8
                      {{ sakura | strip }}    -> f4a7c8
@@ -22,6 +23,15 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent
 PAL = json.loads((ROOT / "palette.json").read_text(encoding="utf-8"))
+PLATFORMS = {"win32": "windows", "linux": "linux", "darwin": "macos"}
+
+
+def _opt(name):
+    return sys.argv[sys.argv.index(name) + 1] if name in sys.argv else None
+
+
+OS = _opt("--os") or PLATFORMS.get(sys.platform, sys.platform)
+BASE = ROOT / OS
 COLORS = dict(PAL["colors"])
 for role, target in PAL["roles"].items():
     COLORS[role] = COLORS[target]
@@ -78,9 +88,9 @@ def sub(m):
 
 
 def render(check=False, out=None, only=None):
-    """Render templates/ -> generated/ (or `out`). check=True only validates placeholders.
+    """Render <os>/templates/ -> <os>/generated/ (or `out`). check=True only validates placeholders.
     `only` restricts to a templates/ subfolder prefix, e.g. "zebar"."""
-    src, out = ROOT / "templates", Path(out) if out else ROOT / "generated"
+    src, out = BASE / "templates", Path(out) if out else BASE / "generated"
     if only:
         src = src / only
         out = out / only
@@ -111,9 +121,9 @@ def render(check=False, out=None, only=None):
 
 
 def load_deploy_spec():
-    """deploy.d/<group>.json files, each a list of {group, src, dst, [if_exists]}."""
+    """<os>/deploy.d/<group>.json files, each a list of {group, src, dst, [if_exists]}."""
     spec = []
-    for f in sorted((ROOT / "deploy.d").glob("*.json")):
+    for f in sorted((BASE / "deploy.d").glob("*.json")):
         spec += json.loads(f.read_text(encoding="utf-8-sig"))  # tolerate BOM (PowerShell-written files)
     return spec
 
@@ -122,7 +132,7 @@ def deploy(only=None):
     for item in load_deploy_spec():
         if only and item["group"] not in only:
             continue
-        src = ROOT / "generated" / item["src"]
+        src = BASE / "generated" / item["src"]
         dst = Path(os.path.expandvars(item["dst"]))
         if item.get("if_exists") and not Path(os.path.expandvars(item["if_exists"])).exists():
             print(f"skip  {item['src']} (app not present)")
@@ -135,14 +145,13 @@ def deploy(only=None):
         print(f"copy  {item['src']} -> {dst}")
 
 
-def _opt(name):
-    return sys.argv[sys.argv.index(name) + 1] if name in sys.argv else None
-
-
 if __name__ == "__main__":
     # py -3 render.py --check                       validate all templates, write nothing
     # py -3 render.py --out <dir> [--only <sub>]    render into a scratch dir (safe for parallel work)
-    # py -3 render.py [--deploy [group ...]]        render into generated/ and optionally deploy
+    # py -3 render.py [--deploy [group ...]]        render into <os>/generated/ and optionally deploy
+    # --os <name> on any of these targets another platform folder
+    if not (BASE / "templates").is_dir():
+        sys.exit(f"no templates for '{OS}' ({BASE / 'templates'} missing)")
     if "--check" in sys.argv:
         render(check=True)
         sys.exit(0)
@@ -151,5 +160,5 @@ if __name__ == "__main__":
         sys.exit(0)
     render()
     if "--deploy" in sys.argv:
-        groups = [a for a in sys.argv[1:] if not a.startswith("--")]
+        groups = [a for a in sys.argv[1:] if not a.startswith("--") and a != _opt("--os")]
         deploy(groups or None)

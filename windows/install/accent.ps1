@@ -1,7 +1,7 @@
 # Sets Windows dark mode + accent color (and its 8-shade AccentPalette) from palette.json.
 # Title bars stay dark (ColorPrevalence=0); window borders are colored by Windhawk's window-border-customizer.
 $ErrorActionPreference = 'Stop'
-$pal = Get-Content "$PSScriptRoot\..\palette.json" -Raw | ConvertFrom-Json
+$pal = Get-Content "$PSScriptRoot\..\..\palette.json" -Raw | ConvertFrom-Json
 $accentHex = $pal.colors.($pal.roles.accent)
 
 function ConvertTo-Rgb($hex) { $h = $hex.TrimStart('#'); ,@([Convert]::ToByte($h.Substring(0,2),16), [Convert]::ToByte($h.Substring(2,2),16), [Convert]::ToByte($h.Substring(4,2),16)) }

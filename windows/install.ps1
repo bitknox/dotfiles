@@ -51,7 +51,7 @@ $ErrorActionPreference = 'Stop'
 $Root     = $PSScriptRoot
 $Inst     = Join-Path $Root 'install'
 $Gen      = Join-Path $Root 'generated'
-$RenderPy = Join-Path $Root 'render.py'
+$RenderPy = Join-Path (Split-Path $Root) 'render.py'
 $PS51     = "$env:SystemRoot\System32\WindowsPowerShell\v1.0\powershell.exe"
 $IsAdmin  = ([Security.Principal.WindowsPrincipal][Security.Principal.WindowsIdentity]::GetCurrent()).IsInRole(
                 [Security.Principal.WindowsBuiltInRole]::Administrator)
@@ -352,12 +352,12 @@ Add-Step 'fonts' 'Maple Mono NF v7.9 + Shippori Mincho, per-user (no admin)' `
 
 Add-Step 'render' 'Render templates\ -> generated\ from palette.json' `
     -Check { Get-NeedPy } `
-    -Plan  { 'py -3 render.py' } `
+    -Plan  { 'py -3 ..\render.py' } `
     -Run   { $script:Rendered = $false; Invoke-Render }
 
 Add-Step 'deploy' 'Copy generated\ to app config dirs (deploy.d\*.json; apps that are not present are skipped)' `
     -Check { Get-NeedPy } `
-    -Plan  { 'py -3 render.py --deploy' } `
+    -Plan  { 'py -3 ..\render.py --deploy' } `
     -Run   { Invoke-Py @($RenderPy, '--deploy'); $script:Rendered = $true }
 
 Add-Step 'accent' 'Dark mode, transparency, sakura accent + AccentPalette (title bars stay dark)' `
@@ -369,7 +369,7 @@ Add-Step 'terminal' 'Windows Terminal scheme/theme/profiles, PowerShell profile,
         $p = Get-NeedPy; if ($p) { return $p }
         if (-not (Test-Path $WtSettings)) { 'Windows Terminal settings.json not found - open Windows Terminal once, then: .\install.ps1 -Only terminal' }
     } `
-    -Plan  { 'py -3 render.py --deploy terminal', 'py -3 install\wt.py', 'install\fastfetch-art.ps1  (fetches Riot art; Pillow venv in %LOCALAPPDATA%\ahri-rice\venv)' } `
+    -Plan  { 'py -3 ..\render.py --deploy terminal', 'py -3 install\wt.py', 'install\fastfetch-art.ps1  (fetches Riot art; Pillow venv in %LOCALAPPDATA%\ahri-rice\venv)' } `
     -Run   {
         Invoke-Py @($RenderPy, '--deploy', 'terminal'); $script:Rendered = $true
         Invoke-Py @((Join-Path $Inst 'wt.py'))
@@ -383,17 +383,17 @@ Add-Step 'cursors' 'Apply the Ahri Blossom cursor scheme (committed assets, per-
 
 Add-Step 'flow' 'Flow Launcher theme + settings (Alt+Space, Segoe UI Variable); restarts Flow' `
     -Check { $p = Get-NeedPy; if ($p) { return $p }; if (-not (Test-Path $FlowExe)) { "Flow Launcher not installed ($FlowExe)" } } `
-    -Plan  { 'py -3 render.py (once)', 'install\flow.ps1' } `
+    -Plan  { 'py -3 ..\render.py (once)', 'install\flow.ps1' } `
     -Run   { Invoke-Render; Invoke-InstallScript 'flow.ps1' }
 
 Add-Step 'nilesoft' 'Nilesoft Shell context menu: installs it (machine scope) if missing + theme; self-elevates (UAC)' `
     -Check { Get-NeedPy } `
-    -Plan  { 'py -3 render.py (once)', 'install\nilesoft.ps1  (elevated; winget install Nilesoft.Shell --scope machine if missing)' } `
+    -Plan  { 'py -3 ..\render.py (once)', 'install\nilesoft.ps1  (elevated; winget install Nilesoft.Shell --scope machine if missing)' } `
     -Run   { Invoke-Render; Invoke-InstallScript 'nilesoft.ps1' }
 
 Add-Step 'zebar' 'Zebar top bar pack, startup shortcut; restarts Zebar' `
     -Check { $p = Get-NeedPy; if ($p) { return $p }; if (-not (Test-Path $ZebarExe)) { "Zebar not installed ($ZebarExe)" } } `
-    -Plan  { 'py -3 render.py (once)', 'install\zebar.ps1' } `
+    -Plan  { 'py -3 ..\render.py (once)', 'install\zebar.ps1' } `
     -Run   { Invoke-Render; Invoke-InstallScript 'zebar.ps1' }
 
 Add-Step 'windhawk' 'Write settings for installed Windhawk mods (HKLM, UAC); lists mods still to install in the Windhawk UI' `
@@ -405,7 +405,7 @@ Add-Step 'windhawk' 'Write settings for installed Windhawk mods (HKLM, UAC); lis
     } `
     -Plan  {
         $m = Get-WindhawkMods
-        'py -3 render.py (once)', 'py -3 install\windhawk.py generated\windhawk  (reg import, elevated)'
+        'py -3 ..\render.py (once)', 'py -3 install\windhawk.py generated\windhawk  (reg import, elevated)'
         "installed: $(if ($m.Installed.Count) { $m.Installed -join ', ' } else { '-' })"
         "missing:   $(if ($m.Missing.Count) { $m.Missing -join ', ' } else { '-' })"
     } `
@@ -444,7 +444,7 @@ Add-Step 'lockscreen' 'Lock/sign-in screen = Spirit Blossom splash (fetched from
 
 Add-Step 'vscode-theme' 'Build the theme .vsix locally and install it into VS Code and Cursor' `
     -Check { $p = Get-NeedPy; if ($p) { return $p }; if (-not ((Test-Cmd code) -or (Test-Cmd cursor))) { 'neither VS Code nor Cursor on PATH' } } `
-    -Plan  { 'py -3 render.py (once)', 'install\vscode-theme.ps1' } `
+    -Plan  { 'py -3 ..\render.py (once)', 'install\vscode-theme.ps1' } `
     -Run   {
         Invoke-Render
         Invoke-InstallScript 'vscode-theme.ps1'
@@ -458,7 +458,7 @@ Add-Step 'vscode-theme' 'Build the theme .vsix locally and install it into VS Co
 
 Add-Step 'jetbrains' 'Copy AhriBlossom.icls into every %APPDATA%\JetBrains\<IDE><version>\colors' `
     -Check { $p = Get-NeedPy; if ($p) { return $p }; if (-not (Get-JetBrainsConfigDirs).Count) { 'no JetBrains IDE config dirs found' } } `
-    -Plan  { 'py -3 render.py (once)'; Get-JetBrainsConfigDirs | ForEach-Object { "copy AhriBlossom.icls -> $($_.FullName)\colors" } } `
+    -Plan  { 'py -3 ..\render.py (once)'; Get-JetBrainsConfigDirs | ForEach-Object { "copy AhriBlossom.icls -> $($_.FullName)\colors" } } `
     -Run   {
         Invoke-Render
         $src = Join-Path $Gen 'editors\jetbrains\AhriBlossom.icls'
@@ -474,7 +474,7 @@ Add-Step 'jetbrains' 'Copy AhriBlossom.icls into every %APPDATA%\JetBrains\<IDE>
 
 Add-Step 'zen' 'Zen userChrome/userContent into the default profile (resolved from profiles.ini, not hardcoded)' `
     -Check { $p = Get-NeedPy; if ($p) { return $p }; if (-not (Get-ZenProfileDir)) { 'no Zen profile yet - start Zen once' } } `
-    -Plan  { 'py -3 render.py (once)'; "copy generated\apps\zen\chrome -> $(Get-ZenProfileDir)\chrome"; 'add legacyUserProfileCustomizations pref to user.js (append, keeps existing prefs)' } `
+    -Plan  { 'py -3 ..\render.py (once)'; "copy generated\apps\zen\chrome -> $(Get-ZenProfileDir)\chrome"; 'add legacyUserProfileCustomizations pref to user.js (append, keeps existing prefs)' } `
     -Run   {
         Invoke-Render
         $prof = Get-ZenProfileDir
@@ -501,7 +501,7 @@ Add-Step 'spicetify' 'Spicetify: AhriBlossom/Blossom theme, backup + apply, bloc
     } `
     -Plan  {
         'spicetify config   (creates %APPDATA%\spicetify on first run)'
-        'py -3 render.py --deploy spotify'
+        'py -3 ..\render.py --deploy spotify'
         'spicetify config current_theme AhriBlossom color_scheme Blossom inject_css 1 replace_colors 1 overwrite_assets 1 inject_theme_js 1'
         if (Test-SpicetifyBackedUp) { 'spicetify apply' } else { 'spicetify backup apply' }
         'icacls %LOCALAPPDATA%\Spotify\Update /deny <user>:(OI)(CI)(W,D,DC)   (if not already denied)'
@@ -530,7 +530,7 @@ Add-Step 'vencord' 'Patch Discord with Vencord (official CLI installer) if neede
     -Plan  {
         if (Test-VencordPatched) { 'Discord already patched with Vencord' }
         else { "download $VencordCli -> %TEMP%\ahri-rice", 'close Discord; VencordInstallerCli.exe -install -branch stable' }
-        'py -3 render.py --deploy discord'
+        'py -3 ..\render.py --deploy discord'
         "add $VencordTheme to %APPDATA%\Vencord\settings\settings.json enabledThemes (closes Discord if it needs the edit)"
     } `
     -Run   {

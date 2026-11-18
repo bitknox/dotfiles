@@ -11,7 +11,7 @@ param(
     [switch]$NoRestart
 )
 $ErrorActionPreference = 'Stop'
-$pal      = Get-Content "$PSScriptRoot\..\palette.json" -Raw | ConvertFrom-Json
+$pal      = Get-Content "$PSScriptRoot\..\..\palette.json" -Raw | ConvertFrom-Json
 $font     = $pal.fonts.ui
 $data     = "$env:APPDATA\FlowLauncher"
 $settings = "$data\Settings\Settings.json"

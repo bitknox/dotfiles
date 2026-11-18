@@ -75,7 +75,7 @@ TAG_ON = 'stroke="#0000FF" stroke-width="17"'
 
 
 def palette() -> dict:
-    with open(ROOT / "palette.json", encoding="utf-8") as f:
+    with open(ROOT.parent / "palette.json", encoding="utf-8") as f:
         return json.load(f)
 
 

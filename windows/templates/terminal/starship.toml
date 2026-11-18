@@ -1,5 +1,5 @@
 "$schema" = 'https://starship.rs/config-schema.json'
-# Ahri Blossom prompt (rendered from ~/dotfiles/templates/terminal/starship.toml)
+# Ahri Blossom prompt (rendered from ~/dotfiles/windows/templates/terminal/starship.toml)
 
 add_newline = true
 palette = "ahri"

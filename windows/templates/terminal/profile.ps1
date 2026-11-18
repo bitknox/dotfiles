@@ -1,4 +1,4 @@
-# Ahri Blossom PowerShell profile (rendered from ~/dotfiles/templates/terminal/profile.ps1 — edit there)
+# Ahri Blossom PowerShell profile (rendered from ~/dotfiles/windows/templates/terminal/profile.ps1 — edit there)
 # Works in Windows PowerShell 5.1 and PowerShell 7.
 
 $esc = [char]27
