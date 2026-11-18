@@ -1,0 +1,8 @@
+[
+  { "group": "terminal", "src": "terminal/ghostty/config", "dst": "$HOME/.config/ghostty/config" },
+  { "group": "terminal", "src": "terminal/ghostty/themes/dotfiles", "dst": "$HOME/.config/ghostty/themes/dotfiles" },
+  { "group": "terminal", "src": "terminal/starship.toml", "dst": "$HOME/.config/starship.toml" },
+  { "group": "terminal", "src": "terminal/zsh/rice.zsh", "dst": "$HOME/.config/zsh/rice.zsh" },
+  { "group": "terminal", "src": "terminal/fastfetch", "dst": "$HOME/.config/fastfetch" },
+  { "group": "cava", "src": "terminal/cava/config", "dst": "$HOME/.config/cava/config" }
+]

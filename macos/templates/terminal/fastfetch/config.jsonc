@@ -1,0 +1,48 @@
+// {{ meta.name }} fastfetch, rendered from ~/dotfiles/macos/templates/terminal/fastfetch/config.jsonc.
+// Edit the template and run render.py; this copy is replaced on every theme switch.
+{
+  "$schema": "https://github.com/fastfetch-cli/fastfetch/raw/dev/doc/json_schema.json",
+  // The art step cuts this scenery square from the theme's wallpaper. The kitty graphics protocol shows it
+  // in Ghostty; when the file is missing or cannot be decoded, fastfetch prints its built-in logo instead.
+  "logo": {
+    "type": "kitty",
+    "source": "~/Library/Application Support/dotfiles/art/{{ meta.slug }}/logo.png",
+    "width": 30,
+    "height": 15,
+    "padding": { "top": 1, "left": 2, "right": 4 }
+  },
+  "display": {
+    "separator": "  ",
+    "color": {
+      "keys": "{{ accent | ansi }}",
+      "title": "{{ accent2 | ansi }}",
+      "separator": "{{ overlay | ansi }}",
+      "output": "{{ text | ansi }}"
+    },
+    "key": { "width": 10 },
+    "percent": { "color": { "green": "{{ ok | ansi }}", "yellow": "{{ warn | ansi }}", "red": "{{ error | ansi }}" } },
+    "bar": { "char": { "elapsed": "━", "total": "━" }, "width": 12 }
+  },
+  "modules": [
+    { "type": "title", "format": "{user-name-colored}{at-symbol-colored}{host-name-colored}" },
+    { "type": "custom", "format": "\u001b[{{ accent | ansi }}m{{ meta.flair }}\u001b[{{ overlay | ansi }}m  ·  {{ meta.tagline }}\u001b[0m" },
+    "break",
+    { "type": "os", "key": "os" },
+    { "type": "host", "key": "host" },
+    { "type": "kernel", "key": "kernel", "format": "{release}" },
+    { "type": "uptime", "key": "uptime" },
+    { "type": "packages", "key": "packages" },
+    { "type": "shell", "key": "shell" },
+    { "type": "display", "key": "display" },
+    { "type": "terminal", "key": "term" },
+    { "type": "terminalfont", "key": "font" },
+    "break",
+    { "type": "cpu", "key": "cpu" },
+    { "type": "gpu", "key": "gpu", "format": "{name}" },
+    { "type": "memory", "key": "memory" },
+    { "type": "disk", "key": "disk", "folders": "/" },
+    { "type": "battery", "key": "battery" },
+    "break",
+    { "type": "colors", "symbol": "circle", "paddingLeft": 0 }
+  ]
+}

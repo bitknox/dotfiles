@@ -1,0 +1,29 @@
+# Ghostty for the {{ meta.name }} rice, rendered from ~/dotfiles/macos/templates/terminal/ghostty/config.
+# Edit the template and run render.py; this copy is replaced on every theme switch.
+#
+# Ghostty loads this file first and ~/Library/Application Support/com.mitchellh.ghostty/config after it,
+# so anything set there wins. Keep personal tweaks in that file and they survive theme switches.
+# Colors live in themes/dotfiles next to this file. Cmd+Shift+, reloads both.
+
+theme = dotfiles
+
+font-family = {{ font.mono }}
+
+# Room around the text, with leftover space split evenly instead of pooling at the bottom right.
+window-padding-x = 14
+window-padding-y = 10
+window-padding-balance = true
+
+# A little of the wallpaper shows through, softened by a light blur.
+# On macOS a change to the opacity only applies after quitting and reopening Ghostty.
+background-opacity = 0.92
+background-blur = 16
+
+# The transparent titlebar takes the background color, follows theme switches as they reload,
+# and keeps the native tab bar.
+macos-titlebar-style = transparent
+
+# The Danish layout types @, $, brackets, braces, | and \ with Option, so Option stays Option.
+# Ghostty still sends Alt for Option combinations that print nothing, such as Option+arrow keys.
+# Set this to left or right in the Application Support config to give up one Option key for Alt.
+macos-option-as-alt = false

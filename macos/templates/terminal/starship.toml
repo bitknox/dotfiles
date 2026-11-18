@@ -1,0 +1,93 @@
+"$schema" = 'https://starship.rs/config-schema.json'
+# {{ meta.name }} prompt, rendered from ~/dotfiles/macos/templates/terminal/starship.toml.
+# Edit the template and run render.py; this copy is replaced on every theme switch.
+
+add_newline = true
+palette = "dotfiles"
+command_timeout = 400
+scan_timeout = 100
+
+format = """
+[](fg:pill)[✦ ](bg:pill fg:accent)$directory[](fg:pill)\
+$git_branch$git_status\
+$python$nodejs$golang$rust$swift\
+$cmd_duration
+$character"""
+
+[palettes.dotfiles]
+pill = "{{ surface0 }}"
+muted = "{{ overlay }}"
+text = "{{ text }}"
+accent = "{{ accent }}"
+accent2 = "{{ accent2 }}"
+highlight = "{{ highlight }}"
+info = "{{ info }}"
+warn = "{{ warn }}"
+ok = "{{ ok }}"
+error = "{{ error }}"
+cyan = "{{ ansi6 }}"
+orange = "{{ ansi9 }}"
+
+[directory]
+style = "bg:pill fg:accent"
+format = "[$path]($style)[$read_only]($read_only_style)"
+read_only = " \U000f033e"
+read_only_style = "bg:pill fg:error"
+truncation_length = 3
+truncate_to_repo = false
+home_symbol = "~"
+
+[git_branch]
+symbol = " "
+style = "bg:pill fg:accent2"
+format = " [](fg:pill)[$symbol$branch]($style)[](fg:pill)"
+truncation_length = 28
+
+[git_status]
+style = "fg:warn"
+format = "( [$all_status$ahead_behind]($style))"
+ahead = "[⇡${count}](fg:info)"
+behind = "[⇣${count}](fg:info)"
+diverged = "[⇕⇡${ahead_count}⇣${behind_count}](fg:info)"
+modified = "~${count}"
+untracked = "?${count}"
+staged = "[+${count}](fg:ok)"
+deleted = "-${count}"
+renamed = "»${count}"
+conflicted = "[=${count}](fg:error)"
+stashed = ""
+
+# Icons only: printing versions means starting each runtime on every prompt.
+[python]
+symbol = " "
+style = "fg:warn"
+format = " [via](fg:muted) [${symbol}( \\($virtualenv\\))]($style)"
+
+[nodejs]
+symbol = " "
+style = "fg:ok"
+format = " [via](fg:muted) [$symbol]($style)"
+
+[golang]
+symbol = " "
+style = "fg:cyan"
+format = " [via](fg:muted) [$symbol]($style)"
+
+[rust]
+symbol = " "
+style = "fg:highlight"
+format = " [via](fg:muted) [$symbol]($style)"
+
+[swift]
+symbol = " "
+style = "fg:orange"
+format = " [via](fg:muted) [$symbol]($style)"
+
+[cmd_duration]
+min_time = 2000
+style = "fg:info"
+format = " [took](fg:muted) [$duration]($style)"
+
+[character]
+success_symbol = "[❯](fg:accent)"
+error_symbol = "[❯](fg:error)"
