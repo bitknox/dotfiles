@@ -1,0 +1,12 @@
+[
+  {
+    "group": "bar",
+    "src": "bar/sketchybar",
+    "dst": "$HOME/.config/sketchybar"
+  },
+  {
+    "group": "borders",
+    "src": "bar/borders/bordersrc",
+    "dst": "$HOME/.config/borders/bordersrc"
+  }
+]

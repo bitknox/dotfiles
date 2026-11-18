@@ -1,0 +1,156 @@
+#!/bin/bash
+# SketchyBar for {{ meta.name }}. Rendered by render.py; edit macos/templates/bar/sketchybar, not ~/.config.
+#
+# The bar has no backing. Like the native menu bar, its text sits straight on the wallpaper, in ink
+# each theme picks for its own picture, with a one pixel halo below. Items are created here without
+# colors; recolor.sh applies them, so startup and a theme switch share one source of truth.
+#
+# Left of the notch: the front app and now playing. Right of the notch: the clock and date.
+# Far right: menu extras (VPN, Tailscale, Bitwarden), CPU, memory, Wi-Fi, sound and battery.
+
+CONFIG_DIR="${CONFIG_DIR:-$HOME/.config/sketchybar}"
+PLUGINS="$CONFIG_DIR/plugins"
+. "$CONFIG_DIR/colors.sh"
+. "$CONFIG_DIR/icons.sh"
+
+mkdir -p "$BAR_CACHE" && rm -f "$BAR_CACHE/media.open"   # now playing starts collapsed
+
+UI_REG="$FONT_UI:Regular:13.0"
+UI_BOLD="$FONT_UI:Semibold:13.0"
+ICONS="$FONT_MONO:Regular:15.0"
+
+# The notch on the 14" panel is 186 pt wide. Items placed with "q" and "e" sit flush against it.
+sketchybar --bar position=top height=37 color=0x00000000 border_width=0 shadow=off \
+                 sticky=on topmost=off padding_left=10 padding_right=10 notch_width=186 \
+                 font_smoothing=on display=all
+
+sketchybar --default updates=when_shown \
+                     icon.font="$ICONS" label.font="$UI_REG" \
+                     icon.shadow.drawing=on icon.shadow.angle=90 icon.shadow.distance=1 \
+                     label.shadow.drawing=on label.shadow.angle=90 label.shadow.distance=1 \
+                     padding_left=2 padding_right=2 \
+                     icon.padding_left=6 icon.padding_right=4 \
+                     label.padding_left=0 label.padding_right=6 \
+                     popup.background.corner_radius=16 popup.background.border_width=1 \
+                     popup.blur_radius=30 popup.background.shadow.drawing=on popup.y_offset=6
+
+# Popup rows: no halo (they sit on glass, not the wallpaper), a little more air.
+POPUP_ROW=(icon.shadow.drawing=off label.shadow.drawing=off
+           icon.font="$UI_REG" label.font="$UI_REG"
+           icon.padding_left=14 icon.padding_right=8 label.padding_left=0 label.padding_right=14
+           height=30)
+
+# Left: the front app, named in semibold like the app menu it replaces.
+sketchybar --add item front_app left \
+           --set front_app icon.drawing=off label.font="$UI_BOLD" label.padding_left=6 \
+                           script="$PLUGINS/front_app.sh" \
+           --subscribe front_app front_app_switched
+
+# Now playing. Collapsed it shows art and title; a click reveals artist, controls and time.
+sketchybar --add item media left \
+           --set media drawing=off padding_left=12 update_freq=5 updates=on \
+                       icon.width=20 icon.padding_left=6 icon.padding_right=8 \
+                       icon.background.drawing=on icon.background.image.corner_radius=4 \
+                       icon.background.image.scale=0.5 \
+                       label.max_chars=28 \
+                       script="$PLUGINS/media.sh" click_script="$PLUGINS/media.sh toggle" \
+           --subscribe media system_woke \
+           --add item media.artist left \
+           --set media.artist drawing=off icon.drawing=off label.max_chars=24 \
+                              click_script="$PLUGINS/media.sh toggle" \
+           --add item media.prev left \
+           --set media.prev drawing=off icon="$ICON_PREV" label.drawing=off \
+                            icon.padding_left=4 icon.padding_right=4 \
+                            click_script="$PLUGINS/media.sh previous" \
+           --add item media.play left \
+           --set media.play drawing=off icon="$ICON_PAUSE" label.drawing=off \
+                            icon.padding_left=4 icon.padding_right=4 \
+                            click_script="$PLUGINS/media.sh play" \
+           --add item media.next left \
+           --set media.next drawing=off icon="$ICON_NEXT" label.drawing=off \
+                            icon.padding_left=4 icon.padding_right=8 \
+                            click_script="$PLUGINS/media.sh next" \
+           --add item media.time left \
+           --set media.time drawing=off icon.drawing=off label.font="$FONT_UI:Regular:12.5" \
+                            click_script="$PLUGINS/media.sh toggle"
+
+# Right of the notch: flair, time and date, all opening the calendar.
+sketchybar --add item clock e \
+           --set clock icon="$FLAIR" icon.font="$FONT_DISPLAY:SemiBold:13.5" icon.padding_left=14 \
+                       label.font="$UI_BOLD" label.padding_right=4 update_freq=10 \
+                       popup.align=left script="$PLUGINS/clock.sh" \
+                       click_script="$PLUGINS/calendar.sh toggle" \
+           --subscribe clock system_woke mouse.exited.global \
+           --add item date e \
+           --set date icon.drawing=off update_freq=60 script="$PLUGINS/clock.sh" \
+                      click_script="$PLUGINS/calendar.sh toggle"
+
+sketchybar --add item cal.head popup.clock \
+           --set cal.head "${POPUP_ROW[@]}" icon.font="$FONT_UI:Semibold:14.0" icon.width=196 \
+                          label.font="$FONT_DISPLAY:SemiBold:14.0" height=34
+for row in days 1 2 3 4 5 6; do
+  sketchybar --add item "cal.r$row" popup.clock \
+             --set "cal.r$row" "${POPUP_ROW[@]}" icon.drawing=off label.font="$FONT_MONO:Regular:12.5" \
+                               label.padding_left=14 height=26
+done
+sketchybar --set cal.rdays label.font="$FONT_MONO:Semibold:11.0" \
+           --add item cal.week popup.clock \
+           --set cal.week "${POPUP_ROW[@]}" icon.drawing=off label.font="$FONT_UI:Regular:12.0" \
+                          label.padding_left=14 height=28
+
+# Far right, added right to left: battery, sound, Wi-Fi, memory, CPU, then the menu extras.
+sketchybar --add item battery right \
+           --set battery update_freq=120 popup.align=right label.padding_right=8 \
+                         script="$PLUGINS/battery.sh" click_script="$PLUGINS/battery.sh toggle" \
+           --subscribe battery power_source_change system_woke mouse.exited.global \
+           --add item bat.head popup.battery \
+           --set bat.head "${POPUP_ROW[@]}" icon="Battery" icon.font="$FONT_UI:Semibold:13.0" \
+                          icon.width=176 label.font="$FONT_UI:Semibold:13.0" \
+           --add item bat.time popup.battery \
+           --set bat.time "${POPUP_ROW[@]}" icon.drawing=off label.padding_left=14 \
+                          label.font="$FONT_UI:Regular:12.5"
+
+sketchybar --add item volume right \
+           --set volume popup.align=right script="$PLUGINS/volume.sh" \
+                        click_script="$PLUGINS/volume.sh toggle" \
+           --subscribe volume volume_change mouse.exited.global \
+           --add item vol.title popup.volume \
+           --set vol.title "${POPUP_ROW[@]}" icon="Sound" icon.font="$FONT_UI:Semibold:13.0" \
+                           label.drawing=off \
+           --add slider vol.slider popup.volume 236 \
+           --set vol.slider icon.drawing=off label.drawing=off padding_left=18 padding_right=18 \
+                            slider.background.height=6 slider.background.corner_radius=3 \
+                            slider.knob="$ICON_KNOB" slider.knob.font="$FONT_MONO:Regular:20.0" \
+                            slider.knob.color=0xfff4f4f6 slider.knob.shadow.drawing=off \
+                            script="$PLUGINS/volume.sh" \
+           --subscribe vol.slider mouse.clicked \
+           --add item vol.outputs popup.volume \
+           --set vol.outputs "${POPUP_ROW[@]}" icon="Output" icon.font="$FONT_UI:Semibold:12.0" \
+                             label.drawing=off height=32
+
+sketchybar --add item wifi right \
+           --set wifi label.drawing=off script="$PLUGINS/wifi.sh" \
+                      click_script="open 'x-apple.systempreferences:com.apple.wifi-settings-extension'" \
+           --subscribe wifi wifi_change system_woke \
+           --add item memory right \
+           --set memory icon="$ICON_MEMORY" update_freq=5 label.width=34 script="$PLUGINS/stats.sh" \
+                        click_script="open -a 'Activity Monitor'" \
+           --add item cpu right \
+           --set cpu icon="$ICON_CPU" update_freq=5 label.width=34 script="$PLUGINS/stats.sh" \
+                     click_script="open -a 'Activity Monitor'" \
+           --add item extras.gap right \
+           --set extras.gap width=14 icon.drawing=off label.drawing=off
+
+# Menu extras the native bar would show. Aliases need Screen Recording permission for SketchyBar.
+# Owner names differ between releases, so match them loosely against what the system reports.
+# Added right to left, so they read VPN, Tailscale, Bitwarden.
+EXTRAS="$(sketchybar --query default_menu_items 2>/dev/null | jq -r '.[]' 2>/dev/null)"
+for owner in bitwarden tailscale mullvad; do
+  extra="$(printf '%s\n' "$EXTRAS" | grep -i -m 1 "^$owner")" || continue
+  sketchybar --add alias "$extra" right \
+             --set "$extra" alias.update_freq=2 padding_left=0 padding_right=0 \
+                            icon.drawing=off label.drawing=off background.drawing=off
+done
+
+"$CONFIG_DIR/recolor.sh"
+sketchybar --update

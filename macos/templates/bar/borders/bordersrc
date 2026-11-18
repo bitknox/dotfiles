@@ -1,0 +1,13 @@
+#!/bin/bash
+# JankyBorders for {{ meta.name }}: the focused window in the accent, the others in a quiet surface tone.
+# Rendered by render.py; theme.sh restarts borders after a switch.
+
+options=(
+  style=round
+  width=4.0
+  hidpi=on
+  active_color={{ border | argb }}
+  inactive_color={{ surface2 | argb:b3 }}
+)
+
+borders "${options[@]}"
