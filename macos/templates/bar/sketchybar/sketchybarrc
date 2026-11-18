@@ -49,7 +49,7 @@ sketchybar --add item front_app left \
 # Now playing. Collapsed it shows art and title; a click reveals artist, controls and time.
 sketchybar --add item media left \
            --set media drawing=off padding_left=12 update_freq=5 updates=on \
-                       icon.width=20 icon.padding_left=6 icon.padding_right=8 \
+                       icon.width=20 icon.padding_left=6 icon.padding_right=0 label.padding_left=8 \
                        icon.background.drawing=on icon.background.image.corner_radius=4 \
                        icon.background.image.scale=0.5 \
                        label.max_chars=28 \

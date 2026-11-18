@@ -81,11 +81,11 @@ while IFS='|' read -r name opt desc; do
   printf '%s: %s\n' "$name" "$desc"
   if [ ! -f "$script" ]; then
     result="skipped" note="install/$name.sh is missing"
-  elif ! note="$(bash "$script" check 2>&1)"; then
+  elif ! note="$(bash "$script" check 2>&1 </dev/null)"; then
     result="skipped"; note="${note:-prerequisites missing}"
   elif [ "$DRY" = 1 ]; then
     result="ready" note=""
-  elif bash "$script" run; then
+  elif bash "$script" run </dev/null; then   # steps never read this loop's input
     result="done" note=""
   else
     result="failed" note="see the output above"

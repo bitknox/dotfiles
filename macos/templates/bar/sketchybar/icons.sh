@@ -4,7 +4,7 @@
 # because the bash 3.2 that ships with macOS has no \u escapes.
 
 ICON_CPU=""  # U+F4BC
-ICON_MEMORY="󰍛"  # U+F035B
+ICON_MEMORY=""  # U+EFC5 (fa-memory, a RAM stick)
 ICON_WIFI="󰖩"  # U+F05A9
 ICON_WIFI_OFF="󰖪"  # U+F05AA
 ICON_VOL_HIGH="󰕾"  # U+F057E

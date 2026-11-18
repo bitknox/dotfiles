@@ -21,12 +21,13 @@ brew "cava"
 
 # Apps
 brew "spicetify-cli"
-cask "ghostty"
-cask "raycast"
-cask "zen"
-cask "helium-browser"
+# Apps already in /Applications (installed by hand) are left alone; replacing them needs sudo.
+{ "ghostty" => "Ghostty", "raycast" => "Raycast", "zen" => "Zen", "helium-browser" => "Helium" }.each do |c, app|
+  cask c unless File.exist?("/Applications/#{app}.app")
+end
 
 # Fonts
 cask "font-maple-mono-nf"
-cask "font-sf-pro"
+# SF Pro: install/brew.sh unpacks Apple's font-sf-pro download into ~/Library/Fonts, because the
+# cask itself runs Apple's installer with sudo.
 cask "font-shippori-mincho"

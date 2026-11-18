@@ -101,6 +101,9 @@ PY
 )" || die "building the extension failed"
     say "built $vsix"
     status=0
+    # Cursor's CLI splits paths at spaces, and the vsix lives under "Application Support".
+    safe="$tmp/$(basename "$vsix")"
+    cp "$vsix" "$safe" && vsix="$safe"
     while IFS= read -r cli; do
       [ -n "$cli" ] || continue
       if "$cli" --install-extension "$vsix" --force </dev/null >/dev/null; then
