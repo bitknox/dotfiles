@@ -149,6 +149,7 @@ def render(check=False, out=None, only=None):
                 if not check:
                     dst.parent.mkdir(parents=True, exist_ok=True)
                     dst.write_text(text, encoding="utf-8", newline="")
+                    shutil.copymode(f, dst)  # keeps the executable bit on rendered scripts
             elif not check:
                 dst.parent.mkdir(parents=True, exist_ok=True)
                 shutil.copy2(f, dst)
@@ -178,11 +179,12 @@ def ratio(a, b):
 
 def contrast_errors():
     """Palettes with "aa": true promise WCAG AA: text, roles and ANSI colors at 4.5:1 on base and the
-    surfaces, the overlay (hints, comments) at 4.5:1 on base and 3:1 on the surfaces."""
+    surfaces, the overlay (hints, comments) at 4.5:1 on base and 3:1 on the surfaces. Roles named bar_*
+    sit on the wallpaper, not on base, so they are measured against the wallpaper instead."""
     if not PAL.get("aa"):
         return []
     fg = ["text", "subtext"] + list(PAL["roles"]) + [f"ansi{i}" for i in range(1, 16) if i != 8]
-    fg = [k for k in dict.fromkeys(fg) if k not in ("bg", "bg_alt", "border_inactive")]
+    fg = [k for k in dict.fromkeys(fg) if k not in ("bg", "bg_alt", "border_inactive") and not k.startswith("bar_")]
     out = []
     for bg in ("base", "surface0", "surface1"):
         for k in fg + ["overlay"]:
@@ -201,7 +203,17 @@ def load_deploy_spec():
     return spec
 
 
-def deploy(only=None):
+def backup(dst, root):
+    """Keep the first original of `dst` under `root`, mirroring its absolute path. Later runs leave it alone."""
+    keep = Path(root) / str(dst.resolve()).lstrip("/\\").replace(":", "")
+    if keep.exists() or not dst.exists():
+        return
+    keep.parent.mkdir(parents=True, exist_ok=True)
+    (shutil.copytree if dst.is_dir() else shutil.copy2)(dst, keep)
+    print(f"keep  {dst} -> {keep}")
+
+
+def deploy(only=None, backup_root=None):
     for item in load_deploy_spec():
         if only and item["group"] not in only:
             continue
@@ -210,6 +222,8 @@ def deploy(only=None):
         if item.get("if_exists") and not Path(os.path.expandvars(item["if_exists"])).exists():
             print(f"skip  {item['src']} (app not present)")
             continue
+        if backup_root:
+            backup(dst, backup_root)
         if src.is_dir():
             shutil.copytree(src, dst, dirs_exist_ok=True)
         else:
@@ -223,6 +237,7 @@ if __name__ == "__main__":
     # py -3 render.py --out <dir> [--only <sub>]    render into a scratch dir (safe for parallel work)
     # py -3 render.py [--deploy [group ...]]        render into <os>/generated/ and optionally deploy
     # py -3 render.py --check --all-themes          validate against every theme in <os>/themes
+    # py -3 render.py --deploy --backup <dir>        keep the first original of every replaced file in <dir>
     # --os <name> on any of these targets another platform folder, --theme <slug> picks the palette
     if not (BASE / "templates").is_dir():
         sys.exit(f"no templates for '{OS}' ({BASE / 'templates'} missing)")
@@ -238,5 +253,5 @@ if __name__ == "__main__":
     if not render():
         sys.exit(1)
     if "--deploy" in sys.argv:
-        groups = [a for a in sys.argv[1:] if not a.startswith("--") and a not in (_opt("--os"), _opt("--theme"))]
-        deploy(groups or None)
+        groups = [a for a in sys.argv[1:] if not a.startswith("--") and a not in (_opt("--os"), _opt("--theme"), _opt("--backup"))]
+        deploy(groups or None, _opt("--backup"))

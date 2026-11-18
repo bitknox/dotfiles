@@ -28,6 +28,9 @@
     "ivy":      "#8fcf98",
     "rust":     "#ec7468",
     "dusk":     "#ad9cee",
+    "ink":      "#050b0c",
+    "inkdim":   "#132326",
+    "deepwater": "#1c6674",
 
     "ansi0":    "#1a2b2e",
     "ansi1":    "#ec7468",
@@ -59,6 +62,10 @@
     "bg_alt":    "mantle",
     "fg":        "text",
     "border":    "water",
-    "border_inactive": "surface2"
+    "border_inactive": "surface2",
+    "bar_fg":    "ink",
+    "bar_dim":   "inkdim",
+    "bar_accent": "deepwater",
+    "bar_halo":  "cream"
   }
 }
