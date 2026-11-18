@@ -1,8 +1,8 @@
 {
-  "_note": "Downloaded at install time into ~/Library/Application Support/dotfiles/art and never committed. Logo crops are scenery only: [x, y, width, height] in source pixels.",
+  "_note": "Downloaded at install time into ~/Library/Application Support/dotfiles/art and never committed. Logo crops are [x, y, width, height] in source pixels.",
   "frieren": {
     "wallpaper": { "url": "https://w.wallhaven.cc/full/9d/wallhaven-9depzk.jpg", "page": "https://wallhaven.cc/w/9depzk" },
-    "logo": { "url": "https://w.wallhaven.cc/full/9d/wallhaven-9depzk.jpg", "crop": [3000, 1320, 840, 840] }
+    "logo": { "url": "https://w.wallhaven.cc/full/9d/wallhaven-9depzk.jpg", "crop": [820, 240, 1650, 1650] }
   },
   "shinkai": {
     "wallpaper": { "url": "https://w.wallhaven.cc/full/l8/wallhaven-l8z26r.jpg", "page": "https://wallhaven.cc/w/l8z26r" },

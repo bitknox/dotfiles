@@ -28,7 +28,7 @@
     { "type": "custom", "format": "\u001b[{{ accent | ansi }}m{{ meta.flair }}\u001b[{{ overlay | ansi }}m  ·  {{ meta.tagline }}\u001b[0m" },
     "break",
     { "type": "os", "key": "os" },
-    { "type": "host", "key": "host" },
+    { "type": "host", "key": "host", "format": "{name:11}" },
     { "type": "kernel", "key": "kernel", "format": "{release}" },
     { "type": "uptime", "key": "uptime" },
     { "type": "packages", "key": "packages" },

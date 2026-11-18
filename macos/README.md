@@ -60,7 +60,7 @@ The apps "Theme Frieren" and "Theme Shinkai skies" in `~/Applications` run the s
 |---|---|
 | `brew` | `brew bundle` with the `Brewfile`. Nothing already installed is upgraded. |
 | `render`, `deploy` | Checks every template against both themes, renders the current one, copies it into place. |
-| `art` | Downloads each theme's wallpaper and cuts its fastfetch logo, a scenery detail, into `~/Library/Application Support/dotfiles/art/`. |
+| `art` | Downloads each theme's wallpaper and cuts its fastfetch logo, a square crop of a picture, into `~/Library/Application Support/dotfiles/art/`. |
 | `wallpaper` | Sets the current wallpaper on every desktop. |
 | `shell` | Adds one line to `.zshrc` that sources `rice.zsh` and comments out `ZSH_THEME`. PATH lines stay. |
 | `menubar` | Clock with weekday and date, battery percentage, and the two manual Menu Bar settings. |

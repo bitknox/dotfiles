@@ -2,7 +2,7 @@
 # Step: download each theme's wallpaper and cut its fastfetch logo. Pictures live in
 # ~/Library/Application Support/dotfiles/art/<theme>/ and never go into the repo.
 #   wallpaper.jpg   the desktop picture
-#   logo.png        a square crop of a scenery detail, 512 px, for the fastfetch logo
+#   logo.png        a square crop of the picture, 512 px, for the fastfetch logo
 set -u
 # shellcheck source-path=SCRIPTDIR source=lib.sh
 . "$(dirname "$0")/lib.sh"
