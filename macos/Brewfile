@@ -1,0 +1,32 @@
+# brew bundle --file macos/Brewfile   (install/brew.sh runs this)
+
+tap "FelixKratz/formulae"
+
+# Bar and borders
+brew "FelixKratz/formulae/sketchybar"
+brew "FelixKratz/formulae/borders"
+brew "media-control"     # now playing for any player (SketchyBar media item)
+brew "switchaudio-osx"   # output list in the volume popup
+brew "jq"
+
+# Shell
+brew "starship"
+brew "fastfetch"
+brew "zoxide"
+brew "eza"
+brew "bat"
+brew "fzf"
+brew "yazi"
+brew "cava"
+
+# Apps
+brew "spicetify-cli"
+cask "ghostty"
+cask "raycast"
+cask "zen"
+cask "helium-browser"
+
+# Fonts
+cask "font-maple-mono-nf"
+cask "font-sf-pro"
+cask "font-shippori-mincho"
