@@ -2,6 +2,8 @@
 
 A setup for a 14" MacBook Pro with a notch, in two themes you switch between with one command. Frieren is the default: a night-sky base, moonweed blue accent, silver and gold. Shinkai skies is dark teal water with a sky blue second accent and warm brick. There is no tiling window manager. The native menu bar stays, without a background so it sits on the wallpaper. JankyBorders outlines the focused window, and the Dock stays hidden until you reach for it.
 
+![Desktop in the Frieren theme: the night-sky wallpaper, the native menu bar, fastfetch and cava in Ghostty](assets/screenshot.jpg)
+
 ```sh
 git clone https://github.com/bitknox/dotfiles ~/dotfiles
 cd ~/dotfiles

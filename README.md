@@ -4,6 +4,8 @@ My dotfiles. They cover a Windows 11 machine, themed after the Spirit Blossom Ah
 
 ![Windows 11 desktop with the Spirit Blossom Ahri wallpaper, the Zebar top bar, the dock, fastfetch, cava and Spotify](windows/assets/screenshot.jpg)
 
+![MacBook Pro desktop in the Frieren theme: the night-sky wallpaper, the native menu bar, fastfetch and cava in Ghostty](macos/assets/screenshot.jpg)
+
 | Platform | Folder | Notes |
 |---|---|---|
 | Windows 11 | [`windows/`](windows/README.md) | Zebar bar, taskbar restyled as a dock, no tiling WM |
@@ -21,7 +23,7 @@ windows/
   install/          scripts for targets that need more than a file copy
   templates/        app configs with palette placeholders
   deploy.d/         where each rendered file is copied to
-  assets/           prebuilt files (cursors)
+  assets/           prebuilt files (cursors) and the screenshot
 macos/
   README.md         Mac setup, bootstrap and theme switching
   themes            frieren first, then shinkai
@@ -29,6 +31,7 @@ macos/
   theme.sh          switches every app to another theme
   Brewfile          the tools, apps and fonts
   wallpapers.json   where each theme's wallpaper and logo come from
+  assets/           the screenshot
   install/, templates/, deploy.d/   as on Windows
 ```
 
