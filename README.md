@@ -1,12 +1,13 @@
 # dotfiles
 
-My dotfiles. They currently cover one Windows 11 machine, themed after the Spirit Blossom Ahri skin from League of Legends. Each operating system has its own folder. The color palettes and the script that renders them into app configs sit at the root and are shared.
+My dotfiles. They cover a Windows 11 machine, themed after the Spirit Blossom Ahri skin from League of Legends, and a MacBook Pro with two themes, Frieren and Shinkai skies. Each operating system has its own folder. The color palettes and the script that renders them into app configs sit at the root and are shared.
 
 ![Windows 11 desktop with the Spirit Blossom Ahri wallpaper, the Zebar top bar, the dock, fastfetch, cava and Spotify](windows/assets/screenshot.jpg)
 
 | Platform | Folder | Notes |
 |---|---|---|
 | Windows 11 | [`windows/`](windows/README.md) | Zebar bar, taskbar restyled as a dock, no tiling WM |
+| macOS | [`macos/`](macos/README.md) | SketchyBar around the notch, JankyBorders, hidden Dock, theme switching with `theme.sh` |
 
 ## Layout
 
@@ -21,6 +22,15 @@ windows/
   templates/        app configs with palette placeholders
   deploy.d/         where each rendered file is copied to
   assets/           prebuilt files (cursors)
+macos/
+  README.md         Mac setup, bootstrap and theme switching
+  themes            frieren first, then shinkai
+  install.sh        bootstrap, runs everything in install/ in order
+  theme.sh          switches every app to another theme
+  Brewfile          the tools, apps and fonts
+  wallpapers.json   where each theme's wallpaper and logo come from
+  raycast/          the theme switch script commands
+  install/, templates/, deploy.d/   as on Windows
 ```
 
 Each platform folder also gets `generated/` (rendered output, plus the resolved `palette.json` for install scripts), `backup/` (registry exports and original configs) and `.current-theme`. All three are machine-local and gitignored.
@@ -80,6 +90,6 @@ py -3 render.py --theme frieren --deploy         # render and deploy one theme w
 
 ## Kept out of the repo
 
-Riot's artwork (the fastfetch logo and the lock screen splash) is downloaded at install time and never committed. Rendered output and backups are per-machine and gitignored.
+Riot's artwork (the fastfetch logo and the lock screen splash) and the Mac wallpapers are downloaded at install time and never committed. Rendered output and backups are per-machine and gitignored.
 
 The cursors in `windows/assets/cursors/` are a recolor of [Bibata](https://github.com/ful1e5/Bibata_Cursor), which is GPL-3.0; its license is in that folder.
